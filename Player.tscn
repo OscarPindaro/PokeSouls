@@ -12,7 +12,7 @@
 [ext_resource path="res://0158/Strike-Anim.png" type="Texture" id=10]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 17, 22.5 )
+extents = Vector2( 17, 19.75 )
 
 [sub_resource type="AtlasTexture" id=49]
 atlas = ExtResource( 7 )
@@ -1009,13 +1009,13 @@ __meta__ = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 2, -7.5 )
+position = Vector2( 0, -8.25 )
 shape = SubResource( 1 )
 
 [node name="Animations" type="AnimatedSprite" parent="."]
 scale = Vector2( 2, 2 )
 frames = SubResource( 6 )
-animation = "walk_down"
+animation = "walk_left"
 speed_scale = 11.0
 script = ExtResource( 8 )
 
