@@ -7,7 +7,9 @@ func _init():
 	parser = SpriteParser.new()
 
 func _ready():
-	parser.load_sprite_animations("Bulbasaur")
+	var a = parser.load_sprite_animations("Bulbasaur")
+	add_child(a)
+	a.position = Vector2(100,100)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

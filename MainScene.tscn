@@ -84,3 +84,6 @@ tile_data = PoolIntArray( 131093, 0, 0, 131094, 0, 0, 131095, 0, 0, 196623, 0, 0
 [node name="Icon" type="Sprite" parent="."]
 position = Vector2( 451, 178 )
 texture = ExtResource( 5 )
+hframes = 2
+vframes = 2
+frame = 1
