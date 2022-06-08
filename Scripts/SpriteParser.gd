@@ -41,13 +41,25 @@ func load_sprite_animations(pokemon_name : String):
 	
 	for anim_name in anim_names:
 		var file_name : String = "%s-Anim.png" % anim_name
-		var frames : Sprite = Sprite.new()
-		frames.texture = load(sprite_path+file_name)
+		var spritesheet : Sprite = Sprite.new()
+		spritesheet.texture = load(sprite_path+file_name)
 		var frame_heigth = get_anim_property(anim_name, "FrameHeight").to_int()
 		var frame_width = get_anim_property(anim_name, "FrameWidth").to_int()
-		var hframes : int = frames.texture.get_width() / frame_width
-		var vframes : int = frames.texture.get_height() / frame_heigth
-		print(hframes," " ,vframes)
+		var hframes : int = spritesheet.texture.get_width() / frame_width
+		var vframes : int = spritesheet.texture.get_height() / frame_heigth
+		
+		var animation = Animation.new()
+		var track_index = animation.add_track(Animation.TYPE_VALUE)
+		animation.set_lenght(1)
+		animation.set_step(1/vframes)
+		var path = String(spritesheet.get_path()) + ":frame"
+		animation.track_set_path(0, path)
+		
+		for i in vframes:
+			animation.track_insert_key(track_index, i*animation.get_step(), i)
+		animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)			
+		animation.set_loop(true)
+		
 		frames.frame = 0
 		frames.region_enabled = true
 		frames.region_rect = Rect2(0,0,frame_width, frame_heigth)
