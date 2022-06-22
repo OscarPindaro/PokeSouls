@@ -10,6 +10,8 @@ var ANIM_DATA_FILENAME : String = "AnimData.json"
 var poke_num_dict : Dictionary 
 var anim_dict : Dictionary
 
+const SECOND : float = 1.0
+
 
 export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
@@ -87,8 +89,8 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 	for dir in Direction:
 		var animation = Animation.new()
 		var track_index = animation.add_track(Animation.TYPE_VALUE)
-		animation.set_length(1.0)
-		animation.set_step(1.0/sprite.hframes)
+		animation.set_length(SECOND)
+		animation.set_step(SECOND/sprite.hframes)
 		var sprite_path = String(sprite.get_path())+ ":frame"
 		animation.track_set_path(0, sprite_path)
 		
@@ -97,8 +99,9 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		var ending_frame = (Direction.get(dir)+1)*sprite.hframes
 		print(starting_frame," ",  ending_frame)
 		for i in range(starting_frame, ending_frame):
+			print((i-starting_frame)*animation.get_step(), " ", i)
 			animation.track_insert_key(track_index, (i-starting_frame)*animation.get_step(), i)
-		animation.value_track_set_update_mode(track_index, Animation.UPDATE_CONTINUOUS)			
+		animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)			
 		animation.set_loop(true)
 		
 		# adding animation to player
@@ -110,6 +113,6 @@ func _process(delta):
 	if Input.is_action_pressed("move_down"):
 		anim_player.play("Walk_DOWN")
 	else:
-		anim_player.set_current_animation("Walk_LEFT")
+		anim_player.set_current_animation("Walk_DOWN")
 		anim_player.advance(delta)
 	print($Sprites/Walk.frame)
