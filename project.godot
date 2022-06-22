@@ -27,29 +27,29 @@ _global_script_classes=[ {
 "base": "State",
 "class": "PlayerState",
 "language": "GDScript",
-"path": "res://PlayerState.gd"
+"path": "res://Scripts/StateMachine/PlayerState.gd"
 }, {
-"base": "Node",
-"class": "SpriteParser",
+"base": "Node2D",
+"class": "Pokemon",
 "language": "GDScript",
-"path": "res://Scripts/SpriteParser.gd"
+"path": "res://Scripts/Pokemon.gd"
 }, {
 "base": "Node",
 "class": "State",
 "language": "GDScript",
-"path": "res://State.gd"
+"path": "res://Scripts/StateMachine/State.gd"
 }, {
 "base": "Node",
 "class": "StateMachine",
 "language": "GDScript",
-"path": "res://StateMachine.gd"
+"path": "res://Scripts/StateMachine/StateMachine.gd"
 } ]
 _global_script_class_icons={
 "Bullet": "",
 "Enemy": "",
 "Player": "",
 "PlayerState": "",
-"SpriteParser": "",
+"Pokemon": "res://Images/ClassIcons/pokeball.png",
 "State": "",
 "StateMachine": ""
 }

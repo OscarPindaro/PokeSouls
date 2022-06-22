@@ -1,5 +1,5 @@
 extends Node2D
-
+class_name Pokemon, "res://Images/ClassIcons/pokeball.png"
 
 # paths to resources
 var sprite_collab_path : String = "Images/SpriteCollab/"
@@ -11,11 +11,14 @@ var poke_num_dict : Dictionary
 var anim_dict : Dictionary
 
 const SECOND : float = 1.0
+const IDLE_NAME : String = "Idle"
 
 
 export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
 onready var anim_player : AnimationPlayer = $AnimationPlayer
+# list of spritesheet of the pokemon
+var sprites
 
 enum Direction {DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT,
 UP, UP_LEFT, LEFT, DOWN_LEFT }
@@ -35,10 +38,9 @@ func _init():
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	var sprites = $Sprites.get_children()
+	sprites = $Sprites.get_children()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
-		print(anim_name)
 		load_sprite_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
 	
@@ -97,9 +99,7 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		# anim creation
 		var starting_frame = Direction.get(dir)*sprite.hframes
 		var ending_frame = (Direction.get(dir)+1)*sprite.hframes
-		print(starting_frame," ",  ending_frame)
 		for i in range(starting_frame, ending_frame):
-			print((i-starting_frame)*animation.get_step(), " ", i)
 			animation.track_insert_key(track_index, (i-starting_frame)*animation.get_step(), i)
 		animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)			
 		animation.set_loop(true)
@@ -109,10 +109,20 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$Sprites/Walk.visible = true
-	if Input.is_action_pressed("move_down"):
-		anim_player.play("Walk_DOWN")
+	pass
+
+func set_sprite_visibility(sprite_name : String) -> void:
+	# default frame is idle
+	if not (sprite_name in sprites):
+		for sprite in sprites:
+			if sprite.name.casecmp_to(IDLE_NAME):
+				sprite.visible= true
+			else:
+				sprite.visible = false 
 	else:
-		anim_player.set_current_animation("Walk_DOWN")
-		anim_player.advance(delta)
-	print($Sprites/Walk.frame)
+		for sprite in sprites:
+			if sprite.name.casecmp_to(sprite_name):
+				sprite.visible = true
+			else:
+				false
+		
