@@ -18,9 +18,12 @@ export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 # list of spritesheet of the pokemon
-var sprites : Array
+export(NodePath) var sprites_path
+onready var sprites : Array = get_node(sprites_path).get_children()
 var sprite_names : Array
-# list of collision shapes
+
+export(NodePath) var collision_container_path
+onready var collision_container : CollisionContainer = get_node(collision_container_path)
 
 
 # this enumeration is used to map the different directions
@@ -45,7 +48,6 @@ func _init():
 
 # Loads the animation from the spritesheet in the animation player
 func _ready():
-	sprites = $Sprites.get_children()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
 		sprite_names.append(sprite.get_name())
@@ -85,6 +87,13 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	sprite.vframes = sprite.texture.get_height() / frame_heigth
 	#sprite.set_scale(Vector2(2,2))
 	sprite.visible = false
+	var coll_polys : Array = CollisionExctractor.new().get_collision_polygons(sprite)
+	for poly in coll_polys:
+		poly.disabled = true
+		poly.visible = false
+		collision_container.add_child(poly)
+	collision_container.register_collision(anim_name, coll_polys)	
+	
 	anim_data_file.close()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 func get_anim_property(anim_name : String, property_name : String) -> String:
@@ -102,19 +111,30 @@ func get_anim_property(anim_name : String, property_name : String) -> String:
 func create_anim_player_track(sprite : Sprite, anim_name : String):
 	# creates an animation from the sprite for each cardinal direction
 	for dir in Direction:
-		var animation = Animation.new()
-		var track_index = animation.add_track(Animation.TYPE_VALUE)
+		var animation : Animation = Animation.new()
+		# sprite animation track
+		var sprite_track_index = animation.add_track(Animation.TYPE_VALUE)
 		animation.set_length(SECOND)
 		animation.set_step(SECOND/sprite.hframes)
 		var sprite_path = String(sprite.get_path())+ ":frame"
-		animation.track_set_path(0, sprite_path)
+		animation.track_set_path(sprite_track_index, sprite_path)
+		animation.value_track_set_update_mode(sprite_track_index, Animation.UPDATE_DISCRETE)
+		
+		#collision animation track
+		var coll_t_idx = animation.add_track(Animation.TYPE_VALUE)
+		var collision_path = String(collision_container.get_path()) + ":frame"
+		animation.track_set_path(coll_t_idx, collision_path)
+		animation.value_track_set_update_mode(coll_t_idx, Animation.UPDATE_DISCRETE)
 		
 		# anim creation
 		var starting_frame = Direction.get(dir)*sprite.hframes
 		var ending_frame = (Direction.get(dir)+1)*sprite.hframes
 		for i in range(starting_frame, ending_frame):
-			animation.track_insert_key(track_index, (i-starting_frame)*animation.get_step(), i)
-		animation.value_track_set_update_mode(track_index, Animation.UPDATE_DISCRETE)			
+			var time_key : float = (i-starting_frame)*animation.get_step()
+			animation.track_insert_key(sprite_track_index, time_key, i)
+			animation.track_insert_key(coll_t_idx, time_key, i)
+					
+		
 		animation.set_loop(true)
 		
 		# adding animation to player
@@ -152,6 +172,7 @@ func set_sprite_visibility(sprite_name : String) -> void:
 				sprite.visible = false
 				
 func _process(delta):
-	set_animation("Shoot", Direction.LEFT)
+	set_animation("Walk", Direction.DOWN)
+	collision_container.curr_name = "Walk"
 	$AnimationPlayer.play()
 		

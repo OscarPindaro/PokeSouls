@@ -1,5 +1,5 @@
 extends Node
-class_name CollisionExcractor
+class_name CollisionExctractor
 
 # Declare member variables here. Examples:
 # var a = 2
