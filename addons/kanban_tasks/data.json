@@ -30,7 +30,9 @@
       "title": "Todo",
       "tasks": [
         1,
-        2
+        2,
+        3,
+        4
       ]
     },
     {
@@ -61,6 +63,16 @@
       "category": 0,
       "title": "Hitbox",
       "details": "estrarre informazioni sulle hitbox dalle hitmap"
+    },
+    {
+      "category": 0,
+      "title": "Settare scale sprite pokemon",
+      "details": "Attualmente le texture vengono raddoppiate in lunghezza e altezza, ma sarebbe carino dare al designer un po' di controllo, magari con una variabile esportata o toccante direttamente la transform"
+    },
+    {
+      "category": 0,
+      "title": "Pokemon Caching",
+      "details": "salvataggio di un pokemon creato, così le volte dopo bisogna solo caricare una scena e non bisogna rifare sempre le stesse operazioni\n"
     }
   ]
 }

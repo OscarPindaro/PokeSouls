@@ -66,20 +66,22 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	anim_dict = parse_json(anim_data_file.get_as_text())
 	var file_name : String = "%s-Anim.png" % anim_name
 	# loads the spritesheet as a texture
-	#sprite.texture = load(sprite_path+file_name)
-	var image = Image.new()
-	image.load(sprite_path+file_name)
-	var texture = ImageTexture.new()
-	texture.create_from_image(image, 0)
-	sprite.texture = texture
+	sprite.texture = load(sprite_path+file_name)
+	sprite.texture.flags = 0
+	# the code below generates a warningsigh
+#	var image = Image.new()
+#	image.load(sprite_path+file_name)
+#	var texture = ImageTexture.new()
+#	texture.create_from_image(image, 0)
+#	sprite.texture = texture
 	# load vertical and horizontal frame numbers
 	var frame_heigth = get_anim_property(anim_name, "FrameHeight").to_int()
 	var frame_width = get_anim_property(anim_name, "FrameWidth").to_int()
 	sprite.hframes = sprite.texture.get_width() / frame_width
 	sprite.vframes = sprite.texture.get_height() / frame_heigth
-	sprite.set_scale(Vector2(2,2))
+	#sprite.set_scale(Vector2(2,2))
 	sprite.visible = false
-	anim_data_file.close()
+	anim_data_file.close()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 func get_anim_property(anim_name : String, property_name : String) -> String:
 	var anims = anim_dict["AnimData"]["Anims"]["Anim"]

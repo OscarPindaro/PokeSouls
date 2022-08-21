@@ -1,6 +1,8 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Model/Pokemon/Pokemon.gd" type="Script" id=1]
+
+[sub_resource type="CapsuleShape2D" id=1]
 
 [node name="Pokemon" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -15,3 +17,8 @@ pokemon_name = "Squirtle"
 [node name="Idle" type="Sprite" parent="Sprites"]
 
 [node name="Shoot" type="Sprite" parent="Sprites"]
+
+[node name="Useless Collision" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+disabled = true
