@@ -32,7 +32,8 @@
         1,
         2,
         3,
-        4
+        4,
+        5
       ]
     },
     {
@@ -73,6 +74,11 @@
       "category": 0,
       "title": "Pokemon Caching",
       "details": "salvataggio di un pokemon creato, così le volte dopo bisogna solo caricare una scena e non bisogna rifare sempre le stesse operazioni\n"
+    },
+    {
+      "category": 0,
+      "title": "State Machine Character",
+      "details": "Problema con character che non è riconosciuto dalla state machine"
     }
   ]
 }

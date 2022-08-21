@@ -43,21 +43,7 @@ graph_position = Vector2( 0.632784, 0.27381 )
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
-connexions_array = [ {
-"events": [ {
-"conditions": [ {
-"condition": "not is_moving()",
-"target_path": "../../Conditions",
-"type": "condition"
-} ],
-"emitter_path": "../..",
-"trigger": "process",
-"type": "event"
-} ],
-"to": "StateMachine/Idle",
-"type": "connexion"
-} ]
-standalone_trigger = {
-}
 
 [connection signal="ready" from="." to="StateMachine/Idle" method="_on_Player_ready"]
+
+[editable path="Pokemons/Pokemon"]

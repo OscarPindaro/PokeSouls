@@ -18,7 +18,10 @@ export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
 onready var anim_player : AnimationPlayer = $AnimationPlayer
 # list of spritesheet of the pokemon
-var sprites
+var sprites : Array
+var sprite_names : Array
+# list of collision shapes
+
 
 # this enumeration is used to map the different directions
 # in the animation spritesheet
@@ -45,6 +48,7 @@ func _ready():
 	sprites = $Sprites.get_children()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
+		sprite_names.append(sprite.get_name())
 		load_sprite_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
 	
@@ -118,10 +122,6 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		if err != OK:
 			push_error("Problem while adding animation in the animation player.")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-	
 # selects the given animation with the given direction
 func set_animation(sprite_name : String, dir) -> void:
 	set_sprite_visibility(sprite_name)
@@ -138,16 +138,22 @@ func set_animation(sprite_name : String, dir) -> void:
 
 func set_sprite_visibility(sprite_name : String) -> void:
 	# default frame is idle
-	if not (sprite_name in sprites):
+	if not (sprite_name in sprite_names):
 		for sprite in sprites:
 			if sprite.name.casecmp_to(IDLE_NAME):
 				sprite.visible= true
 			else:
 				sprite.visible = false 
-	else:
+	else: # real set
+		print("else")
 		for sprite in sprites:
-			if sprite.name.casecmp_to(sprite_name):
+			if sprite.name == sprite_name:
+				print(sprite.name)
 				sprite.visible = true
 			else:
 				sprite.visible = false
+				
+func _process(delta):
+	set_animation("Walk", Direction.LEFT)
+	$AnimationPlayer.play()
 		
