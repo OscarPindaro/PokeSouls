@@ -145,15 +145,13 @@ func set_sprite_visibility(sprite_name : String) -> void:
 			else:
 				sprite.visible = false 
 	else: # real set
-		print("else")
 		for sprite in sprites:
 			if sprite.name == sprite_name:
-				print(sprite.name)
 				sprite.visible = true
 			else:
 				sprite.visible = false
 				
 func _process(delta):
-	set_animation("Walk", Direction.LEFT)
+	set_animation("Shoot", Direction.LEFT)
 	$AnimationPlayer.play()
 		
