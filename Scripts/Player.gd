@@ -1,4 +1,6 @@
 extends Node2D
+class_name Player
+
 
 var curr_pokemon : Pokemon
 

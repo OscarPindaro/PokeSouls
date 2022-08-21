@@ -1,0 +1,67 @@
+{
+  "settings": {
+    "show_details_preview": true
+  },
+  "categories": [
+    {
+      "title": "Task",
+      "color": "6495ed"
+    }
+  ],
+  "columns": [
+    {
+      "stages": [
+        0
+      ]
+    },
+    {
+      "stages": [
+        1
+      ]
+    },
+    {
+      "stages": [
+        2
+      ]
+    }
+  ],
+  "stages": [
+    {
+      "title": "Todo",
+      "tasks": [
+        0,
+        1,
+        2
+      ]
+    },
+    {
+      "title": "Doing",
+      "tasks": [
+
+      ]
+    },
+    {
+      "title": "Done",
+      "tasks": [
+
+      ]
+    }
+  ],
+  "tasks": [
+    {
+      "category": 0,
+      "title": "Refactor cartelle",
+      "details": "Attualmente la divisione in script, scene e così via è molto inefficace."
+    },
+    {
+      "category": 0,
+      "title": "Aggiungere attributi ",
+      "details": "Hp, mana, attacco, difesa, attacco speciale, difesa speciale, velocità"
+    },
+    {
+      "category": 0,
+      "title": "Hitbox",
+      "details": "estrarre informazioni sulle hitbox dalle hitmap"
+    }
+  ]
+}

@@ -110,6 +110,20 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	pass
+	
+# selects the given animation with the given direction
+func set_animation(sprite_name : String, dir) -> void:
+	set_sprite_visibility(sprite_name)
+	var direction_name = null
+	for key in Direction:
+		if Direction[key] == dir:
+			direction_name = key
+			break
+	# the given direction must be in the enum
+	assert(direction_name != null)
+	var animation_name = "%s_%s" % [sprite_name, direction_name]
+	anim_player.play(animation_name)
+	
 
 func set_sprite_visibility(sprite_name : String) -> void:
 	# default frame is idle
@@ -124,5 +138,5 @@ func set_sprite_visibility(sprite_name : String) -> void:
 			if sprite.name.casecmp_to(sprite_name):
 				sprite.visible = true
 			else:
-				false
+				sprite.visible = false
 		
