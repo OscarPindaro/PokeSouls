@@ -1,8 +1,8 @@
 extends Node2D
-class_name Pokemon, "res://Images/ClassIcons/pokeball.png"
+class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
 
 # paths to resources
-var sprite_collab_path : String = "Images/SpriteCollab/"
+var sprite_collab_path : String = "res://Images/SpriteCollab/"
 var poke_num_dict_name : String = "poke-numbers.json"
 var sprite_folder : String = "sprite/"
 var ANIM_DATA_FILENAME : String = "AnimData.json"
@@ -20,6 +20,8 @@ onready var anim_player : AnimationPlayer = $AnimationPlayer
 # list of spritesheet of the pokemon
 var sprites
 
+# this enumeration is used to map the different directions
+# in the animation spritesheet
 enum Direction {DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT,
 UP, UP_LEFT, LEFT, DOWN_LEFT }
 
@@ -30,13 +32,15 @@ func get_pk_name():
 	return pokemon_name
 
 func _init():
-	# load pokemon-folder association
+	# load pokemon-folder association in a dictionary
 	var file : File = File.new()
 	var file_name : String = sprite_collab_path + poke_num_dict_name
-	file.open(file_name, File.READ)
+	var error_value = file.open(file_name, File.READ)
+	if error_value != OK:
+		push_error("Problem while opening the pokemon-folder association file.")
 	poke_num_dict = parse_json(file.get_as_text())
 
-# Called when the node enters the scene tree for the first time.
+# Loads the animation from the spritesheet in the animation player
 func _ready():
 	sprites = $Sprites.get_children()
 	for sprite in sprites:
@@ -44,14 +48,16 @@ func _ready():
 		load_sprite_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
 	
-		
+
+# loads the information about animations, the spritesheet and sets
+# the correct parameters for the sprite
 func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	# error if pokemon not present
 	if !poke_num_dict.has(pokemon_name):
 		push_error("The pokemon "+ pokemon_name+
 		" is not present in the dictionary.")
 	
-	#animation loading
+	#loads the animation data
 	var folder_number = poke_num_dict[pokemon_name]
 	var sprite_path = sprite_collab_path + sprite_folder + folder_number + "/"
 	var json_anim_path = sprite_path + ANIM_DATA_FILENAME
@@ -59,7 +65,8 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	anim_data_file.open(json_anim_path, File.READ)
 	anim_dict = parse_json(anim_data_file.get_as_text())
 	var file_name : String = "%s-Anim.png" % anim_name
-	# load texture
+	# loads the spritesheet as a texture
+	#sprite.texture = load(sprite_path+file_name)
 	var image = Image.new()
 	image.load(sprite_path+file_name)
 	var texture = ImageTexture.new()
@@ -82,7 +89,7 @@ func get_anim_property(anim_name : String, property_name : String) -> String:
 				return get_anim_property(anim["CopyOf"], property_name)
 			else:
 				return anim[property_name]
-	push_error("The animation " + anim_name + " is not present")
+	push_error("The animation " + anim_name + " is not present.")
 	return ""
 	
 
@@ -105,7 +112,9 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		animation.set_loop(true)
 		
 		# adding animation to player
-		anim_player.add_animation(anim_name + "_" +dir, animation)
+		var err = anim_player.add_animation(anim_name + "_" +dir, animation)
+		if err != OK:
+			push_error("Problem while adding animation in the animation player.")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):

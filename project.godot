@@ -44,6 +44,16 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://addons/beehave/nodes/beehave_tree.gd"
 }, {
+"base": "Node2D",
+"class": "Character",
+"language": "GDScript",
+"path": "res://Model/Character/Character.gd"
+}, {
+"base": "State",
+"class": "CharacterState",
+"language": "GDScript",
+"path": "res://Model/Character/StateMachine/CharacterState.gd"
+}, {
 "base": "BeehaveNode",
 "class": "Composite",
 "language": "GDScript",
@@ -120,16 +130,6 @@ _global_script_classes=[ {
 "path": "res://addons/beehave/nodes/decorators/limiter.gd"
 }, {
 "base": "Node2D",
-"class": "Player",
-"language": "GDScript",
-"path": "res://Model/Character/Character.gd"
-}, {
-"base": "State",
-"class": "PlayerState",
-"language": "GDScript",
-"path": "res://Model/Character/StateMachine/PlayerState.gd"
-}, {
-"base": "Node2D",
 "class": "Pokemon",
 "language": "GDScript",
 "path": "res://Model/Pokemon/Pokemon.gd"
@@ -192,6 +192,8 @@ _global_script_class_icons={
 "BeehaveNode": "res://addons/beehave/icons/action.svg",
 "BeehaveRoot": "res://addons/beehave/icons/tree.svg",
 "BeehaveTree": "",
+"Character": "",
+"CharacterState": "",
 "Composite": "res://addons/beehave/icons/category_composite.svg",
 "ConditionEditor": "",
 "ConditionLeaf": "res://addons/beehave/icons/condition.svg",
@@ -207,9 +209,7 @@ _global_script_class_icons={
 "JSONBeautifier": "",
 "Leaf": "res://addons/beehave/icons/action.svg",
 "LimiterDecorator": "res://addons/beehave/icons/limiter.svg",
-"Player": "",
-"PlayerState": "",
-"Pokemon": "",
+"Pokemon": "res://Model/Pokemon/Pokemon.png",
 "PushdownAutomata": "",
 "SelectorComposite": "res://addons/beehave/icons/selector.svg",
 "SelectorStarComposite": "res://addons/beehave/icons/selector_star.svg",
@@ -225,6 +225,7 @@ _global_script_class_icons={
 [application]
 
 config/name="PokeSouls"
+run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
 [editor_plugins]
@@ -234,6 +235,30 @@ enabled=PoolStringArray( "res://addons/ImportCleaner/plugin.cfg", "res://addons/
 [global]
 
 layer=false
+
+[importer_defaults]
+
+texture={
+"compress/bptc_ldr": 0,
+"compress/hdr_mode": 0,
+"compress/lossy_quality": 0.7,
+"compress/mode": 0,
+"compress/normal_map": 0,
+"detect_3d": true,
+"flags/anisotropic": false,
+"flags/filter": false,
+"flags/mipmaps": false,
+"flags/repeat": 0,
+"flags/srgb": 2,
+"process/HDR_as_SRGB": false,
+"process/fix_alpha_border": true,
+"process/invert_color": false,
+"process/normal_map_invert_y": false,
+"process/premult_alpha": false,
+"size_limit": 0,
+"stream": false,
+"svg/scale": 1.0
+}
 
 [input]
 

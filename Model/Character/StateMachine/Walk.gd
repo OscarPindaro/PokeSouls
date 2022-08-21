@@ -1,5 +1,5 @@
 tool
-extends PlayerState
+extends CharacterState
 
 
 # Declare member variables here. Examples:
@@ -23,7 +23,7 @@ func exit_state() -> void:
 # Use a return "State_node_name" or return Node_reference to change the current state of the state machine at a given time
 func update_state(_delta: float) -> void:
 	print("pisello")
-	print(player)
+	print(character)
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
