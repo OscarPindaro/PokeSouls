@@ -26,7 +26,6 @@ func _physics_process(delta):
 		collision_poligons[old_frame].visible = false;
 		collision_poligons[frame].disabled = false;
 		collision_poligons[frame].visible = true;
-		print(frame)
 		old_frame = frame;
 	
 

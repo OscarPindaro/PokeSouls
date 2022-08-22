@@ -49,7 +49,5 @@ anims/sdsad = SubResource( 2 )
 
 [node name="Shoot" type="Sprite" parent="Sprites"]
 
-[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-
 [node name="CollisionContainer" type="Node2D" parent="."]
 script = ExtResource( 2 )

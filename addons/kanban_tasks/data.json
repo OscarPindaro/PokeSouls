@@ -33,19 +33,20 @@
         2,
         3,
         4,
-        5
+        5,
+        6
       ]
     },
     {
       "title": "Doing",
       "tasks": [
-        0
+
       ]
     },
     {
       "title": "Done",
       "tasks": [
-
+        0
       ]
     }
   ],
@@ -79,6 +80,11 @@
       "category": 0,
       "title": "State Machine Character",
       "details": "Problema con character che non è riconosciuto dalla state machine"
+    },
+    {
+      "category": 0,
+      "title": "Errore collisioni Cambio animazione",
+      "details": "Funzionamento errato quando si cambia l'animazione su disable delle collisioni"
     }
   ]
 }
