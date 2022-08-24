@@ -1,3 +1,4 @@
+tool
 extends Node2D
 class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
 
@@ -6,17 +7,21 @@ var sprite_collab_path : String = "res://Images/SpriteCollab/"
 var poke_num_dict_name : String = "poke-numbers.json"
 var sprite_folder : String = "sprite/"
 var ANIM_DATA_FILENAME : String = "AnimData.json"
+
 # correnspondences dictionaries
 var poke_num_dict : Dictionary 
 var anim_dict : Dictionary
 
+# constants
 const SECOND : float = 1.0
 const IDLE_NAME : String = "Idle"
 
 
 export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
-onready var anim_player : AnimationPlayer = $AnimationPlayer
+# animation player path
+export (NodePath) var anim_player_path
+onready var anim_player : AnimationPlayer = get_node(anim_player_path)
 # list of spritesheet of the pokemon
 export(NodePath) var sprites_path
 onready var sprites : Array = get_node(sprites_path).get_children()
@@ -24,6 +29,9 @@ var sprite_names : Array
 
 export(NodePath) var collision_container_path
 onready var collision_container : CollisionContainer = get_node(collision_container_path)
+
+# this child is used to remove the warning about collision shapes
+onready var uselessCollisionShape : CollisionShape2D = $UselessForWarning
 
 
 # this enumeration is used to map the different directions
@@ -33,6 +41,7 @@ UP, UP_LEFT, LEFT, DOWN_LEFT }
 
 func set_pk_name(name : String):
 	pokemon_name = name
+	load_pokemon()
 
 func get_pk_name():
 	return pokemon_name
@@ -48,12 +57,16 @@ func _init():
 
 # Loads the animation from the spritesheet in the animation player
 func _ready():
+	# removes the redundant collision shape
+	remove_child(uselessCollisionShape)
+	load_pokemon()
+	
+func load_pokemon():
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
 		sprite_names.append(sprite.get_name())
 		load_sprite_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
-	
 
 # loads the information about animations, the spritesheet and sets
 # the correct parameters for the sprite

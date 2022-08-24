@@ -10,8 +10,8 @@ var EPSILON = 0
 func get_collision_polygons(sprite : Sprite) -> Array:
 	var coll_pols : Array = []
 	var bm = BitMap.new()
-	var frame_width = sprite.texture.get_width() / sprite.hframes
-	var frame_heigth = sprite.texture.get_height() / sprite.vframes
+	var frame_width : int = sprite.texture.get_width() / sprite.hframes
+	var frame_heigth : int = sprite.texture.get_height() / sprite.vframes
 	bm.create_from_image_alpha(sprite.texture.get_data())
 	for j in range(sprite.vframes):
 		for i in range(sprite.hframes):

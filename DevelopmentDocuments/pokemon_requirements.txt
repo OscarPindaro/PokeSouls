@@ -1,1 +1,8 @@
- 
+Using pokemon class, it must be possible to:
+1) set a given animation
+2) set a given collision shape
+3) communicate that an animation has changed
+4) communicate that a collision shape has changed
+5) communicate that an animation has finished
+6) change the pokemon in the editor
+7) signal the pokemon change

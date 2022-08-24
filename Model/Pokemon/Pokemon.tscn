@@ -3,43 +3,17 @@
 [ext_resource path="res://Model/Pokemon/Pokemon.gd" type="Script" id=1]
 [ext_resource path="res://Model/utils/CollisionContainer.gd" type="Script" id=2]
 
-[sub_resource type="Animation" id=2]
-resource_name = "sdsad"
-tracks/0/type = "method"
-tracks/0/path = NodePath("CollisionContainer")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0.2 ),
-"transitions": PoolRealArray( 1 ),
-"values": [ {
-"args": [ null, null ],
-"method": "a"
-} ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("Sprites/Walk:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0.4, 1.4 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 1, 1 ]
-}
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 0, 0 )
 
 [node name="Pokemon" type="KinematicBody2D"]
 script = ExtResource( 1 )
 pokemon_name = "Squirtle"
+anim_player_path = NodePath("AnimationPlayer")
 sprites_path = NodePath("Sprites")
 collision_container_path = NodePath("CollisionContainer")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-anims/sdsad = SubResource( 2 )
 
 [node name="Sprites" type="Node2D" parent="."]
 
@@ -51,3 +25,8 @@ anims/sdsad = SubResource( 2 )
 
 [node name="CollisionContainer" type="Node2D" parent="."]
 script = ExtResource( 2 )
+
+[node name="UselessForWarning" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource( 1 )
+disabled = true
