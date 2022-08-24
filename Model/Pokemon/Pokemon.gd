@@ -41,10 +41,11 @@ var is_ready_called = false
 enum Direction {DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT,
 UP, UP_LEFT, LEFT, DOWN_LEFT }
 
-func set_pk_name(name : String):
+func set_pk_name(name : String) -> void:
 	# da problemi questa funzione
-	pokemon_name = name
-	load_pokemon()
+	if name in poke_num_dict:
+		pokemon_name = name
+		load_pokemon()
 
 func get_pk_name():
 	return pokemon_name
@@ -77,6 +78,7 @@ func load_pokemon():
 		pass
 	if not Engine.editor_hint:
 		pass
+	collision_container.reset_collisions()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
 		load_sprite_attributes(sprite, anim_name)
@@ -110,11 +112,6 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 
 func load_collision_attributes(sprite : Sprite, anim_name : String) -> void:
 	var coll_polys : Array = CollisionExctractor.new().get_collision_polygons(sprite)
-	for poly in coll_polys:
-		poly.disabled = true
-		poly.visible = false
-		collision_container.add_child(poly)
-		
 	collision_container.register_collision(anim_name, coll_polys)	
 
 func get_anim_property(anim_name : String, property_name : String) -> String:

@@ -11,6 +11,8 @@ var curr_name = ""
 var collisions : Dictionary
 
 func reset_collisions() -> void:
+	for child in get_children():
+		remove_child(child)
 	collisions = {}
 
 # registers a set of collisions to the key "name"
@@ -18,6 +20,8 @@ func register_collision(name : String, collision_shapes : Array) -> void:
 	collisions[name] = collision_shapes
 	for collision in collision_shapes:
 		collision.disabled = true
+		collision.visible = false
+		add_child(collision)
 		
 		
 
