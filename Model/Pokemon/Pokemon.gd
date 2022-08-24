@@ -27,12 +27,14 @@ export(NodePath) var sprites_path
 onready var sprites : Array = get_node(sprites_path).get_children()
 var sprite_names : Array
 
-export(NodePath) var collision_container_path
-onready var collision_container : CollisionContainer = get_node(collision_container_path)
+export(NodePath) var collision_container_path : NodePath
+onready var collision_container = get_node(collision_container_path)
 
 # this child is used to remove the warning about collision shapes
 onready var uselessCollisionShape : CollisionShape2D = $UselessForWarning
 
+# used since setters are called without gaurantee that ready was called
+var is_ready_called = false
 
 # this enumeration is used to map the different directions
 # in the animation spritesheet
@@ -40,6 +42,7 @@ enum Direction {DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT,
 UP, UP_LEFT, LEFT, DOWN_LEFT }
 
 func set_pk_name(name : String):
+	# da problemi questa funzione
 	pokemon_name = name
 	load_pokemon()
 
@@ -57,15 +60,27 @@ func _init():
 
 # Loads the animation from the spritesheet in the animation player
 func _ready():
+	is_ready_called = true
 	# removes the redundant collision shape
-	remove_child(uselessCollisionShape)
+	if not Engine.editor_hint:
+		remove_child(uselessCollisionShape)
+	for sprite in sprites:
+		sprite_names.append(sprite.get_name())
 	load_pokemon()
 	
+	
 func load_pokemon():
+	if not is_ready_called:
+		return
+	#collision_container.reset_collisions()
+	if Engine.editor_hint:
+		pass
+	if not Engine.editor_hint:
+		pass
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
-		sprite_names.append(sprite.get_name())
 		load_sprite_attributes(sprite, anim_name)
+		load_collision_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
 
 # loads the information about animations, the spritesheet and sets
@@ -75,7 +90,6 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	if !poke_num_dict.has(pokemon_name):
 		push_error("The pokemon "+ pokemon_name+
 		" is not present in the dictionary.")
-	
 	#loads the animation data
 	var folder_number = poke_num_dict[pokemon_name]
 	var sprite_path = sprite_collab_path + sprite_folder + folder_number + "/"
@@ -87,27 +101,21 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	# loads the spritesheet as a texture
 	sprite.texture = load(sprite_path+file_name)
 	sprite.texture.flags = 0
-	# the code below generates a warningsigh
-#	var image = Image.new()
-#	image.load(sprite_path+file_name)
-#	var texture = ImageTexture.new()
-#	texture.create_from_image(image, 0)
-#	sprite.texture = texture
-	# load vertical and horizontal frame numbers
 	var frame_heigth = get_anim_property(anim_name, "FrameHeight").to_int()
 	var frame_width = get_anim_property(anim_name, "FrameWidth").to_int()
 	sprite.hframes = sprite.texture.get_width() / frame_width
 	sprite.vframes = sprite.texture.get_height() / frame_heigth
-	#sprite.set_scale(Vector2(2,2))
 	sprite.visible = false
+	anim_data_file.close()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+
+func load_collision_attributes(sprite : Sprite, anim_name : String) -> void:
 	var coll_polys : Array = CollisionExctractor.new().get_collision_polygons(sprite)
 	for poly in coll_polys:
 		poly.disabled = true
 		poly.visible = false
 		collision_container.add_child(poly)
+		
 	collision_container.register_collision(anim_name, coll_polys)	
-	
-	anim_data_file.close()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
 
 func get_anim_property(anim_name : String, property_name : String) -> String:
 	var anims = anim_dict["AnimData"]["Anims"]["Anim"]
@@ -133,12 +141,12 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		animation.track_set_path(sprite_track_index, sprite_path)
 		animation.value_track_set_update_mode(sprite_track_index, Animation.UPDATE_DISCRETE)
 		
-		#collision animation track
+		#collision animation track		
 		var coll_t_idx = animation.add_track(Animation.TYPE_VALUE)
 		var collision_path = String(collision_container.get_path()) + ":frame"
 		animation.track_set_path(coll_t_idx, collision_path)
 		animation.value_track_set_update_mode(coll_t_idx, Animation.UPDATE_DISCRETE)
-		
+			
 		# anim creation
 		var starting_frame = Direction.get(dir)*sprite.hframes
 		var ending_frame = (Direction.get(dir)+1)*sprite.hframes
@@ -147,13 +155,14 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 			animation.track_insert_key(sprite_track_index, time_key, i)
 			animation.track_insert_key(coll_t_idx, time_key, i)
 					
-		
 		animation.set_loop(true)
 		
 		# adding animation to player
 		var err = anim_player.add_animation(anim_name + "_" +dir, animation)
 		if err != OK:
 			push_error("Problem while adding animation in the animation player.")
+
+
 
 # selects the given animation with the given direction
 func set_animation(sprite_name : String, dir) -> void:
@@ -185,7 +194,7 @@ func set_sprite_visibility(sprite_name : String) -> void:
 				sprite.visible = false
 				
 func _process(delta):
-	set_animation("Walk", Direction.DOWN)
-	collision_container.curr_name = "Walk"
+	set_animation("Idle", Direction.DOWN)
+	collision_container.curr_name = "Idle"
 	$AnimationPlayer.play()
 		

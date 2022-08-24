@@ -1,3 +1,4 @@
+tool
 extends Node2D
 class_name CollisionContainer
 
@@ -9,15 +10,22 @@ var curr_name = ""
 # var b = "text"
 var collisions : Dictionary
 
+func reset_collisions() -> void:
+	collisions = {}
+
 # registers a set of collisions to the key "name"
 func register_collision(name : String, collision_shapes : Array) -> void:
 	collisions[name] = collision_shapes
 	for collision in collision_shapes:
 		collision.disabled = true
 		
-
+		
 
 func _physics_process(delta):
+	if Engine.editor_hint:
+		pass
+	if not Engine.editor_hint:
+		pass
 	if curr_name == "":
 		return
 	else:

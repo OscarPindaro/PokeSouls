@@ -6,3 +6,7 @@ Using pokemon class, it must be possible to:
 5) communicate that an animation has finished
 6) change the pokemon in the editor
 7) signal the pokemon change
+
+Problems with tool keyword:
+1) dont remove collision shape while in editor
+2) make only work sprites
