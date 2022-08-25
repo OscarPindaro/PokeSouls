@@ -6,6 +6,8 @@ Using pokemon class, it must be possible to:
 5) communicate that an animation has finished
 6) change the pokemon in the editor
 7) signal the pokemon change
+8) some pokemon  collision (charizard) have problems such as "Convex decomposing failed!",
+ must find a solution
 
 Problems with tool keyword:
 1) dont remove collision shape while in editor

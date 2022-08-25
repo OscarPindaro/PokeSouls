@@ -25,7 +25,7 @@ func register_collision(name : String, collision_shapes : Array) -> void:
 		
 		
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if Engine.editor_hint:
 		pass
 	if not Engine.editor_hint:

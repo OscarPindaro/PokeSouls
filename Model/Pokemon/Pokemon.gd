@@ -190,8 +190,8 @@ func set_sprite_visibility(sprite_name : String) -> void:
 			else:
 				sprite.visible = false
 				
-func _process(delta):
-	set_animation("Idle", Direction.DOWN)
-	collision_container.curr_name = "Idle"
+func _process(_delta):
+	set_animation("Shoot", Direction.DOWN)
+	collision_container.curr_name = "Shoot"
 	$AnimationPlayer.play()
 		

@@ -26,5 +26,6 @@ func get_collision_polygons(sprite : Sprite) -> Array:
 			coll_pols.append(poly)
 			poly.position.x -= frame_width/2
 			poly.position.y -= frame_heigth/2
+			print("polygon creation")
 
 	return coll_pols
