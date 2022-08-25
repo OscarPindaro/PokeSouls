@@ -2,11 +2,18 @@ tool
 extends Node2D
 class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
 
+# SIGNALS
+signal change_animation(sprite_name, direction, animation_name)
+
+
+
 # paths to resources
 var sprite_collab_path : String = "res://Images/SpriteCollab/"
 var poke_num_dict_name : String = "poke-numbers.json"
 var sprite_folder : String = "sprite/"
 var ANIM_DATA_FILENAME : String = "AnimData.json"
+onready var IDLE_SPRITE : Sprite = $Sprites/Idle
+
 
 # correnspondences dictionaries
 var poke_num_dict : Dictionary 
@@ -16,16 +23,16 @@ var anim_dict : Dictionary
 const SECOND : float = 1.0
 const IDLE_NAME : String = "Idle"
 
-
 export var pokemon_name : String = "" setget set_pk_name, get_pk_name
 
 # animation player path
 export (NodePath) var anim_player_path
 onready var anim_player : AnimationPlayer = get_node(anim_player_path)
+
 # list of spritesheet of the pokemon
 export(NodePath) var sprites_path
 onready var sprites : Array = get_node(sprites_path).get_children()
-var sprite_names : Array
+export(Array) var sprite_names : Array
 
 export(NodePath) var collision_container_path : NodePath
 onready var collision_container = get_node(collision_container_path)
@@ -40,6 +47,47 @@ var is_ready_called = false
 # in the animation spritesheet
 enum Direction {DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT,
 UP, UP_LEFT, LEFT, DOWN_LEFT }
+
+
+export(Direction) var animation_direction setget set_direction
+onready var old_animation_direction = animation_direction
+export(String) var animation_name = "RESET" setget set_anim_name, get_anim_name
+
+func set_direction(value) -> void:
+	if value != old_animation_direction:
+		old_animation_direction = animation_direction
+		animation_direction = value
+		update_animation()
+
+func set_anim_name(value : String):
+	if value in sprite_names or value == "RESET":
+		animation_name = value
+		update_animation()
+		return
+	
+
+func get_anim_name():
+	return animation_name
+
+func update_animation():
+	emit_signal("change_animation", 
+		animation_name,
+		animation_direction,
+		get_full_animation_name()
+		)
+
+func get_full_animation_name() -> String:
+	var dir_name : String = ""
+	for dir in Direction:
+		if Direction[dir] == animation_direction:
+			dir_name = dir
+	if animation_name == "RESET":
+		return animation_name
+	else:
+		return "%s_%s" % [animation_name, dir_name]
+	
+	
+
 
 func set_pk_name(name : String) -> void:
 	# da problemi questa funzione
@@ -58,6 +106,7 @@ func _init():
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
 	poke_num_dict = parse_json(file.get_as_text())
+	set_anim_name("RESET")
 
 # Loads the animation from the spritesheet in the animation player
 func _ready():
@@ -65,9 +114,12 @@ func _ready():
 	# removes the redundant collision shape
 	if not Engine.editor_hint:
 		remove_child(uselessCollisionShape)
+	sprite_names = []
 	for sprite in sprites:
 		sprite_names.append(sprite.get_name())
 	load_pokemon()
+	set_anim_name(animation_name)
+
 	
 	
 func load_pokemon():
@@ -84,6 +136,7 @@ func load_pokemon():
 		load_sprite_attributes(sprite, anim_name)
 		load_collision_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
+	create_RESET_animation(IDLE_SPRITE)
 
 # loads the information about animations, the spritesheet and sets
 # the correct parameters for the sprite
@@ -159,39 +212,32 @@ func create_anim_player_track(sprite : Sprite, anim_name : String):
 		if err != OK:
 			push_error("Problem while adding animation in the animation player.")
 
+func create_RESET_animation(sprite : Sprite):
+	var animation : Animation = Animation.new()
+	var sprite_track_index = animation.add_track(Animation.TYPE_VALUE)
+	var sprite_path = String(sprite.get_path())+ ":frame"
+	animation.track_set_path(sprite_track_index, sprite_path)
+	var coll_t_idx = animation.add_track(Animation.TYPE_VALUE)
+	var collision_path = String(collision_container.get_path()) + ":frame"
+	animation.track_set_path(coll_t_idx, collision_path)
+	animation.track_insert_key(sprite_track_index, 0, 0)
+	animation.track_insert_key(coll_t_idx, 0, 0)
+	animation.set_loop(true)
+	var err = anim_player.add_animation("RESET", animation)
+	if err != OK:
+		push_error("Problem while adding RESET animation in the animation player.")
+
 
 
 # selects the given animation with the given direction
-func set_animation(sprite_name : String, dir) -> void:
-	set_sprite_visibility(sprite_name)
-	var direction_name = null
-	for key in Direction:
-		if Direction[key] == dir:
-			direction_name = key
-			break
-	# the given direction must be in the enum
-	assert(direction_name != null)
-	var animation_name = "%s_%s" % [sprite_name, direction_name]
-	anim_player.play(animation_name)
-	
+func set_animation(sprite_name : String, dir=Direction.DOWN) -> void:
+	set_anim_name(sprite_name)
+	set_direction(dir)
 
-func set_sprite_visibility(sprite_name : String) -> void:
-	# default frame is idle
-	if not (sprite_name in sprite_names):
-		for sprite in sprites:
-			if sprite.name.casecmp_to(IDLE_NAME):
-				sprite.visible= true
-			else:
-				sprite.visible = false 
-	else: # real set
-		for sprite in sprites:
-			if sprite.name == sprite_name:
-				sprite.visible = true
-			else:
-				sprite.visible = false
 				
 func _process(_delta):
-	set_animation("Shoot", Direction.DOWN)
-	collision_container.curr_name = "Shoot"
-	$AnimationPlayer.play()
+	#set_animation("Shoot", Direction.DOWN)
+	#collision_container.curr_name = "Shoot"
+	pass
+
 		

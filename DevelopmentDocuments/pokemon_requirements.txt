@@ -8,6 +8,7 @@ Using pokemon class, it must be possible to:
 7) signal the pokemon change
 8) some pokemon  collision (charizard) have problems such as "Convex decomposing failed!",
  must find a solution
+9) utilizzare un collision container che è davvero una collision shape
 
 Problems with tool keyword:
 1) dont remove collision shape while in editor
