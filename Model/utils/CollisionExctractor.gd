@@ -5,7 +5,7 @@ class_name CollisionExctractor
 # var a = 2
 # var b = "text"
 
-var EPSILON = 0
+var EPSILON = 1
 
 func get_collision_polygons(sprite : Sprite) -> Array:
 	var coll_pols : Array = []
