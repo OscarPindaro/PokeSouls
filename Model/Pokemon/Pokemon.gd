@@ -94,6 +94,7 @@ func set_pk_name(name : String) -> void:
 	if name in poke_num_dict:
 		pokemon_name = name
 		load_pokemon()
+		update_animation()
 
 func get_pk_name():
 	return pokemon_name

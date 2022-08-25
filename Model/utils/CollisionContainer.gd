@@ -2,13 +2,19 @@ tool
 extends Node2D
 class_name CollisionContainer
 
+
+var collisions : Dictionary
+
+var collisions_array : Array
+var old_collision : CollisionPolygon2D
+
+export(PoolVector2Array) var a
+
 var frame = 0
 var old_frame = 0
 var curr_name = "" 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
-var collisions : Dictionary
+
+
 
 func reset_collisions() -> void:
 	for child in get_children():
@@ -33,12 +39,18 @@ func _physics_process(_delta):
 	if curr_name == "":
 		return
 	else:
-		var collision_poligons : Array = collisions[curr_name]
-		collision_poligons[old_frame].disabled = true;
-		collision_poligons[old_frame].visible = false;
-		collision_poligons[frame].disabled = false;
-		collision_poligons[frame].visible = true;
-		old_frame = frame;
-	
+		if old_collision != null:
+			old_collision.disabled = true;
+			old_collision.visible = false
+		collisions_array[frame].disabled = false
+		collisions_array[frame].visible = true
+		old_frame = frame
+		old_collision = collisions_array[old_frame]
+		a = collisions_array[frame].polygon
 
 
+
+
+func _on_Pokemon_change_animation(sprite_name, _direction, _animation_name):
+	collisions_array = collisions[sprite_name]
+	curr_name = sprite_name
