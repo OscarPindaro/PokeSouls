@@ -94,7 +94,7 @@ func set_pk_name(name : String) -> void:
 	if name in poke_num_dict:
 		pokemon_name = name
 		load_pokemon()
-		update_animation()
+		update_animation() 
 
 func get_pk_name():
 	return pokemon_name
@@ -151,9 +151,10 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 	var sprite_path = sprite_collab_path + sprite_folder + folder_number + "/"
 	var json_anim_path = sprite_path + ANIM_DATA_FILENAME
 	var anim_data_file = File.new()
-	anim_data_file.open(json_anim_path, File.READ)
+	var err = anim_data_file.open(json_anim_path, File.READ)
+	print(err)
 	anim_dict = parse_json(anim_data_file.get_as_text())
-	var file_name : String = "%s-Anim.png" % anim_name
+	var file_name : String = get_anim_filename(anim_name)
 	# loads the spritesheet as a texture
 	sprite.texture = load(sprite_path+file_name)
 	sprite.texture.flags = 0
@@ -167,6 +168,17 @@ func load_sprite_attributes(sprite : Sprite, anim_name : String):
 func load_collision_attributes(sprite : Sprite, anim_name : String) -> void:
 	var coll_polys : Array = CollisionExctractor.new().get_collision_polygons(sprite)
 	collision_container.register_collision(anim_name, coll_polys)	
+
+func get_anim_filename(anim_name : String) -> String:
+	var anims = anim_dict["AnimData"]["Anims"]["Anim"]
+	for anim in anims:
+		if anim["Name"] == anim_name:
+			if anim.has("CopyOf"):
+				return get_anim_filename(anim["CopyOf"])
+			else:
+				return "%s-Anim.png" % anim["Name"]
+	push_error("Something went wrong while finding the filename")
+	return ""
 
 func get_anim_property(anim_name : String, property_name : String) -> String:
 	var anims = anim_dict["AnimData"]["Anims"]["Anim"]
