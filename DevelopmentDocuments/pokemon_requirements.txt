@@ -17,3 +17,9 @@ Using pokemon class, it must be possible to:
 Problems with tool keyword:
 1) dont remove collision shape while in editor
 2) make only work sprites
+
+APPUNTI OFFSETS
+Verde -> centro
+Nero -> bocca
+Rosso -> mano destra
+Nero -> mano sinistra

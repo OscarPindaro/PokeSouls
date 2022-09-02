@@ -144,6 +144,11 @@ _global_script_classes=[ {
 "language": "GDScript",
 "path": "res://Model/Pokemon/Pokemon.gd"
 }, {
+"base": "Position2D",
+"class": "Position2DList",
+"language": "GDScript",
+"path": "res://Model/Pokemon/Position2DList.gd"
+}, {
 "base": "StateMachine",
 "class": "PushdownAutomata",
 "language": "GDScript",
@@ -222,6 +227,7 @@ _global_script_class_icons={
 "Leaf": "res://addons/beehave/icons/action.svg",
 "LimiterDecorator": "res://addons/beehave/icons/limiter.svg",
 "Pokemon": "res://Model/Pokemon/Pokemon.png",
+"Position2DList": "",
 "PushdownAutomata": "",
 "SelectorComposite": "res://addons/beehave/icons/selector.svg",
 "SelectorStarComposite": "res://addons/beehave/icons/selector_star.svg",
