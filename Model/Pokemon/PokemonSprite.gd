@@ -45,8 +45,6 @@ func load_properties(name : String):
 	
 	anim_data_file.close()     
 
-func load_error_texture():
-	self.texture = load(error_texture_path)
 
 func get_anim_filename(anim_name : String) -> String:
 	var anims = animation_dict["AnimData"]["Anims"]["Anim"]
@@ -69,3 +67,8 @@ func get_anim_property(anim_name : String, property_name : String) -> String:
 				return anim[property_name]
 	push_error("The animation " + anim_name + " is not present.")
 	return ""
+
+
+func load_error_texture() -> void:
+	self.texture = load(error_texture_path)
+	
