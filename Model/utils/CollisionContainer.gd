@@ -41,11 +41,14 @@ func _physics_process(_delta):
 		if old_collision != null:
 			old_collision.disabled = true;
 			old_collision.visible = false
-		collisions_array[frame].disabled = false
-		collisions_array[frame].visible = true
+		if frame < collisions_array.size():
+			collisions_array[frame].disabled = false
+			collisions_array[frame].visible = true
+			a = collisions_array[frame].polygon
+
 		old_frame = frame
-		old_collision = collisions_array[old_frame]
-		a = collisions_array[frame].polygon
+		if old_frame < collisions_array.size():
+			old_collision = collisions_array[old_frame]
 
 
 
