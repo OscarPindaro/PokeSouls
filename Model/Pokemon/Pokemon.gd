@@ -9,9 +9,9 @@ signal change_animation(sprite_name, direction, animation_name)
 
 # paths to resources
 var sprite_collab_path : String = "res://Images/SpriteCollab/"
-var poke_num_dict_name : String = "poke-numbers.json"
-var sprite_folder : String = "sprite/"
-var ANIM_DATA_FILENAME : String = "AnimData.json"
+var poke_num_file_path : String = "res://Images/SpriteCollab/poke-numbers.json"
+var anim_data_file_path : String = "res://Images/SpriteCollab/sprite/%s/AnimData.json"
+var anim_file_path : String = "res://Images/SpriteCollab/sprite/%s/%s"
 onready var IDLE_SPRITE : Sprite = $Sprites/Idle
 
 
@@ -102,7 +102,7 @@ func get_pk_name():
 func _init():
 	# load pokemon-folder association in a dictionary
 	var file : File = File.new()
-	var file_name : String = sprite_collab_path + poke_num_dict_name
+	var file_name : String = poke_num_file_path
 	var error_value = file.open(file_name, File.READ)
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
@@ -135,63 +135,17 @@ func load_pokemon():
 	collision_container.reset_collisions()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
-		print(anim_name)
-		load_sprite_attributes(sprite, anim_name)
+		# load the texture sprites and information
+		sprite.load_properties(pokemon_name)
+		# load the collision shape
 		load_collision_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)
 	create_RESET_animation(IDLE_SPRITE)
-
-# loads the information about animations, the spritesheet and sets
-# the correct parameters for the sprite
-func load_sprite_attributes(sprite : Sprite, anim_name : String):
-	# error if pokemon not present
-	if !poke_num_dict.has(pokemon_name):
-		push_error("The pokemon "+ pokemon_name+
-		" is not present in the dictionary.")
-	#loads the animation data
-	var folder_number = poke_num_dict[pokemon_name]
-	var sprite_path = sprite_collab_path + sprite_folder + folder_number + "/"
-	var json_anim_path = sprite_path + ANIM_DATA_FILENAME
-	var anim_data_file = File.new()
-	var err = anim_data_file.open(json_anim_path, File.READ)
-	print(err)
-	anim_dict = parse_json(anim_data_file.get_as_text())
-	var file_name : String = get_anim_filename(anim_name)
-	# loads the spritesheet as a texture
-	sprite.texture = load(sprite_path+file_name)
-	sprite.texture.flags = 0
-	var frame_heigth = get_anim_property(anim_name, "FrameHeight").to_int()
-	var frame_width = get_anim_property(anim_name, "FrameWidth").to_int()
-	sprite.hframes = sprite.texture.get_width() / frame_width
-	sprite.vframes = sprite.texture.get_height() / frame_heigth
-	sprite.visible = false
-	anim_data_file.close()                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
 
 func load_collision_attributes(sprite : Sprite, anim_name : String) -> void:
 	var coll_polys : Array = CollisionExctractor.new().get_collision_polygons(sprite)
 	collision_container.register_collision(anim_name, coll_polys)	
-
-func get_anim_filename(anim_name : String) -> String:
-	var anims = anim_dict["AnimData"]["Anims"]["Anim"]
-	for anim in anims:
-		if anim["Name"] == anim_name:
-			if anim.has("CopyOf"):
-				return get_anim_filename(anim["CopyOf"])
-			else:
-				return "%s-Anim.png" % anim["Name"]
-	push_error("Something went wrong while finding the filename")
-	return ""
-
-func get_anim_property(anim_name : String, property_name : String) -> String:
-	var anims = anim_dict["AnimData"]["Anims"]["Anim"]
-	for anim in anims:
-		if anim["Name"] == anim_name:
-			if anim.has("CopyOf"):
-				return get_anim_property(anim["CopyOf"], property_name)
-			else:
-				return anim[property_name]
-	push_error("The animation " + anim_name + " is not present.")
-	return ""
 	
 
 func create_anim_player_track(sprite : Sprite, anim_name : String):
