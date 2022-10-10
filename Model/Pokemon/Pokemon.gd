@@ -112,9 +112,10 @@ func _init():
 # Loads the animation from the spritesheet in the animation player
 func _ready():
 	is_ready_called = true
-	# removes the redundant collision shape
+	# removes the redundant collision shape during runtime
 	if not Engine.editor_hint:
 		remove_child(uselessCollisionShape)
+	# collects the names of the animation that will be loaded
 	sprite_names = []
 	for sprite in sprites:
 		sprite_names.append(sprite.get_name())
@@ -134,6 +135,7 @@ func load_pokemon():
 	collision_container.reset_collisions()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
+		print(anim_name)
 		load_sprite_attributes(sprite, anim_name)
 		load_collision_attributes(sprite, anim_name)
 		create_anim_player_track(sprite, anim_name)

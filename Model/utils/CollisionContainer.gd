@@ -30,7 +30,6 @@ func register_collision(name : String, collision_shapes : Array) -> void:
 		add_child(collision)
 		
 		
-
 func _physics_process(_delta):
 	if Engine.editor_hint:
 		pass
