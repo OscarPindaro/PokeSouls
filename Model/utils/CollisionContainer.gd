@@ -50,9 +50,6 @@ func _physics_process(_delta):
 		if old_frame < collisions_array.size():
 			old_collision = collisions_array[old_frame]
 
-
-
-
 func _on_Pokemon_change_animation(sprite_name, _direction, _animation_name):
 	collisions_array = collisions[sprite_name]
 	curr_name = sprite_name

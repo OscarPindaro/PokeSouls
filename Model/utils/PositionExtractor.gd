@@ -12,5 +12,5 @@ enum POSITION_TYPE {CENTER, SHOOT, RIGHT_HAND, BLUE_HAND}
 func _ready():
 	pass # Replace with function body.
 
-func extract_positions() -> Array :
+func extract_positions():
 	pass
