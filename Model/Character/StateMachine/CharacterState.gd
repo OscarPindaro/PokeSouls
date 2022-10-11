@@ -2,7 +2,8 @@ tool
 extends State
 class_name CharacterState
 
-var character : Character
+var character: Character
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:

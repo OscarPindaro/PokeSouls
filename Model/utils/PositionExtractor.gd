@@ -6,11 +6,12 @@ extends Node
 # RED -> right hand
 # BLUE -> left hand
 
-enum POSITION_TYPE {CENTER, SHOOT, RIGHT_HAND, BLUE_HAND}
+enum POSITION_TYPE { CENTER, SHOOT, RIGHT_HAND, BLUE_HAND }
 
 
 func _ready():
-	pass # Replace with function body.
+	pass  # Replace with function body.
+
 
 func extract_positions():
 	pass
