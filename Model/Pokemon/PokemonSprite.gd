@@ -12,10 +12,14 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 # Arrays that contain information about the offsets
-export var red_offsets: Array
-export var blue_offsets: Array
-export var green_offsets: Array
-export var black_offsets: Array
+# Green -> Center
+# Black -> shooting point
+# Red -> right hand
+# Blue -> left hand
+export var right_offsets: Array
+export var left_offsets: Array
+export var center_offsets: Array
+export var shoot_offsets: Array
 
 # Constants
 var RED = Color(1, 0, 0)
@@ -138,10 +142,10 @@ func load_offsets(animation_name: String, folder_number: String):
 				frame_width * j,
 				frame_width * (j + 1)
 			)
-			red_offsets.append(red_pos)
-			blue_offsets.append(blue_pos)
-			green_offsets.append(green_pos)
-			black_offsets.append(black_pos)
+			right_offsets.append(red_pos)
+			left_offsets.append(blue_pos)
+			center_offsets.append(green_pos)
+			shoot_offsets.append(black_pos)
 
 
 func get_color_position(

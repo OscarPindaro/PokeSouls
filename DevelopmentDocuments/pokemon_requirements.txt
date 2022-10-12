@@ -20,6 +20,6 @@ Problems with tool keyword:
 
 APPUNTI OFFSETS
 Verde -> centro
-Nero -> bocca
+Nero -> shooting point
 Rosso -> mano destra
-Nero -> mano sinistra
+Blu -> mano sinistra
