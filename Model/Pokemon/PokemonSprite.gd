@@ -11,21 +11,38 @@ var error_texture_path: String = "res://Images/error_texture.png"
 var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
+
+# frame characteristics
+var frame_width : int
+var frame_heigth : int
+
 # Arrays that contain information about the offsets
 # Green -> Center
 # Black -> shooting point
 # Red -> right hand
 # Blue -> left hand
-export var right_offsets: Array
-export var left_offsets: Array
-export var center_offsets: Array
-export var shoot_offsets: Array
+var right_offsets: Array
+var left_offsets: Array
+var center_offsets: Array
+var shoot_offsets: Array
+# offsets position
+var right_position : Position2D
+var left_position : Position2D
+var center_position : Position2D
+var shoot_position : Position2D
+# name of the nodes
+var RIGHT_POS_NAME : String =  "RightPosition"
+var LEFT_POS_NAME : String =  "LeftPosition"
+var CENTER_POS_NAME : String =  "CenterPosition"
+var SHOOT_POS_NAME : String =  "ShootPosition"
+
 
 # Constants
 var RED = Color(1, 0, 0)
 var BLUE = Color(0, 1, 0)
 var GREEN = Color(0, 0, 1)
-var BLACK = Color(1, 1, 1)
+var BLACK = Color(0, 0, 0)
+
 
 
 func _init() -> void:
@@ -37,12 +54,40 @@ func _init() -> void:
 
 
 func _ready():
+	right_position = Position2D.new()
+	right_position.name = RIGHT_POS_NAME
+	left_position = Position2D.new()
+	left_position.name = LEFT_POS_NAME
+	center_position = Position2D.new()
+	center_position.name = CENTER_POS_NAME
+	shoot_position = Position2D.new()
+	shoot_position.name = SHOOT_POS_NAME
 	clear_offsets()
+	add_positions()
+	connect("frame_changed", self, "on_frame_changed")
 
+func add_positions():
+	if self.get_node(RIGHT_POS_NAME) == null:
+		add_child(right_position)
+		right_position.set_owner(self.get_owner())
+	if self.get_node(LEFT_POS_NAME) == null:
+		add_child(self.left_position)
+		left_position.set_owner(self.get_owner())
+	if self.get_node(CENTER_POS_NAME) == null:
+		add_child(self.center_position)
+		center_position.set_owner(self.get_owner())
+	if self.get_node(SHOOT_POS_NAME) == null:
+		add_child(self.shoot_position)
+		shoot_position.set_owner(self.get_owner())
+	right_position = get_node(RIGHT_POS_NAME)
+	left_position = get_node(LEFT_POS_NAME)
+	center_position = get_node(CENTER_POS_NAME)
+	shoot_position = get_node(SHOOT_POS_NAME)
 
 func load_properties(name: String) -> void:
 	# preprocessing, resetting old properties
 	clear_offsets()
+	add_positions()
 	# the name of the sprite is the animation name
 	var animation_name = get_name()
 	# error if pokemon not present
@@ -58,8 +103,8 @@ func load_properties(name: String) -> void:
 		animation_dict = parse_json(anim_data_file.get_as_text())
 		self.texture = load(texture_path % [folder_number, get_anim_filename(animation_name)])
 		self.texture.flags = 0
-		var frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
-		var frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
+		frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
+		frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
 		self.hframes = self.texture.get_width() / frame_width
 		self.vframes = self.texture.get_height() / frame_heigth
 		self.visible = false
@@ -157,17 +202,28 @@ func get_color_position(
 			var pixel_value = image.get_pixel(j, i)
 			if pixel_value.is_equal_approx(color):
 				image.unlock()
-				return Vector2(i - start_row, j - start_col)
+				return Vector2(j - start_col, i - start_row)
 	image.unlock()
 	return Vector2(0, 0)
 
 
 func clear_offsets():
-	red_offsets.clear()
-	blue_offsets.clear()
-	green_offsets.clear()
-	black_offsets.clear()
+	right_offsets.clear()
+	left_offsets.clear()
+	center_offsets.clear()
+	shoot_offsets.clear()
 
 
 func load_error_texture() -> void:
 	self.texture = load(error_texture_path)
+
+func on_frame_changed():
+	right_position.position = right_offsets[frame]
+	left_position.position = left_offsets[frame]
+	center_position.position = center_offsets[frame]
+	shoot_position.position = shoot_offsets[frame]
+	if centered:
+		right_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		left_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		center_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
