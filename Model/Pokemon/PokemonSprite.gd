@@ -13,8 +13,8 @@ var poke_dict: Dictionary
 var animation_dict: Dictionary
 
 # frame characteristics
-var frame_width : int
-var frame_heigth : int
+var frame_width : float
+var frame_heigth : float
 
 # Arrays that contain information about the offsets
 # Green -> Center

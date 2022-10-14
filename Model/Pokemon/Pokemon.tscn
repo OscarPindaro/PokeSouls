@@ -1,4 +1,4 @@
-[gd_scene load_steps=60 format=2]
+[gd_scene load_steps=62 format=2]
 
 [ext_resource path="res://Model/Pokemon/Pokemon.gd" type="Script" id=1]
 [ext_resource path="res://Model/utils/CollisionContainer.gd" type="Script" id=2]
@@ -9,6 +9,8 @@
 [ext_resource path="res://Model/Pokemon/PokemonSpriteList.gd" type="Script" id=7]
 [ext_resource path="res://Images/SpriteCollab/sprite/0006/Strike-Anim.png" type="Texture" id=8]
 [ext_resource path="res://Model/Pokemon/PokemonSprite.gd" type="Script" id=9]
+[ext_resource path="res://Images/PokemonDebug/white_circle.png" type="Texture" id=10]
+[ext_resource path="res://Model/Pokemon/DebugSprites.gd" type="Script" id=11]
 
 [sub_resource type="Animation" id=26]
 loop = true
@@ -1199,7 +1201,7 @@ anim_player_path = NodePath("AnimationPlayer")
 sprites_path = NodePath("Sprites")
 sprite_names = [ "Walk", "Idle", "Shoot", "Strike" ]
 collision_container_path = NodePath("CollisionContainer")
-animation_name = "Strike"
+animation_name = "Idle"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Eat_DOWN = SubResource( 26 )
@@ -1261,23 +1263,22 @@ visible = false
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 8
-frame = 1
+frame = 2
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -10, -8 )
+position = Vector2( -9, -6 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -2, -2 )
+position = Vector2( -1, -3 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 3, -3 )
+position = Vector2( 7, -6 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -2, -5 )
+position = Vector2( -1, -6 )
 
 [node name="Idle" type="Sprite" parent="Sprites"]
-visible = false
 texture = ExtResource( 5 )
 hframes = 4
 vframes = 8
@@ -1316,22 +1317,24 @@ position = Vector2( 11, 3 )
 position = Vector2( 0, 10 )
 
 [node name="Strike" type="Sprite" parent="Sprites"]
+visible = false
 texture = ExtResource( 8 )
 hframes = 13
 vframes = 8
+frame = 1
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -9, -7 )
+position = Vector2( -6, -16 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -1, -4 )
+position = Vector2( 0, -9 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 7, -7 )
+position = Vector2( 3, -6 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -1, -7 )
+position = Vector2( -6, -17 )
 
 [node name="UselessForWarning" type="CollisionShape2D" parent="."]
 visible = false
@@ -1341,7 +1344,31 @@ disabled = true
 [node name="CollisionContainer" type="Node2D" parent="."]
 visible = false
 script = ExtResource( 2 )
-a = PoolVector2Array( 27, 19, 26, 19, 26, 20, 25, 20, 25, 22, 24, 22, 24, 24, 23, 24, 23, 26, 22, 26, 22, 29, 21, 29, 21, 36, 22, 36, 22, 38, 23, 38, 23, 39, 24, 39, 24, 40, 25, 40, 25, 39, 26, 39, 26, 43, 25, 43, 25, 44, 26, 44, 26, 45, 27, 45, 27, 46, 31, 46, 31, 45, 32, 45, 32, 44, 39, 44, 39, 45, 40, 45, 40, 46, 44, 46, 44, 45, 45, 45, 45, 44, 46, 44, 46, 42, 45, 42, 45, 39, 46, 39, 46, 40, 47, 40, 47, 39, 48, 39, 48, 38, 49, 38, 49, 36, 50, 36, 50, 29, 49, 29, 49, 26, 48, 26, 48, 24, 47, 24, 47, 22, 46, 22, 46, 20, 45, 20, 45, 19, 44, 19, 44, 18, 43, 18, 43, 19, 42, 19, 42, 20, 41, 20, 41, 21, 40, 21, 40, 20, 39, 20, 39, 19, 38, 19, 38, 20, 37, 20, 37, 19, 36, 19, 36, 18, 35, 18, 35, 19, 34, 19, 34, 20, 35, 20, 35, 21, 34, 21, 34, 20, 33, 20, 33, 19, 32, 19, 32, 20, 31, 20, 31, 21, 30, 21, 30, 20, 29, 20, 29, 19, 28, 19, 28, 18, 27, 18 )
+a = PoolVector2Array( 11, 4, 10, 4, 10, 5, 9, 5, 9, 7, 8, 7, 8, 9, 7, 9, 7, 11, 6, 11, 6, 14, 5, 14, 5, 21, 6, 21, 6, 23, 7, 23, 7, 24, 8, 24, 8, 25, 9, 25, 9, 24, 10, 24, 10, 28, 9, 28, 9, 29, 10, 29, 10, 30, 11, 30, 11, 31, 15, 31, 15, 30, 16, 30, 16, 29, 23, 29, 23, 30, 24, 30, 24, 31, 28, 31, 28, 30, 29, 30, 29, 29, 30, 29, 30, 27, 29, 27, 29, 24, 30, 24, 30, 25, 31, 25, 31, 24, 32, 24, 32, 23, 33, 23, 33, 21, 34, 21, 34, 14, 33, 14, 33, 11, 32, 11, 32, 9, 31, 9, 31, 7, 30, 7, 30, 5, 29, 5, 29, 4, 28, 4, 28, 3, 27, 3, 27, 4, 26, 4, 26, 5, 25, 5, 25, 6, 24, 6, 24, 5, 23, 5, 23, 4, 22, 4, 22, 5, 21, 5, 21, 4, 20, 4, 20, 3, 19, 3, 19, 4, 18, 4, 18, 5, 19, 5, 19, 6, 18, 6, 18, 5, 17, 5, 17, 4, 16, 4, 16, 5, 15, 5, 15, 6, 14, 6, 14, 5, 13, 5, 13, 4, 12, 4, 12, 3, 11, 3 )
+
+[node name="DebugSprites" type="Node2D" parent="."]
+script = ExtResource( 11 )
+transparency = 0.5
+
+[node name="RedCircle" type="Sprite" parent="DebugSprites"]
+modulate = Color( 1, 0, 0, 0.5 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 10 )
+
+[node name="BlueCircle" type="Sprite" parent="DebugSprites"]
+modulate = Color( 0, 0, 1, 0.5 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 10 )
+
+[node name="GreenCircle" type="Sprite" parent="DebugSprites"]
+modulate = Color( 0, 1, 0, 0.5 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 10 )
+
+[node name="BlackCircle" type="Sprite" parent="DebugSprites"]
+modulate = Color( 0, 0, 0, 0.5 )
+scale = Vector2( 0.05, 0.05 )
+texture = ExtResource( 10 )
 
 [connection signal="change_animation" from="." to="AnimationPlayer" method="_on_Pokemon_change_animation"]
 [connection signal="change_animation" from="." to="Sprites" method="_on_Pokemon_change_animation"]
