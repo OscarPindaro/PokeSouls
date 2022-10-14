@@ -1,7 +1,6 @@
 extends Node2D
 class_name Character
 
-var curr_pokemon: Pokemon
 
 onready var pokemons = $Pokemons.get_children()
 # Declare member variables here. Examples:

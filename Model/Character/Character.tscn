@@ -1222,15 +1222,19 @@ position = Vector2( -1, -2 )
 [node name="Idle" parent="Pokemons/Pokemon/Sprites" index="1"]
 texture = ExtResource( 10 )
 hframes = 8
+frame = 51
 
 [node name="RightPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="0"]
-position = Vector2( -11, -1 )
+position = Vector2( 0, -7 )
+
+[node name="LeftPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="1"]
+position = Vector2( -3, -5 )
 
 [node name="CenterPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="2"]
-position = Vector2( 9, -1 )
+position = Vector2( 2, -2 )
 
 [node name="ShootPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="3"]
-position = Vector2( -1, -2 )
+position = Vector2( -8, -2 )
 
 [node name="Shoot" parent="Pokemons/Pokemon/Sprites" index="2"]
 texture = ExtResource( 7 )
@@ -1255,7 +1259,7 @@ position = Vector2( 3, -2 )
 position = Vector2( -7, 0 )
 
 [node name="CollisionContainer" parent="Pokemons/Pokemon" index="3"]
-a = PoolVector2Array( 32, 885, 31, 885, 31, 886, 30, 886, 30, 885, 29, 885, 29, 886, 28, 886, 28, 885, 27, 885, 27, 886, 26, 886, 26, 887, 24, 887, 24, 888, 19, 888, 19, 889, 18, 889, 18, 890, 17, 890, 17, 891, 18, 891, 18, 892, 19, 892, 19, 893, 15, 893, 15, 892, 10, 892, 10, 893, 8, 893, 8, 894, 7, 894, 7, 895, 6, 895, 6, 896, 5, 896, 5, 897, 4, 897, 4, 898, 5, 898, 5, 899, 6, 899, 6, 900, 7, 900, 7, 901, 9, 901, 9, 902, 16, 902, 16, 901, 22, 901, 22, 902, 23, 902, 23, 905, 24, 905, 24, 906, 25, 906, 25, 907, 28, 907, 28, 906, 31, 906, 31, 905, 34, 905, 34, 906, 36, 906, 36, 907, 39, 907, 39, 906, 40, 906, 40, 905, 41, 905, 41, 903, 40, 903, 40, 900, 41, 900, 41, 899, 42, 899, 42, 895, 41, 895, 41, 894, 40, 894, 40, 893, 39, 893, 39, 892, 40, 892, 40, 889, 39, 889, 39, 887, 38, 887, 38, 886, 34, 886, 34, 885, 33, 885, 33, 884, 32, 884 )
+a = PoolVector2Array( 14, 481, 13, 481, 13, 482, 12, 482, 12, 483, 11, 483, 11, 484, 10, 484, 10, 485, 8, 485, 8, 486, 7, 486, 7, 487, 6, 487, 6, 488, 5, 488, 5, 489, 4, 489, 4, 491, 3, 491, 3, 497, 4, 497, 4, 499, 3, 499, 3, 500, 2, 500, 2, 501, 1, 501, 1, 505, 2, 505, 2, 506, 3, 506, 3, 507, 5, 507, 5, 506, 6, 506, 6, 505, 8, 505, 8, 506, 13, 506, 13, 507, 18, 507, 18, 506, 19, 506, 19, 505, 21, 505, 21, 504, 23, 504, 23, 503, 25, 503, 25, 502, 26, 502, 26, 501, 27, 501, 27, 500, 28, 500, 28, 498, 27, 498, 27, 497, 25, 497, 25, 496, 24, 496, 24, 494, 25, 494, 25, 493, 24, 493, 24, 491, 23, 491, 23, 490, 22, 490, 22, 488, 23, 488, 23, 487, 22, 487, 22, 486, 21, 486, 21, 485, 19, 485, 19, 484, 17, 484, 17, 481, 16, 481, 16, 480, 14, 480 )
 
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource( 1 )
@@ -1277,10 +1281,16 @@ connexions_array = [ {
 "to": "StateMachine/Walk",
 "type": "connexion"
 } ]
+standalone_trigger = {
+}
 graph_position = Vector2( 0.632784, 0.27381 )
 
 [node name="Walk" type="Node" parent="StateMachine"]
 script = ExtResource( 6 )
+connexions_array = [  ]
+standalone_trigger = {
+}
+graph_position = Vector2( 0, 0 )
 
 [connection signal="ready" from="." to="StateMachine/Idle" method="_on_Player_ready"]
 
