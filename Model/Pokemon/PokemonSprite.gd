@@ -16,6 +16,9 @@ var animation_dict: Dictionary
 var frame_width : float
 var frame_heigth : float
 
+#center of a pixel
+var PIXEL_OFFEST = 0.5 
+
 # Arrays that contain information about the offsets
 # Green -> Center
 # Black -> shooting point
@@ -39,10 +42,13 @@ var SHOOT_POS_NAME : String =  "ShootPosition"
 
 # Constants
 var RED = Color(1, 0, 0)
-var BLUE = Color(0, 1, 0)
-var GREEN = Color(0, 0, 1)
+var BLUE = Color(0, 0, 1)
+var GREEN = Color(0, 1, 0)
 var BLACK = Color(0, 0, 0)
 
+# Collisions
+var collision_container : CollisionContainer
+var COLLISIONS_NODE_NAME : String = "Collisions"
 
 
 func _init() -> void:
@@ -64,6 +70,7 @@ func _ready():
 	shoot_position.name = SHOOT_POS_NAME
 	clear_offsets()
 	add_positions()
+	add_collisions()
 	connect("frame_changed", self, "on_frame_changed")
 
 func add_positions():
@@ -83,6 +90,17 @@ func add_positions():
 	left_position = get_node(LEFT_POS_NAME)
 	center_position = get_node(CENTER_POS_NAME)
 	shoot_position = get_node(SHOOT_POS_NAME)
+
+func add_collisions():
+	if self.get_node(COLLISIONS_NODE_NAME) == null:
+		collision_container = CollisionContainer.new()
+		collision_container.set_name(COLLISIONS_NODE_NAME)
+		add_child(collision_container)
+		collision_container.set_owner(self.get_owner())
+	else:
+		collision_container = self.get_node(COLLISIONS_NODE_NAME)
+		collision_container.remove_collisions()
+
 
 func load_properties(name: String) -> void:
 	# preprocessing, resetting old properties
@@ -202,7 +220,7 @@ func get_color_position(
 			var pixel_value = image.get_pixel(j, i)
 			if pixel_value.is_equal_approx(color):
 				image.unlock()
-				return Vector2(j - start_col, i - start_row)
+				return Vector2(j - start_col +PIXEL_OFFEST, i - start_row + PIXEL_OFFEST)
 	image.unlock()
 	return Vector2(0, 0)
 
@@ -216,6 +234,12 @@ func clear_offsets():
 
 func load_error_texture() -> void:
 	self.texture = load(error_texture_path)
+
+func load_collisions() -> void:
+	if self.texture == null:
+		push_error("Error while loading collisions. Try to call load_properties before this method")
+	var collisions_arr : Array = CollisionExctractor.new().get_collision_polygons(self)
+	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():
 	right_position.position = right_offsets[frame]

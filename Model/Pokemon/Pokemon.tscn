@@ -3,8 +3,8 @@
 [ext_resource path="res://Model/Pokemon/Pokemon.gd" type="Script" id=1]
 [ext_resource path="res://Model/utils/CollisionContainer.gd" type="Script" id=2]
 [ext_resource path="res://Images/SpriteCollab/sprite/0006/Walk-Anim.png" type="Texture" id=3]
-[ext_resource path="res://Images/SpriteCollab/sprite/0006/Shoot-Anim.png" type="Texture" id=4]
-[ext_resource path="res://Images/SpriteCollab/sprite/0006/Idle-Anim.png" type="Texture" id=5]
+[ext_resource path="res://Images/SpriteCollab/sprite/0006/Idle-Anim.png" type="Texture" id=4]
+[ext_resource path="res://Images/SpriteCollab/sprite/0006/Shoot-Anim.png" type="Texture" id=5]
 [ext_resource path="res://Model/Pokemon/PokemonAnimationPlayer.gd" type="Script" id=6]
 [ext_resource path="res://Model/Pokemon/PokemonSpriteList.gd" type="Script" id=7]
 [ext_resource path="res://Images/SpriteCollab/sprite/0006/Strike-Anim.png" type="Texture" id=8]
@@ -15,130 +15,34 @@
 [sub_resource type="Animation" id=26]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
-}
 
 [sub_resource type="Animation" id=27]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
-}
 
 [sub_resource type="Animation" id=28]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
-}
 
 [sub_resource type="Animation" id=29]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
-}
 
 [sub_resource type="Animation" id=30]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 ]
-}
 
 [sub_resource type="Animation" id=31]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 ]
-}
 
 [sub_resource type="Animation" id=32]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77 ]
-}
 
 [sub_resource type="Animation" id=33]
 loop = true
 step = 0.0769231
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 ]
-}
 
 [sub_resource type="Animation" id=59]
 loop = true
@@ -150,18 +54,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -183,18 +75,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 28, 29, 30, 31 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 28, 29, 30, 31 ]
-}
 
 [sub_resource type="Animation" id=61]
 loop = true
@@ -206,18 +86,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -239,18 +107,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 24, 25, 26, 27 ]
-}
 
 [sub_resource type="Animation" id=63]
 loop = true
@@ -262,18 +118,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -295,18 +139,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16, 17, 18, 19 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 16, 17, 18, 19 ]
-}
 
 [sub_resource type="Animation" id=65]
 loop = true
@@ -318,18 +150,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 20, 21, 22, 23 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -351,21 +171,10 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14, 15 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 13, 14, 15 ]
-}
 
 [sub_resource type="Animation" id=67]
 loop = true
+step = 1.0
 tracks/0/type = "value"
 tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/Sprites/Idle:frame")
 tracks/0/interp = 1
@@ -375,19 +184,7 @@ tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
-"update": 0,
-"values": [ 0 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
-"update": 0,
+"update": 1,
 "values": [ 0 ]
 }
 
@@ -401,18 +198,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -434,18 +219,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87 ]
-}
 
 [sub_resource type="Animation" id=70]
 loop = true
@@ -457,18 +230,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -490,18 +251,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76 ]
-}
 
 [sub_resource type="Animation" id=72]
 loop = true
@@ -513,18 +262,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -546,18 +283,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54 ]
-}
 
 [sub_resource type="Animation" id=74]
 loop = true
@@ -569,18 +294,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -602,146 +315,38 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43 ]
-}
 
 [sub_resource type="Animation" id=51]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 0, 1 ]
-}
 
 [sub_resource type="Animation" id=52]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 14, 15 ]
-}
 
 [sub_resource type="Animation" id=53]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 2, 3 ]
-}
 
 [sub_resource type="Animation" id=54]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 12, 13 ]
-}
 
 [sub_resource type="Animation" id=55]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 4, 5 ]
-}
 
 [sub_resource type="Animation" id=56]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 8, 9 ]
-}
 
 [sub_resource type="Animation" id=57]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 10, 11 ]
-}
 
 [sub_resource type="Animation" id=58]
 loop = true
 step = 0.5
-tracks/0/type = "value"
-tracks/0/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/keys = {
-"times": PoolRealArray( 0, 0.5 ),
-"transitions": PoolRealArray( 1, 1 ),
-"update": 1,
-"values": [ 6, 7 ]
-}
 
 [sub_resource type="Animation" id=76]
 loop = true
@@ -753,18 +358,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -786,18 +379,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103 ]
-}
 
 [sub_resource type="Animation" id=78]
 loop = true
@@ -809,18 +390,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -842,18 +411,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90 ]
-}
 
 [sub_resource type="Animation" id=80]
 loop = true
@@ -865,18 +422,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -898,18 +443,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64 ]
-}
 
 [sub_resource type="Animation" id=82]
 loop = true
@@ -921,18 +454,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
 "update": 1,
@@ -954,18 +475,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.0769231, 0.153846, 0.230769, 0.307692, 0.384615, 0.461538, 0.538462, 0.615385, 0.692308, 0.769231, 0.846154, 0.923077 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51 ]
-}
 
 [sub_resource type="Animation" id=84]
 loop = true
@@ -977,18 +486,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 0, 1, 2, 3 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -1010,18 +507,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 28, 29, 30, 31 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 28, 29, 30, 31 ]
-}
 
 [sub_resource type="Animation" id=86]
 loop = true
@@ -1033,18 +518,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 4, 5, 6, 7 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -1066,18 +539,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 24, 25, 26, 27 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 24, 25, 26, 27 ]
-}
 
 [sub_resource type="Animation" id=88]
 loop = true
@@ -1089,18 +550,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 8, 9, 10, 11 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -1122,18 +571,6 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 16, 17, 18, 19 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 16, 17, 18, 19 ]
-}
 
 [sub_resource type="Animation" id=90]
 loop = true
@@ -1145,18 +582,6 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 20, 21, 22, 23 ]
-}
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
 "times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
 "transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 1,
@@ -1178,30 +603,18 @@ tracks/0/keys = {
 "update": 1,
 "values": [ 12, 13, 14, 15 ]
 }
-tracks/1/type = "value"
-tracks/1/path = NodePath("/root/EditorNode/@@596/@@597/@@605/@@607/@@611/@@615/@@616/@@617/@@633/@@634/@@643/@@644/@@6617/@@6449/@@6450/@@6451/@@6452/@@6453/@@6454/Pokemon/CollisionContainer:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"times": PoolRealArray( 0, 0.25, 0.5, 0.75 ),
-"transitions": PoolRealArray( 1, 1, 1, 1 ),
-"update": 1,
-"values": [ 12, 13, 14, 15 ]
-}
 
 [sub_resource type="RectangleShape2D" id=25]
 extents = Vector2( 0, 0 )
 
 [node name="Pokemon" type="KinematicBody2D"]
+position = Vector2( 0, -1 )
 script = ExtResource( 1 )
 pokemon_name = "Charizard"
 anim_player_path = NodePath("AnimationPlayer")
 sprites_path = NodePath("Sprites")
 sprite_names = [ "Walk", "Idle", "Shoot", "Strike" ]
-collision_container_path = NodePath("CollisionContainer")
-animation_name = "Idle"
+animation_name = "Walk"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Eat_DOWN = SubResource( 26 )
@@ -1259,50 +672,51 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="Walk" type="Sprite" parent="Sprites"]
-visible = false
 texture = ExtResource( 3 )
 hframes = 4
 vframes = 8
-frame = 2
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -9, -6 )
+position = Vector2( -8.5, -5.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -1, -3 )
+position = Vector2( 7.5, -5.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 7, -6 )
+position = Vector2( -0.5, -2.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -1, -6 )
+position = Vector2( -0.5, -5.5 )
+
+[node name="Collisions" type="Node2D" parent="Sprites/Walk"]
+script = ExtResource( 2 )
 
 [node name="Idle" type="Sprite" parent="Sprites"]
-texture = ExtResource( 5 )
+visible = false
+texture = ExtResource( 4 )
 hframes = 4
 vframes = 8
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Idle"]
-visible = false
-position = Vector2( -9, -6 )
+position = Vector2( -8.5, -5.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Idle"]
-visible = false
-position = Vector2( -1, -3 )
+position = Vector2( 7.5, -5.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Idle"]
-visible = false
-position = Vector2( 7, -6 )
+position = Vector2( -0.5, -2.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Idle"]
-visible = false
-position = Vector2( -1, -6 )
+position = Vector2( -0.5, -5.5 )
+
+[node name="Collisions" type="Node2D" parent="Sprites/Idle"]
+script = ExtResource( 2 )
 
 [node name="Shoot" type="Sprite" parent="Sprites"]
 visible = false
-texture = ExtResource( 4 )
+texture = ExtResource( 5 )
 hframes = 11
 vframes = 8
 frame = 5
@@ -1320,35 +734,36 @@ position = Vector2( 11, 3 )
 [node name="ShootPosition" type="Position2D" parent="Sprites/Shoot"]
 position = Vector2( 0, 10 )
 
+[node name="Collisions" type="Node2D" parent="Sprites/Shoot"]
+script = ExtResource( 2 )
+
 [node name="Strike" type="Sprite" parent="Sprites"]
 visible = false
 texture = ExtResource( 8 )
 hframes = 13
 vframes = 8
-frame = 1
+frame = 3
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -6, -16 )
+position = Vector2( -5.5, -11.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 0, -9 )
+position = Vector2( 0.5, -0.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 3, -6 )
+position = Vector2( 0.5, -3.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -6, -17 )
+position = Vector2( -7.5, -11.5 )
+
+[node name="Collisions" type="Node2D" parent="Sprites/Strike"]
+script = ExtResource( 2 )
 
 [node name="UselessForWarning" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource( 25 )
 disabled = true
-
-[node name="CollisionContainer" type="Node2D" parent="."]
-visible = false
-script = ExtResource( 2 )
-a = PoolVector2Array( 11, 4, 10, 4, 10, 5, 9, 5, 9, 7, 8, 7, 8, 9, 7, 9, 7, 11, 6, 11, 6, 14, 5, 14, 5, 21, 6, 21, 6, 23, 7, 23, 7, 24, 8, 24, 8, 25, 9, 25, 9, 24, 10, 24, 10, 28, 9, 28, 9, 29, 10, 29, 10, 30, 11, 30, 11, 31, 15, 31, 15, 30, 16, 30, 16, 29, 23, 29, 23, 30, 24, 30, 24, 31, 28, 31, 28, 30, 29, 30, 29, 29, 30, 29, 30, 27, 29, 27, 29, 24, 30, 24, 30, 25, 31, 25, 31, 24, 32, 24, 32, 23, 33, 23, 33, 21, 34, 21, 34, 14, 33, 14, 33, 11, 32, 11, 32, 9, 31, 9, 31, 7, 30, 7, 30, 5, 29, 5, 29, 4, 28, 4, 28, 3, 27, 3, 27, 4, 26, 4, 26, 5, 25, 5, 25, 6, 24, 6, 24, 5, 23, 5, 23, 4, 22, 4, 22, 5, 21, 5, 21, 4, 20, 4, 20, 3, 19, 3, 19, 4, 18, 4, 18, 5, 19, 5, 19, 6, 18, 6, 18, 5, 17, 5, 17, 4, 16, 4, 16, 5, 15, 5, 15, 6, 14, 6, 14, 5, 13, 5, 13, 4, 12, 4, 12, 3, 11, 3 )
 
 [node name="DebugSprites" type="Node2D" parent="."]
 script = ExtResource( 11 )
@@ -1357,28 +772,27 @@ transparency = 0.5
 
 [node name="RedCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 1, 0, 0, 0.5 )
-position = Vector2( -9, -6 )
+position = Vector2( -8.5, -5.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlueCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 1, 0.5 )
-position = Vector2( -1, -3 )
+position = Vector2( 7.5, -5.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="GreenCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 1, 0, 0.5 )
-position = Vector2( 7, -6 )
+position = Vector2( -0.5, -2.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlackCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 0, 0.5 )
-position = Vector2( -1, -6 )
+position = Vector2( -0.5, -5.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [connection signal="change_animation" from="." to="AnimationPlayer" method="_on_Pokemon_change_animation"]
 [connection signal="change_animation" from="." to="Sprites" method="_on_Pokemon_change_animation"]
-[connection signal="change_animation" from="." to="CollisionContainer" method="_on_Pokemon_change_animation"]

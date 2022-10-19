@@ -31,9 +31,6 @@ export(NodePath) var sprites_path
 onready var sprites: Array = get_node(sprites_path).get_children()
 export(Array) var sprite_names: Array
 
-export(NodePath) var collision_container_path: NodePath
-onready var collision_container = get_node(collision_container_path)
-
 # this child is used to remove the warning about collision shapes
 onready var uselessCollisionShape: CollisionShape2D = $UselessForWarning
 
@@ -122,25 +119,18 @@ func _ready():
 func load_pokemon():
 	if not is_ready_called:
 		return
-	#collision_container.reset_collisions()
 	if Engine.editor_hint:
 		pass
 	if not Engine.editor_hint:
 		pass
-	collision_container.reset_collisions()
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
 		# load the texture sprites and information
 		sprite.load_properties(pokemon_name)
 		# load the collision shape
-		load_collision_attributes(sprite, anim_name)
+		sprite.load_collisions()
 		create_anim_player_track(sprite, anim_name)
 	create_RESET_animation(IDLE_SPRITE)
-
-
-func load_collision_attributes(sprite: Sprite, anim_name: String) -> void:
-	var coll_polys: Array = CollisionExctractor.new().get_collision_polygons(sprite)
-	collision_container.register_collision(anim_name, coll_polys)
 
 
 func create_anim_player_track(sprite: Sprite, anim_name: String):
@@ -154,23 +144,14 @@ func create_anim_player_track(sprite: Sprite, anim_name: String):
 		var sprite_path = String(sprite.get_path()) + ":frame"
 		animation.track_set_path(sprite_track_index, sprite_path)
 		animation.value_track_set_update_mode(sprite_track_index, Animation.UPDATE_DISCRETE)
-
-		#collision animation track
-		var coll_t_idx = animation.add_track(Animation.TYPE_VALUE)
-		var collision_path = String(collision_container.get_path()) + ":frame"
-		animation.track_set_path(coll_t_idx, collision_path)
-		animation.value_track_set_update_mode(coll_t_idx, Animation.UPDATE_DISCRETE)
-
 		# anim creation
 		var starting_frame = Direction.get(dir) * sprite.hframes
 		var ending_frame = (Direction.get(dir) + 1) * sprite.hframes
 		for i in range(starting_frame, ending_frame):
 			var time_key: float = (i - starting_frame) * animation.get_step()
 			animation.track_insert_key(sprite_track_index, time_key, i)
-			animation.track_insert_key(coll_t_idx, time_key, i)
-
+			#animation.track_insert_key(coll_t_idx, time_key, i)
 		animation.set_loop(true)
-
 		# adding animation to player
 		var err = anim_player.add_animation(anim_name + "_" + dir, animation)
 		if err != OK:
@@ -180,13 +161,12 @@ func create_anim_player_track(sprite: Sprite, anim_name: String):
 func create_RESET_animation(sprite: Sprite):
 	var animation: Animation = Animation.new()
 	var sprite_track_index = animation.add_track(Animation.TYPE_VALUE)
+	animation.set_length(SECOND)
+	animation.set_step(1)
 	var sprite_path = String(sprite.get_path()) + ":frame"
 	animation.track_set_path(sprite_track_index, sprite_path)
-	var coll_t_idx = animation.add_track(Animation.TYPE_VALUE)
-	var collision_path = String(collision_container.get_path()) + ":frame"
-	animation.track_set_path(coll_t_idx, collision_path)
-	animation.track_insert_key(sprite_track_index, 0, 0)
-	animation.track_insert_key(coll_t_idx, 0, 0)
+	animation.value_track_set_update_mode(sprite_track_index, Animation.UPDATE_DISCRETE)
+	animation.track_insert_key(sprite_track_index,0,0)
 	animation.set_loop(true)
 	var err = anim_player.add_animation("RESET", animation)
 	if err != OK:

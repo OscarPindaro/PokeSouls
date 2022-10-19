@@ -15,7 +15,7 @@ var curr_shoot_pos : Vector2 = Vector2(0,0) setget set_shoot_pos, get_shoot_pos
 
 # sprite setget
 func set_sprite(new_sprite : PokemonSprite):
-	var old_sprite : PokemonSprite = curr_sprite
+	var old_sprite = curr_sprite
 	curr_sprite = new_sprite
 	emit_signal("sprite_changed", old_sprite, new_sprite)
 
