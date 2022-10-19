@@ -608,7 +608,6 @@ tracks/0/keys = {
 extents = Vector2( 0, 0 )
 
 [node name="Pokemon" type="KinematicBody2D"]
-position = Vector2( 0, -1 )
 script = ExtResource( 1 )
 pokemon_name = "Charizard"
 anim_player_path = NodePath("AnimationPlayer")
@@ -678,16 +677,16 @@ vframes = 8
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -8.5, -5.5 )
+position = Vector2( 11.5, 18.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 7.5, -5.5 )
+position = Vector2( 27.5, 18.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -0.5, -2.5 )
+position = Vector2( 19.5, 21.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( -0.5, -5.5 )
+position = Vector2( 19.5, 18.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Walk"]
 script = ExtResource( 2 )
@@ -700,16 +699,16 @@ vframes = 8
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -8.5, -5.5 )
+position = Vector2( 11.5, 18.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 7.5, -5.5 )
+position = Vector2( 27.5, 18.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -0.5, -2.5 )
+position = Vector2( 19.5, 21.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -0.5, -5.5 )
+position = Vector2( 19.5, 18.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Idle"]
 script = ExtResource( 2 )
@@ -772,25 +771,25 @@ transparency = 0.5
 
 [node name="RedCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 1, 0, 0, 0.5 )
-position = Vector2( -8.5, -5.5 )
+position = Vector2( 11.5, 18.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlueCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 1, 0.5 )
-position = Vector2( 7.5, -5.5 )
+position = Vector2( 27.5, 18.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="GreenCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 1, 0, 0.5 )
-position = Vector2( -0.5, -2.5 )
+position = Vector2( 19.5, 21.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlackCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 0, 0.5 )
-position = Vector2( -0.5, -5.5 )
+position = Vector2( 19.5, 18.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 

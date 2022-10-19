@@ -123,8 +123,8 @@ func load_properties(name: String) -> void:
 		self.texture.flags = 0
 		frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
 		frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
-		self.hframes = self.texture.get_width() / frame_width
-		self.vframes = self.texture.get_height() / frame_heigth
+		self.hframes = int(self.texture.get_width() / frame_width)
+		self.vframes = int(self.texture.get_height() / frame_heigth)
 		self.visible = false
 		# load red position
 		load_offsets(animation_name, folder_number)
@@ -246,8 +246,8 @@ func on_frame_changed():
 	left_position.position = left_offsets[frame]
 	center_position.position = center_offsets[frame]
 	shoot_position.position = shoot_offsets[frame]
-	if centered:
-		right_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		left_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		center_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	# if centered:
+	# 	right_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	# 	left_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	# 	center_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	# 	shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)

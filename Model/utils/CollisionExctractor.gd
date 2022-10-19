@@ -20,10 +20,10 @@ func get_collision_polygons(sprite: Sprite) -> Array:
 			var rect: Rect2 = Rect2(i * frame_width, j * frame_heigth, frame_width, frame_heigth)
 			bm.grow_mask(1, rect)
 			var my_array = bm.opaque_to_polygons(rect, EPSILON)
-			var min_row: int = j * frame_heigth
-			var min_col: int = i * frame_width
-			var max_row: int = min_row + frame_heigth
-			var max_col: int = min_col + frame_width
+			# var min_row: int = j * frame_heigth
+			# var min_col: int = i * frame_width
+			# var max_row: int = min_row + frame_heigth
+			# var max_col: int = min_col + frame_width
 			var poly: CollisionPolygon2D = CollisionPolygon2D.new()
 			var pointArr = PoolVector2Array()
 

@@ -131,6 +131,7 @@ func load_pokemon():
 		sprite.load_collisions()
 		create_anim_player_track(sprite, anim_name)
 	create_RESET_animation(IDLE_SPRITE)
+	update_animation()
 
 
 func create_anim_player_track(sprite: Sprite, anim_name: String):

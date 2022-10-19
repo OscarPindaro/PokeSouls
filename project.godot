@@ -246,6 +246,10 @@ config/name="PokeSouls"
 run/main_scene="res://main.tscn"
 config/icon="res://icon.png"
 
+[debug]
+
+gdscript/warnings/integer_division=false
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/ImportCleaner/plugin.cfg", "res://addons/StateGraph/plugin.cfg", "res://addons/kanban_tasks/plugin.cfg" )
