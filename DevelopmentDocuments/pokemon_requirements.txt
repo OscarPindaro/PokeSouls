@@ -29,6 +29,7 @@ Blu -> mano sinistra
 2) all the signals goind down should be transformed in calls. However, still a good idea to keep the signals
 3) third flag that for centering the sprite.
 4) risolvere problema che il current_sprite è uguale a null quando ricarico la scens
+5) when reloading, the script does not find the collision node while doing get_node()
 
 
 

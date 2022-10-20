@@ -8,6 +8,8 @@ class_name CollisionExctractor
 var EPSILON = 0
 
 
+# returns a collision polygon for each sprite frame of a given sprite sheet,
+# whith the left corner of the frame in the origin of the carthesian plane.
 func get_collision_polygons(sprite: Sprite) -> Array:
 	var coll_pols: Array = []
 	var bm = BitMap.new()
@@ -36,8 +38,6 @@ func get_collision_polygons(sprite: Sprite) -> Array:
 			poly.polygon = pointArr
 			poly.position.y -= 2 * j * frame_heigth  # no idea why needs to muliply by 2
 			coll_pols.append(poly)
-			poly.position.x -= frame_width / 2
-			poly.position.y -= frame_heigth / 2
 	return coll_pols
 
 

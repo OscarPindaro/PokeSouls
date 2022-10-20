@@ -613,7 +613,8 @@ pokemon_name = "Charizard"
 anim_player_path = NodePath("AnimationPlayer")
 sprites_path = NodePath("Sprites")
 sprite_names = [ "Walk", "Idle", "Shoot", "Strike" ]
-animation_name = "Walk"
+animation_direction = 6
+animation_name = "Strike"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Eat_DOWN = SubResource( 26 )
@@ -671,24 +672,27 @@ script = ExtResource( 6 )
 script = ExtResource( 7 )
 
 [node name="Walk" type="Sprite" parent="Sprites"]
+visible = false
+position = Vector2( -18.5, -22.5 )
 texture = ExtResource( 3 )
 centered = false
 hframes = 4
 vframes = 8
-frame = 2
+frame = 1
 script = ExtResource( 9 )
+centering = 2
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 11.5, 18.5 )
+position = Vector2( 10.5, 16.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 27.5, 18.5 )
+position = Vector2( 23.5, 21.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 19.5, 21.5 )
+position = Vector2( 18.5, 22.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Walk"]
-position = Vector2( 19.5, 18.5 )
+position = Vector2( 18.5, 19.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Walk"]
 visible = false
@@ -703,16 +707,16 @@ script = ExtResource( 9 )
 collision_visible = true
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -8.5, -5.5 )
+position = Vector2( 11.5, 18.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 7.5, -5.5 )
+position = Vector2( 27.5, 18.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -0.5, -2.5 )
+position = Vector2( 19.5, 21.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( -0.5, -5.5 )
+position = Vector2( 19.5, 18.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Idle"]
 script = ExtResource( 2 )
@@ -742,24 +746,25 @@ position = Vector2( 0, 10 )
 script = ExtResource( 2 )
 
 [node name="Strike" type="Sprite" parent="Sprites"]
-visible = false
 texture = ExtResource( 8 )
+centered = false
 hframes = 13
 vframes = 8
-frame = 5
+frame = 81
 script = ExtResource( 9 )
+collision_visible = true
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 2.5, 23.5 )
+position = Vector2( 45.5, 28.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 3.5, 12.5 )
+position = Vector2( 29.5, 32.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -0.5, 14.5 )
+position = Vector2( 38.5, 32.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 9.5, 23.5 )
+position = Vector2( 37.5, 22.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Strike"]
 script = ExtResource( 2 )
@@ -776,25 +781,25 @@ transparency = 0.5
 
 [node name="RedCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 1, 0, 0, 0.5 )
-position = Vector2( 11.5, 18.5 )
+position = Vector2( 50.5, 28.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlueCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 1, 0.5 )
-position = Vector2( 27.5, 18.5 )
+position = Vector2( 34.5, 32.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="GreenCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 1, 0, 0.5 )
-position = Vector2( 19.5, 21.5 )
+position = Vector2( 43.5, 32.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 
 [node name="BlackCircle" type="Sprite" parent="DebugSprites"]
 modulate = Color( 0, 0, 0, 0.5 )
-position = Vector2( 19.5, 18.5 )
+position = Vector2( 42.5, 22.5 )
 scale = Vector2( 0.05, 0.05 )
 texture = ExtResource( 10 )
 

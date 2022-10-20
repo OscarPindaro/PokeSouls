@@ -68,14 +68,20 @@ func get_collision_visible() -> bool:
 	return collision_visible
 
 # centering
+# overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
+	if centering == Centering.CENTERED_OFFSET:
+		position += center_position.position
+	elif centering == Centering.CENTERED:
+		position += Vector2(frame_width/2, frame_heigth/2)
 	centering = new_value
+	set_centered(false)
 	if centering == Centering.LEFT_CORNER:
 		set_centered(false)
 	elif centering == Centering.CENTERED:
-		set_centered(true)
+		position -= Vector2(frame_width/2, frame_heigth/2)
 	elif centering == Centering.CENTERED_OFFSET:
-		set_centered(false)
+		position -= center_position.position
 	property_list_changed_notify()
 
 
@@ -276,13 +282,26 @@ func load_collisions() -> void:
 	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():
+	var old_right_pos : Vector2 = right_position.position
+	var old_left_pos : Vector2 = left_position.position
+	var old_center_pos : Vector2 = center_position.position
+	var old_shoot_pos : Vector2 = shoot_position.position
+
 	right_position.position = right_offsets[frame]
 	left_position.position = left_offsets[frame]
 	center_position.position = center_offsets[frame]
 	shoot_position.position = shoot_offsets[frame]
-	if centered:
-		right_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		left_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		center_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
+
+	if centering == Centering.LEFT_CORNER:
+		pass
+	elif centering == Centering.CENTERED:
+		# right_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		# left_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		# center_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		# shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		pass
+	elif centering == Centering.CENTERED_OFFSET:
+		position += old_center_pos
+		position -= center_position.position
+
 	collision_container.change_frame(frame)
