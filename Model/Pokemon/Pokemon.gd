@@ -5,6 +5,10 @@ class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
 # SIGNALS
 signal change_animation(sprite_name, direction, animation_name)
 
+# constants
+const SECOND: float = 1.0
+const IDLE_NAME: String = "Idle"
+
 # paths to resources
 var sprite_collab_path: String = "res://Images/SpriteCollab/"
 var poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
@@ -16,9 +20,7 @@ onready var IDLE_SPRITE: Sprite = $Sprites/Idle
 var poke_num_dict: Dictionary
 var anim_dict: Dictionary
 
-# constants
-const SECOND: float = 1.0
-const IDLE_NAME: String = "Idle"
+
 
 export var pokemon_name: String = "" setget set_pk_name, get_pk_name
 

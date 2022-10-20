@@ -12,6 +12,7 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
+export(String) var pokemon_name setget set_pokemon_name, get_pokemon_name
 # frame characteristics
 var frame_width : float
 var frame_heigth : float
@@ -29,10 +30,10 @@ var left_offsets: Array
 var center_offsets: Array
 var shoot_offsets: Array
 # offsets position
-var right_position : Position2D
-var left_position : Position2D
-var center_position : Position2D
-var shoot_position : Position2D
+var right_position : Position2D setget , get_right_position
+var left_position : Position2D setget , get_left_position
+var center_position : Position2D setget , get_center_position
+var shoot_position : Position2D setget , get_shoot_position
 # name of the nodes
 var RIGHT_POS_NAME : String =  "RightPosition"
 var LEFT_POS_NAME : String =  "LeftPosition"
@@ -51,11 +52,20 @@ var collision_container : CollisionContainer
 var COLLISIONS_NODE_NAME : String = "Collisions"
 export(bool) var collision_visible : bool = false setget set_collision_visible, get_collision_visible
 
-# Enum for centering properties
 enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
-export(Centering) var centering setget set_centering, get_centering
+export (Centering)  var centering setget set_centering, get_centering
 
 # SETTERS AND GETTERS
+# pokemon name
+func set_pokemon_name(new_name : String):
+	new_name = new_name.to_lower()
+	new_name = new_name.capitalize()
+	if new_name in poke_dict:
+		pokemon_name = new_name
+
+func get_pokemon_name() -> String:
+	return pokemon_name
+
 # collision_visible
 func set_collision_visible(new_value : bool):
 	collision_visible = new_value
@@ -84,11 +94,21 @@ func set_centering(new_value):
 		position -= center_position.position
 	property_list_changed_notify()
 
-
 func get_centering():
 	return centering
-		
 
+# position nodes
+func get_right_position() -> Position2D:
+	return right_position
+
+func get_left_position() -> Position2D:
+	return left_position
+
+func get_center_position() -> Position2D:
+	return center_position
+
+func get_shoot_position() -> Position2D:
+	return shoot_position
 
 
 func _init() -> void:
@@ -282,16 +302,16 @@ func load_collisions() -> void:
 	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():
-	var old_right_pos : Vector2 = right_position.position
-	var old_left_pos : Vector2 = left_position.position
+	# var old_right_pos : Vector2 = right_position.position
+	# var old_left_pos : Vector2 = left_position.position
 	var old_center_pos : Vector2 = center_position.position
-	var old_shoot_pos : Vector2 = shoot_position.position
+	# var old_shoot_pos : Vector2 = shoot_position.position
 
 	right_position.position = right_offsets[frame]
 	left_position.position = left_offsets[frame]
 	center_position.position = center_offsets[frame]
 	shoot_position.position = shoot_offsets[frame]
-
+	
 	if centering == Centering.LEFT_CORNER:
 		pass
 	elif centering == Centering.CENTERED:
