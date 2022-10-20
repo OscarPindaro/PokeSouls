@@ -23,3 +23,13 @@ Verde -> centro
 Nero -> shooting point
 Rosso -> mano destra
 Blu -> mano sinistra
+
+#########################
+1) make the collisions visible or invisible with a flag
+2) all the signals goind down should be transformed in calls. However, still a good idea to keep the signals
+3) third flag that for centering the sprite.
+4) risolvere problema che il current_sprite è uguale a null quando ricarico la scens
+
+
+
+

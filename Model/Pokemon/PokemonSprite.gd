@@ -6,7 +6,7 @@ class_name PokemonSprite
 var poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
 var anim_data_path: String = "res://Images/SpriteCollab/sprite/%s/AnimData.json"
 var texture_path: String = "res://Images/SpriteCollab/sprite/%s/%s"
-var error_texture_path: String = "res://Images/error_texture.png"
+var error_texture_path: String = "res://Images/PokemonDebug/error_texture.png"
 # key : pokemon name, value : string folder (es: "Bulbasaur" : "0001")
 var poke_dict: Dictionary
 # contains information about the animation of the pokemon
@@ -49,6 +49,40 @@ var BLACK = Color(0, 0, 0)
 # Collisions
 var collision_container : CollisionContainer
 var COLLISIONS_NODE_NAME : String = "Collisions"
+export(bool) var collision_visible : bool = false setget set_collision_visible, get_collision_visible
+
+# Enum for centering properties
+enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
+export(Centering) var centering setget set_centering, get_centering
+
+# SETTERS AND GETTERS
+# collision_visible
+func set_collision_visible(new_value : bool):
+	collision_visible = new_value
+	var collision_node : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
+	# handles if called before ready
+	if collision_node != null:
+		get_node(COLLISIONS_NODE_NAME).set_visible(new_value)
+
+func get_collision_visible() -> bool:
+	return collision_visible
+
+# centering
+func set_centering(new_value):
+	centering = new_value
+	if centering == Centering.LEFT_CORNER:
+		set_centered(false)
+	elif centering == Centering.CENTERED:
+		set_centered(true)
+	elif centering == Centering.CENTERED_OFFSET:
+		set_centered(false)
+	property_list_changed_notify()
+
+
+func get_centering():
+	return centering
+		
+
 
 
 func _init() -> void:
@@ -246,8 +280,9 @@ func on_frame_changed():
 	left_position.position = left_offsets[frame]
 	center_position.position = center_offsets[frame]
 	shoot_position.position = shoot_offsets[frame]
-	# if centered:
-	# 	right_position.position -= Vector2(frame_width/2, frame_heigth/2)
-	# 	left_position.position -= Vector2(frame_width/2, frame_heigth/2)
-	# 	center_position.position -= Vector2(frame_width/2, frame_heigth/2)
-	# 	shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	if centered:
+		right_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		left_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		center_position.position -= Vector2(frame_width/2, frame_heigth/2)
+		shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
+	collision_container.change_frame(frame)

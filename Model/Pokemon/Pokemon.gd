@@ -29,7 +29,7 @@ onready var anim_player: AnimationPlayer = get_node(anim_player_path)
 # list of spritesheet of the pokemon
 export(NodePath) var sprites_path
 onready var sprites: Array = get_node(sprites_path).get_children()
-export(Array) var sprite_names: Array
+export var sprite_names = PoolStringArray()
 
 # this child is used to remove the warning about collision shapes
 onready var uselessCollisionShape: CollisionShape2D = $UselessForWarning
@@ -50,14 +50,15 @@ func set_direction(value) -> void:
 	if value != old_animation_direction:
 		old_animation_direction = animation_direction
 		animation_direction = value
+		property_list_changed_notify()
 		update_animation()
 
 
 func set_anim_name(value: String):
 	if value in sprite_names or value == "RESET":
 		animation_name = value
+		property_list_changed_notify()
 		update_animation()
-		return
 
 
 func get_anim_name():
@@ -114,6 +115,7 @@ func _ready():
 		sprite_names.append(sprite.get_name())
 	load_pokemon()
 	set_anim_name(animation_name)
+	update_animation()
 
 
 func load_pokemon():

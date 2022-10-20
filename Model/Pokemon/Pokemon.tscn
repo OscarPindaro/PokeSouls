@@ -672,8 +672,10 @@ script = ExtResource( 7 )
 
 [node name="Walk" type="Sprite" parent="Sprites"]
 texture = ExtResource( 3 )
+centered = false
 hframes = 4
 vframes = 8
+frame = 2
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Walk"]
@@ -689,6 +691,7 @@ position = Vector2( 19.5, 21.5 )
 position = Vector2( 19.5, 18.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Walk"]
+visible = false
 script = ExtResource( 2 )
 
 [node name="Idle" type="Sprite" parent="Sprites"]
@@ -697,18 +700,19 @@ texture = ExtResource( 4 )
 hframes = 4
 vframes = 8
 script = ExtResource( 9 )
+collision_visible = true
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 11.5, 18.5 )
+position = Vector2( -8.5, -5.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 27.5, 18.5 )
+position = Vector2( 7.5, -5.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 19.5, 21.5 )
+position = Vector2( -0.5, -2.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Idle"]
-position = Vector2( 19.5, 18.5 )
+position = Vector2( -0.5, -5.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Idle"]
 script = ExtResource( 2 )
@@ -720,6 +724,7 @@ hframes = 11
 vframes = 8
 frame = 5
 script = ExtResource( 9 )
+collision_visible = true
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Shoot"]
 position = Vector2( -11, 3 )
@@ -741,20 +746,20 @@ visible = false
 texture = ExtResource( 8 )
 hframes = 13
 vframes = 8
-frame = 3
+frame = 5
 script = ExtResource( 9 )
 
 [node name="RightPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -5.5, -11.5 )
+position = Vector2( 2.5, 23.5 )
 
 [node name="LeftPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 0.5, -0.5 )
+position = Vector2( 3.5, 12.5 )
 
 [node name="CenterPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( 0.5, -3.5 )
+position = Vector2( -0.5, 14.5 )
 
 [node name="ShootPosition" type="Position2D" parent="Sprites/Strike"]
-position = Vector2( -7.5, -11.5 )
+position = Vector2( 9.5, 23.5 )
 
 [node name="Collisions" type="Node2D" parent="Sprites/Strike"]
 script = ExtResource( 2 )
