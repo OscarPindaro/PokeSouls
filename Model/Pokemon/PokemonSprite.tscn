@@ -16,24 +16,6 @@ centering = 2
 [node name="Collisions" type="Node2D" parent="."]
 script = ExtResource( 3 )
 
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
-[node name="Collisions" type="Node2D" parent="."]
-script = ExtResource( 3 )
-
 [node name="RightPosition" type="Position2D" parent="."]
 position = Vector2( 16, 16 )
 
