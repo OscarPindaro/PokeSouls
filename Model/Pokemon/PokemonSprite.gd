@@ -46,17 +46,16 @@ var right_offsets: Array
 var left_offsets: Array
 var center_offsets: Array
 var shoot_offsets: Array
+# offsets position
+var right_position : Position2D setget , get_right_position
+var left_position : Position2D setget , get_left_position
+var center_position : Position2D setget , get_center_position
+var shoot_position : Position2D setget , get_shoot_position
 # name of the nodes
 var RIGHT_POS_NAME : String =  "RightPosition"
 var LEFT_POS_NAME : String =  "LeftPosition"
 var CENTER_POS_NAME : String =  "CenterPosition"
 var SHOOT_POS_NAME : String =  "ShootPosition"
-# offsets position
-onready var right_position : Position2D = get_node(RIGHT_POS_NAME)  setget , get_right_position
-onready var left_position : Position2D = get_node(LEFT_POS_NAME) setget , get_left_position
-onready var center_position : Position2D = get_node(CENTER_POS_NAME) setget , get_center_position
-onready var shoot_position : Position2D = get_node(SHOOT_POS_NAME) setget , get_shoot_position
-
 
 
 # Constants
@@ -149,10 +148,19 @@ func _init() -> void:
 	file.close()
 
 func _ready():
-	#create_positions()
-	print(right_position)
+	create_positions()
 	load_all()
 	connect("frame_changed", self, "on_frame_changed")
+
+func create_positions() -> void:
+	right_position = Position2D.new()
+	right_position.name = RIGHT_POS_NAME
+	left_position = Position2D.new()
+	left_position.name = LEFT_POS_NAME
+	center_position = Position2D.new()
+	center_position.name = CENTER_POS_NAME
+	shoot_position = Position2D.new()
+	shoot_position.name = SHOOT_POS_NAME
 
 
 func load_all():
