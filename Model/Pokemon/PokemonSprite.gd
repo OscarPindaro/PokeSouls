@@ -7,12 +7,29 @@ var poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
 var anim_data_path: String = "res://Images/SpriteCollab/sprite/%s/AnimData.json"
 var texture_path: String = "res://Images/SpriteCollab/sprite/%s/%s"
 var error_texture_path: String = "res://Images/PokemonDebug/error_texture.png"
+var loaded_error : bool = false
 # key : pokemon name, value : string folder (es: "Bulbasaur" : "0001")
 var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
-export(String) var pokemon_name setget set_pokemon_name, get_pokemon_name
+export(String) var pokemon_name = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
+export(String) var animation_name : String= "Idle" setget set_animation_name, get_animation_name
+var animation_names : PoolStringArray = [
+	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
+	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
+	'Rotate', 'Dance', 'Shake', 'EventSleep', 'Wake', 'Eat', 'Tumble',
+	'Pose', 'Pull', 'Pain', 'Float', 'DeepBreath', 'Nod', 'Sit', 'LookUp',
+	'Sink', 'Trip', 'Laying', 'LeapForth', 'Head', 'Cringe', 'LostBalance', 
+	'TumbleBack', 'Faint', 'HitGround', 'Kick', 'SpAttack', 'Withdraw', 'Ricochet',
+	'FlapAround', 'Jab', 'Hover', 'TailWhip', 'StandingUp', 'QuickStrike', 'Shock', 
+	'MultiScratch', 'Appeal', 'Emit', 'Rumble', 'Sound', 'RearUp', 'Special0', 'Slam',
+	'Special1', 'Special2', 'Wiggle', 'Fainted', 'DigIn', 'DigOut', 'MultiStrike', 'Yawn', 
+	'RaiseArms', 'CarefulWalk', 'Special3', 'Chop', 'Punch', 'Lick', 'Uppercut', 'Gas', 'Swell', 
+	'Stomp', 'Slice', 'Slap', 'Injured']
+
+
+# the name of the sprite is the animation name
 # frame characteristics
 var frame_width : float
 var frame_heigth : float
@@ -58,14 +75,15 @@ export (Centering)  var centering setget set_centering, get_centering
 # SETTERS AND GETTERS
 # pokemon name
 func set_pokemon_name(new_name : String):
-	new_name = new_name.to_lower()
-	new_name = new_name.capitalize()
+	new_name = lower_and_capitalize(new_name)
 	if new_name in poke_dict:
 		pokemon_name = new_name
 
 func get_pokemon_name() -> String:
 	return pokemon_name
 
+func lower_and_capitalize(string : String)-> String:
+	return string.to_lower().capitalize()
 # collision_visible
 func set_collision_visible(new_value : bool):
 	collision_visible = new_value
@@ -110,16 +128,31 @@ func get_center_position() -> Position2D:
 func get_shoot_position() -> Position2D:
 	return shoot_position
 
+# animation name
+func set_animation_name(new_name : String) -> void:
+	if new_name in animation_names:
+		animation_name = new_name
+		load_all()
 
+
+func get_animation_name() -> String:
+	return animation_name
+
+#******************** END SETGET ***********
 func _init() -> void:
 	var file: File = File.new()
 	var error_value = file.open(poke_num_file_path, File.READ)
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
 	poke_dict = parse_json(file.get_as_text())
-
+	file.close()
 
 func _ready():
+	create_positions()
+	load_all()
+	connect("frame_changed", self, "on_frame_changed")
+
+func create_positions() -> void:
 	right_position = Position2D.new()
 	right_position.name = RIGHT_POS_NAME
 	left_position = Position2D.new()
@@ -128,50 +161,27 @@ func _ready():
 	center_position.name = CENTER_POS_NAME
 	shoot_position = Position2D.new()
 	shoot_position.name = SHOOT_POS_NAME
-	clear_offsets()
-	add_positions()
-	add_collisions()
-	connect("frame_changed", self, "on_frame_changed")
-
-func add_positions():
-	if self.get_node(RIGHT_POS_NAME) == null:
-		add_child(right_position)
-		right_position.set_owner(self.get_owner())
-	if self.get_node(LEFT_POS_NAME) == null:
-		add_child(self.left_position)
-		left_position.set_owner(self.get_owner())
-	if self.get_node(CENTER_POS_NAME) == null:
-		add_child(self.center_position)
-		center_position.set_owner(self.get_owner())
-	if self.get_node(SHOOT_POS_NAME) == null:
-		add_child(self.shoot_position)
-		shoot_position.set_owner(self.get_owner())
-	right_position = get_node(RIGHT_POS_NAME)
-	left_position = get_node(LEFT_POS_NAME)
-	center_position = get_node(CENTER_POS_NAME)
-	shoot_position = get_node(SHOOT_POS_NAME)
-
-func add_collisions():
-	if self.get_node(COLLISIONS_NODE_NAME) == null:
-		collision_container = CollisionContainer.new()
-		collision_container.set_name(COLLISIONS_NODE_NAME)
-		add_child(collision_container)
-		collision_container.set_owner(self.get_owner())
-	else:
-		collision_container = self.get_node(COLLISIONS_NODE_NAME)
-		collision_container.remove_collisions()
 
 
-func load_properties(name: String) -> void:
+func load_all():
+	loaded_error = false
+	load_sprite()
+	add_positions_to_tree()
+	load_offsets()
+	add_collision_container_to_tree()
+	load_collisions()
+	on_frame_changed()
+
+func load_sprite() -> void:
 	# preprocessing, resetting old properties
 	clear_offsets()
-	add_positions()
-	# the name of the sprite is the animation name
-	var animation_name = get_name()
+	#add_positions()
 	# error if pokemon not present
-	if !poke_dict.has(name):
-		push_error("The pokemon " + name + " is not present in the dictionary.")
-	var folder_number = poke_dict[name]
+	if !poke_dict.has(pokemon_name):
+		push_warning("The pokemon " + pokemon_name + " is not present in the dictionary.")
+		load_error_texture()
+		return 
+	var folder_number = poke_dict[pokemon_name]
 	var anim_data_file = File.new()
 	var err = anim_data_file.open(anim_data_path % [folder_number], File.READ)
 	if err != OK:
@@ -179,18 +189,36 @@ func load_properties(name: String) -> void:
 	else:
 		# load animation texture
 		animation_dict = parse_json(anim_data_file.get_as_text())
-		self.texture = load(texture_path % [folder_number, get_anim_filename(animation_name)])
-		self.texture.flags = 0
-		frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
-		frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
-		self.hframes = int(self.texture.get_width() / frame_width)
-		self.vframes = int(self.texture.get_height() / frame_heigth)
-		self.visible = false
-		# load red position
-		load_offsets(animation_name, folder_number)
+		# "strike" bay be corrected to "hit", for example
+		var anim_name: String = get_anim_property(animation_name, "Name")
+		if anim_name == "":
+			load_error_texture()
+		else:
+			self.texture = load(texture_path % [folder_number, get_anim_filename(anim_name)])
+			self.texture.flags = 0
+			frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
+			frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
+			self.hframes = int(self.texture.get_width() / frame_width)
+			self.vframes = int(self.texture.get_height() / frame_heigth)
+			self.visible = true
 
 	anim_data_file.close()
 
+func clear_offsets():
+	right_offsets.clear()
+	left_offsets.clear()
+	center_offsets.clear()
+	shoot_offsets.clear()
+
+func load_error_texture() -> void:
+	loaded_error = true
+	texture = load(error_texture_path)
+	hframes = 1
+	vframes = 1
+	visible = true
+	texture.flags = 0
+	frame_width = texture.get_width()
+	frame_heigth = texture.get_height() 
 
 func get_anim_filename(anim_name: String) -> String:
 	var anims = animation_dict["AnimData"]["Anims"]["Anim"]
@@ -203,7 +231,6 @@ func get_anim_filename(anim_name: String) -> String:
 	push_error("Something went wrong while finding the filename")
 	return ""
 
-
 func get_anim_property(anim_name: String, property_name: String) -> String:
 	var anims = animation_dict["AnimData"]["Anims"]["Anim"]
 	for anim in anims:
@@ -212,17 +239,37 @@ func get_anim_property(anim_name: String, property_name: String) -> String:
 				return get_anim_property(anim["CopyOf"], property_name)
 			else:
 				return anim[property_name]
-	push_error("The animation " + anim_name + " is not present.")
+	push_warning("The animation " + anim_name + " is not present.")
 	return ""
 
+func add_positions_to_tree():
+	if self.get_node_or_null(RIGHT_POS_NAME) == null:
+		print("right position", right_position)
+		right_position.set_owner(self)
+	if self.get_node_or_null(LEFT_POS_NAME) == null:
+		add_child(self.left_position)
+		left_position.set_owner(self)
+	if self.get_node_or_null(CENTER_POS_NAME) == null:
+		add_child(self.center_position)
+		center_position.set_owner(self)
+	if self.get_node_or_null(SHOOT_POS_NAME) == null:
+		add_child(self.shoot_position)
+		shoot_position.set_owner(self)
+	right_position = get_node(RIGHT_POS_NAME)
+	left_position = get_node(LEFT_POS_NAME)
+	center_position = get_node(CENTER_POS_NAME)
+	shoot_position = get_node(SHOOT_POS_NAME)	
 
-func load_offsets(animation_name: String, folder_number: String):
-	# image properties
-	var frame_heigth: int = get_anim_property(animation_name, "FrameHeight").to_int()
-	var frame_width: int = get_anim_property(animation_name, "FrameWidth").to_int()
-	var hframes: int = self.texture.get_width() / frame_width
-	var vframes: int = self.texture.get_height() / frame_heigth
+func load_offsets():
+	if loaded_error:
+		var text_dims : Vector2 = Vector2(texture.get_width()/2, texture.get_height()/2)
+		right_offsets.append(text_dims)
+		left_offsets.append(text_dims)
+		center_offsets.append(text_dims)
+		shoot_offsets.append(text_dims)
+		return 
 	#load offset texture
+	var folder_number = poke_dict[pokemon_name]
 	var anim_name: String = get_anim_property(animation_name, "Name")
 	var file_name = "%s-Offsets.png" % [anim_name]
 	var offset_text_path = texture_path % [folder_number, file_name]
@@ -270,7 +317,6 @@ func load_offsets(animation_name: String, folder_number: String):
 			center_offsets.append(green_pos)
 			shoot_offsets.append(black_pos)
 
-
 func get_color_position(
 	image: Image, color: Color, start_row: int, end_row: int, start_col: int, end_col: int
 ) -> Vector2:
@@ -284,22 +330,21 @@ func get_color_position(
 	image.unlock()
 	return Vector2(0, 0)
 
-
-func clear_offsets():
-	right_offsets.clear()
-	left_offsets.clear()
-	center_offsets.clear()
-	shoot_offsets.clear()
-
-
-func load_error_texture() -> void:
-	self.texture = load(error_texture_path)
-
 func load_collisions() -> void:
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")
 	var collisions_arr : Array = CollisionExctractor.new().get_collision_polygons(self)
 	collision_container.add_collisions(collisions_arr)
+
+func add_collision_container_to_tree():
+	if self.get_node_or_null(COLLISIONS_NODE_NAME) == null:
+		collision_container = CollisionContainer.new()
+		collision_container.set_name(COLLISIONS_NODE_NAME)
+		add_child(collision_container)
+		collision_container.set_owner(self)
+	else:
+		collision_container = self.get_node(COLLISIONS_NODE_NAME)
+		collision_container.remove_collisions()
 
 func on_frame_changed():
 	# var old_right_pos : Vector2 = right_position.position
@@ -315,10 +360,6 @@ func on_frame_changed():
 	if centering == Centering.LEFT_CORNER:
 		pass
 	elif centering == Centering.CENTERED:
-		# right_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		# left_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		# center_position.position -= Vector2(frame_width/2, frame_heigth/2)
-		# shoot_position.position -= Vector2(frame_width/2, frame_heigth/2)
 		pass
 	elif centering == Centering.CENTERED_OFFSET:
 		position += old_center_pos

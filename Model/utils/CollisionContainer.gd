@@ -15,6 +15,7 @@ func add_collisions(collision_shapes : Array):
 		collision.disabled = true
 		collision.visible = false
 		add_child(collision)
+		#collision.set_owner(self)
 
 func remove_collisions():
 	for collision in collision_arr:
