@@ -13,8 +13,8 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
-export(String) var pokemon_name = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
-export(String) var animation_name : String= "Idle" setget set_animation_name, get_animation_name
+export(String) onready var pokemon_name = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
+export(String) onready var animation_name : String= "Idle" setget set_animation_name, get_animation_name
 var animation_names : PoolStringArray = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
@@ -46,17 +46,18 @@ var right_offsets: Array
 var left_offsets: Array
 var center_offsets: Array
 var shoot_offsets: Array
-# offsets position
-var right_position : Position2D setget , get_right_position
-var left_position : Position2D setget , get_left_position
-var center_position : Position2D setget , get_center_position
-var shoot_position : Position2D setget , get_shoot_position
 # name of the nodes
 var RIGHT_POS_NAME : String =  "RightPosition"
 var LEFT_POS_NAME : String =  "LeftPosition"
 var CENTER_POS_NAME : String =  "CenterPosition"
 var SHOOT_POS_NAME : String =  "ShootPosition"
+# offsets position
+onready var right_position : Position2D = get_node(RIGHT_POS_NAME)  setget , get_right_position
+onready var left_position : Position2D = get_node(LEFT_POS_NAME) setget , get_left_position
+onready var center_position : Position2D = get_node(CENTER_POS_NAME) setget , get_center_position
+onready var shoot_position : Position2D = get_node(SHOOT_POS_NAME) setget , get_shoot_position
 
+var old_center_position : Vector2 = Vector2.ZERO
 
 # Constants
 var RED = Color(1, 0, 0)
@@ -65,9 +66,9 @@ var GREEN = Color(0, 1, 0)
 var BLACK = Color(0, 0, 0)
 
 # Collisions
-var collision_container : CollisionContainer
 var COLLISIONS_NODE_NAME : String = "Collisions"
-export(bool) var collision_visible : bool = false setget set_collision_visible, get_collision_visible
+onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
+export(bool) onready var collision_visible : bool = false setget set_collision_visible, get_collision_visible
 
 enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
 export (Centering)  var centering setget set_centering, get_centering
@@ -78,6 +79,7 @@ func set_pokemon_name(new_name : String):
 	new_name = lower_and_capitalize(new_name)
 	if new_name in poke_dict:
 		pokemon_name = new_name
+		load_all()
 
 func get_pokemon_name() -> String:
 	return pokemon_name
@@ -98,18 +100,22 @@ func get_collision_visible() -> bool:
 # centering
 # overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
-	if centering == Centering.CENTERED_OFFSET:
-		position += center_position.position
-	elif centering == Centering.CENTERED:
-		position += Vector2(frame_width/2, frame_heigth/2)
+	# if centering == Centering.CENTERED_OFFSET:
+	# 	position += old_center_position
+	# elif centering == Centering.CENTERED:
+	# 	position += old_center_position
+	position += old_center_position
 	centering = new_value
 	set_centered(false)
 	if centering == Centering.LEFT_CORNER:
 		set_centered(false)
+		old_center_position = Vector2.ZERO
 	elif centering == Centering.CENTERED:
 		position -= Vector2(frame_width/2, frame_heigth/2)
+		old_center_position = Vector2(frame_width/2, frame_heigth/2)
 	elif centering == Centering.CENTERED_OFFSET:
 		position -= center_position.position
+		old_center_position = center_position.position
 	property_list_changed_notify()
 
 func get_centering():
@@ -148,33 +154,23 @@ func _init() -> void:
 	file.close()
 
 func _ready():
-	create_positions()
 	load_all()
-	connect("frame_changed", self, "on_frame_changed")
-
-func create_positions() -> void:
-	right_position = Position2D.new()
-	right_position.name = RIGHT_POS_NAME
-	left_position = Position2D.new()
-	left_position.name = LEFT_POS_NAME
-	center_position = Position2D.new()
-	center_position.name = CENTER_POS_NAME
-	shoot_position = Position2D.new()
-	shoot_position.name = SHOOT_POS_NAME
+	var err = connect("frame_changed", self, "on_frame_changed")
+	if err != OK:
+		push_warning("probelm while connecting the frame_changed signal")
 
 
 func load_all():
 	loaded_error = false
+	var x = centering
+	set_centering(Centering.LEFT_CORNER)
 	load_sprite()
-	add_positions_to_tree()
 	load_offsets()
-	add_collision_container_to_tree()
 	load_collisions()
 	on_frame_changed()
+	set_centering(x)
 
 func load_sprite() -> void:
-	# preprocessing, resetting old properties
-	clear_offsets()
 	#add_positions()
 	# error if pokemon not present
 	if !poke_dict.has(pokemon_name):
@@ -204,12 +200,6 @@ func load_sprite() -> void:
 
 	anim_data_file.close()
 
-func clear_offsets():
-	right_offsets.clear()
-	left_offsets.clear()
-	center_offsets.clear()
-	shoot_offsets.clear()
-
 func load_error_texture() -> void:
 	loaded_error = true
 	texture = load(error_texture_path)
@@ -228,7 +218,7 @@ func get_anim_filename(anim_name: String) -> String:
 				return get_anim_filename(anim["CopyOf"])
 			else:
 				return "%s-Anim.png" % anim["Name"]
-	push_error("Something went wrong while finding the filename")
+	push_warning("Something went wrong while finding the filename")
 	return ""
 
 func get_anim_property(anim_name: String, property_name: String) -> String:
@@ -242,25 +232,9 @@ func get_anim_property(anim_name: String, property_name: String) -> String:
 	push_warning("The animation " + anim_name + " is not present.")
 	return ""
 
-func add_positions_to_tree():
-	if self.get_node_or_null(RIGHT_POS_NAME) == null:
-		print("right position", right_position)
-		right_position.set_owner(self)
-	if self.get_node_or_null(LEFT_POS_NAME) == null:
-		add_child(self.left_position)
-		left_position.set_owner(self)
-	if self.get_node_or_null(CENTER_POS_NAME) == null:
-		add_child(self.center_position)
-		center_position.set_owner(self)
-	if self.get_node_or_null(SHOOT_POS_NAME) == null:
-		add_child(self.shoot_position)
-		shoot_position.set_owner(self)
-	right_position = get_node(RIGHT_POS_NAME)
-	left_position = get_node(LEFT_POS_NAME)
-	center_position = get_node(CENTER_POS_NAME)
-	shoot_position = get_node(SHOOT_POS_NAME)	
-
 func load_offsets():
+	# preprocessing, resetting old properties
+	clear_offsets()
 	if loaded_error:
 		var text_dims : Vector2 = Vector2(texture.get_width()/2, texture.get_height()/2)
 		right_offsets.append(text_dims)
@@ -283,39 +257,46 @@ func load_offsets():
 			var red_pos: Vector2 = get_color_position(
 				image,
 				RED,
-				frame_heigth * i,
-				frame_heigth * (i + 1),
-				frame_width * j,
-				frame_width * (j + 1)
+				int(frame_heigth) * i,
+				int(frame_heigth) * (i + 1),
+				int(frame_width) * j,
+				int(frame_width) * (j + 1)
 			)
 			var blue_pos: Vector2 = get_color_position(
 				image,
 				BLUE,
-				frame_heigth * i,
-				frame_heigth * (i + 1),
-				frame_width * j,
-				frame_width * (j + 1)
+				int(frame_heigth) * i,
+				int(frame_heigth) * (i + 1),
+				int(frame_width) * j,
+				int(frame_width) * (j + 1)
 			)
 			var green_pos: Vector2 = get_color_position(
 				image,
 				GREEN,
-				frame_heigth * i,
-				frame_heigth * (i + 1),
-				frame_width * j,
-				frame_width * (j + 1)
+				int(frame_heigth) * i,
+				int(frame_heigth) * (i + 1),
+				int(frame_width) * j,
+				int(frame_width) * (j + 1)
 			)
 			var black_pos: Vector2 = get_color_position(
 				image,
 				BLACK,
-				frame_heigth * i,
-				frame_heigth * (i + 1),
-				frame_width * j,
-				frame_width * (j + 1)
+				int(frame_heigth) * i,
+				int(frame_heigth) * (i + 1),
+				int(frame_width) * j,
+				int(frame_width) * (j + 1)
 			)
 			right_offsets.append(red_pos)
 			left_offsets.append(blue_pos)
 			center_offsets.append(green_pos)
 			shoot_offsets.append(black_pos)
+
+func clear_offsets():
+	right_offsets.clear()
+	left_offsets.clear()
+	center_offsets.clear()
+	shoot_offsets.clear()
+
 
 func get_color_position(
 	image: Image, color: Color, start_row: int, end_row: int, start_col: int, end_col: int
@@ -331,20 +312,11 @@ func get_color_position(
 	return Vector2(0, 0)
 
 func load_collisions() -> void:
+	collision_container.remove_collisions()
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")
 	var collisions_arr : Array = CollisionExctractor.new().get_collision_polygons(self)
 	collision_container.add_collisions(collisions_arr)
-
-func add_collision_container_to_tree():
-	if self.get_node_or_null(COLLISIONS_NODE_NAME) == null:
-		collision_container = CollisionContainer.new()
-		collision_container.set_name(COLLISIONS_NODE_NAME)
-		add_child(collision_container)
-		collision_container.set_owner(self)
-	else:
-		collision_container = self.get_node(COLLISIONS_NODE_NAME)
-		collision_container.remove_collisions()
 
 func on_frame_changed():
 	# var old_right_pos : Vector2 = right_position.position
