@@ -13,8 +13,8 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
-export(String) onready var pokemon_name = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
-export(String) onready var animation_name : String= "Idle" setget set_animation_name, get_animation_name
+export(String) onready var pokemon_name setget set_pokemon_name, get_pokemon_name
+export(String) onready var animation_name : String setget set_animation_name, get_animation_name
 var animation_names : PoolStringArray = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
@@ -71,7 +71,10 @@ onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_
 export(bool) onready var collision_visible : bool = false setget set_collision_visible, get_collision_visible
 
 enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
-export (Centering)  var centering setget set_centering, get_centering
+export (Centering) var centering setget set_centering, get_centering
+
+var ready : bool = false
+
 
 # SETTERS AND GETTERS
 # pokemon name
@@ -86,13 +89,18 @@ func get_pokemon_name() -> String:
 
 func lower_and_capitalize(string : String)-> String:
 	return string.to_lower().capitalize()
+
 # collision_visible
 func set_collision_visible(new_value : bool):
+	if not is_ready():
+		return
 	collision_visible = new_value
-	var collision_node : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
+	var collision_node : CollisionContainer = get_node_or_null(COLLISIONS_NODE_NAME)
 	# handles if called before ready
 	if collision_node != null:
 		get_node(COLLISIONS_NODE_NAME).set_visible(new_value)
+	property_list_changed_notify()
+
 
 func get_collision_visible() -> bool:
 	return collision_visible
@@ -100,10 +108,10 @@ func get_collision_visible() -> bool:
 # centering
 # overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
-	# if centering == Centering.CENTERED_OFFSET:
-	# 	position += old_center_position
-	# elif centering == Centering.CENTERED:
-	# 	position += old_center_position
+	# if not is_ready():
+	# 	return
+	print(centering)
+	print(new_value)
 	position += old_center_position
 	centering = new_value
 	set_centered(false)
@@ -154,13 +162,22 @@ func _init() -> void:
 	file.close()
 
 func _ready():
+	ready = true
+	self.texture = null
 	load_all()
 	var err = connect("frame_changed", self, "on_frame_changed")
 	if err != OK:
 		push_warning("probelm while connecting the frame_changed signal")
 
+func is_ready():
+	var is_empty : bool = pokemon_name == "" or animation_name == ""
+	var is_null : bool = pokemon_name == null or animation_name == null
+	var n_children : int = get_child_count()
+	return 	not is_empty and not is_null and n_children > 0 and ready
 
 func load_all():
+	if not is_ready():
+		return
 	loaded_error = false
 	var x = centering
 	set_centering(Centering.LEFT_CORNER)
@@ -174,6 +191,7 @@ func load_sprite() -> void:
 	#add_positions()
 	# error if pokemon not present
 	if !poke_dict.has(pokemon_name):
+		print(pokemon_name)
 		push_warning("The pokemon " + pokemon_name + " is not present in the dictionary.")
 		load_error_texture()
 		return 
@@ -312,6 +330,7 @@ func get_color_position(
 	return Vector2(0, 0)
 
 func load_collisions() -> void:
+	#collision_container = get_node_or_null(COLLISIONS_NODE_NAME)
 	collision_container.remove_collisions()
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")

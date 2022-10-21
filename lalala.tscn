@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://Model/Pokemon/PokemonSprite.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Images/SpriteCollab/sprite/0001/Sleep-Anim.png" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="PokemonSprite" parent="." instance=ExtResource( 1 )]
+position = Vector2( -12, -12 )
+texture = ExtResource( 2 )
+hframes = 2
+pokemon_name = "Bulbasaur"
+animation_name = "Sleep"
+centering = 1
