@@ -6,9 +6,10 @@
 [node name="Node2D" type="Node2D"]
 
 [node name="PokemonSprite" parent="." instance=ExtResource( 1 )]
-position = Vector2( -12, -12 )
+position = Vector2( -12.5, -10.5 )
 texture = ExtResource( 2 )
 hframes = 2
 pokemon_name = "Bulbasaur"
 animation_name = "Sleep"
-centering = 1
+collision_visible = true
+centering = 2
