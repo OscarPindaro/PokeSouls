@@ -122,23 +122,7 @@ func set_centering(new_value):
 			center_position =get_node(CENTER_POS_NAME)
 		position = -center_position.position	
 	property_list_changed_notify()
-
 	return
-
-
-	# position += old_center_position
-	# centering = new_value
-	# set_centered(false)
-	# if centering == Centering.LEFT_CORNER:
-	# 	set_centered(false)
-	# 	old_center_position = Vector2.ZERO
-	# elif centering == Centering.CENTERED:
-	# 	position -= Vector2(frame_width/2, frame_heigth/2)
-	# 	old_center_position = Vector2(frame_width/2, frame_heigth/2)
-	# elif centering == Centering.CENTERED_OFFSET:
-	# 	position -= center_position.position
-	# 	old_center_position = center_position.position
-	# property_list_changed_notify()
 
 func get_centering():
 	return centering
