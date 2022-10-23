@@ -111,7 +111,7 @@ func set_centering(new_value):
 	if centering == Centering.LEFT_CORNER:
 		position = Vector2.ZERO
 	elif centering == Centering.CENTERED:
-		position = -Vector2(frame_width/2, frame_width/2)
+		position = -Vector2(frame_width/2, frame_heigth/2)
 	elif centering == Centering.CENTERED_OFFSET:
 		# tool check 
 		if center_position == null:
