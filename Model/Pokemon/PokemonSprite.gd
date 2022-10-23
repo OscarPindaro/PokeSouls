@@ -68,7 +68,7 @@ var BLACK = Color(0, 0, 0)
 # Collisions
 var COLLISIONS_NODE_NAME : String = "Collisions"
 onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
-export(bool) onready var collision_visible : bool = false setget set_collision_visible, get_collision_visible
+export(bool) onready var collision_visible : bool setget set_collision_visible, get_collision_visible
 
 enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
 export (Centering) var centering setget set_centering, get_centering
@@ -92,13 +92,11 @@ func lower_and_capitalize(string : String)-> String:
 
 # collision_visible
 func set_collision_visible(new_value : bool):
-	if not is_ready():
-		return
 	collision_visible = new_value
-	var collision_node : CollisionContainer = get_node_or_null(COLLISIONS_NODE_NAME)
-	# handles if called before ready
-	if collision_node != null:
-		get_node(COLLISIONS_NODE_NAME).set_visible(new_value)
+	# tool check
+	if collision_container == null:
+		collision_container = get_node(COLLISIONS_NODE_NAME)
+	collision_container.set_visible(new_value)
 	property_list_changed_notify()
 
 
@@ -108,8 +106,6 @@ func get_collision_visible() -> bool:
 # centering
 # overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
-	# if not is_ready():
-	# 	return
 	set_centered(false)
 	centering = new_value
 	if centering == Centering.LEFT_CORNER:
