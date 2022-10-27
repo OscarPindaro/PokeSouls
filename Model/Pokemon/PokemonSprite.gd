@@ -15,7 +15,7 @@ var animation_dict: Dictionary
 
 export(String) onready var pokemon_name setget set_pokemon_name, get_pokemon_name
 export(String) onready var animation_name : String setget set_animation_name, get_animation_name
-var animation_names : PoolStringArray = [
+var animation_names : PoolStringArray  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
 	'Rotate', 'Dance', 'Shake', 'EventSleep', 'Wake', 'Eat', 'Tumble',
@@ -106,19 +106,31 @@ func get_collision_visible() -> bool:
 # centering
 # overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
+	# used when loading the scene from disk
+	if not ready:
+		set_centered(false)
+		centering = new_value
+		return
 	set_centered(false)
+	offset_child(-offset)
 	centering = new_value
 	if centering == Centering.LEFT_CORNER:
-		position = Vector2.ZERO
+		offset = Vector2.ZERO
 	elif centering == Centering.CENTERED:
-		position = -Vector2(frame_width/2, frame_heigth/2)
+		offset = -Vector2(frame_width/2, frame_heigth/2)
 	elif centering == Centering.CENTERED_OFFSET:
 		# tool check 
 		if center_position == null:
 			center_position =get_node(CENTER_POS_NAME)
-		position = -center_position.position	
+		offset = -center_position.position
+	offset_child(offset)	
 	property_list_changed_notify()
 	return
+
+func offset_child(offset_value : Vector2) -> void:
+	for child in get_children():
+		#child.position = Vector2.ZERO
+		child.position += offset_value
 
 func get_centering():
 	return centering
