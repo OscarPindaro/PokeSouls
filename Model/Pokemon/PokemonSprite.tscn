@@ -6,6 +6,9 @@
 [node name="PokemonSprite" type="Sprite"]
 centered = false
 script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
 [node name="RightPosition" type="Position2D" parent="."]
 

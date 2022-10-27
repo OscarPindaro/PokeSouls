@@ -346,20 +346,13 @@ func load_collisions() -> void:
 func on_frame_changed():
 	# var old_right_pos : Vector2 = right_position.position
 	# var old_left_pos : Vector2 = left_position.position
-	var old_center_pos : Vector2 = center_position.position
+	#var old_center_pos : Vector2 = center_position.position
 	# var old_shoot_pos : Vector2 = shoot_position.position
 
-	right_position.position = right_offsets[frame]
-	left_position.position = left_offsets[frame]
-	center_position.position = center_offsets[frame]
-	shoot_position.position = shoot_offsets[frame]
+	right_position.position = right_offsets[frame] + offset
+	left_position.position = left_offsets[frame] + offset
+	center_position.position = center_offsets[frame] + offset
+	shoot_position.position = shoot_offsets[frame] + offset
 	
-	if centering == Centering.LEFT_CORNER:
-		pass
-	elif centering == Centering.CENTERED:
-		pass
-	elif centering == Centering.CENTERED_OFFSET:
-		position += old_center_pos
-		position -= center_position.position
 
 	collision_container.change_frame(frame)
