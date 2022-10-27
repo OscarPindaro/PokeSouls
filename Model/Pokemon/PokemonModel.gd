@@ -1,6 +1,6 @@
 tool
 extends Node2D
-class_name PokemonSpriteList
+class_name PokemonModel
 
 signal sprite_changed(old_sprite, new_sprite)
 signal right_position_changed(old_position, new_position)
