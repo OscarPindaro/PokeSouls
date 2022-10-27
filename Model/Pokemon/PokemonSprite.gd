@@ -349,10 +349,10 @@ func on_frame_changed():
 	#var old_center_pos : Vector2 = center_position.position
 	# var old_shoot_pos : Vector2 = shoot_position.position
 
-	right_position.position = right_offsets[frame] + offset
-	left_position.position = left_offsets[frame] + offset
-	center_position.position = center_offsets[frame] + offset
-	shoot_position.position = shoot_offsets[frame] + offset
+	right_position.position = right_offsets[frame]
+	left_position.position = left_offsets[frame]
+	center_position.position = center_offsets[frame]
+	shoot_position.position = shoot_offsets[frame]
 	
 
 	collision_container.change_frame(frame)
