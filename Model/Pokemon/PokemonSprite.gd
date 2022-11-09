@@ -83,6 +83,7 @@ func set_pokemon_name(new_name : String):
 	if new_name in poke_dict:
 		pokemon_name = new_name
 		load_all()
+	property_list_changed_notify()
 
 func get_pokemon_name() -> String:
 	return pokemon_name
@@ -107,12 +108,23 @@ func get_collision_visible() -> bool:
 # overrides the usage of centered flag, so that it's easier to handle transformations
 func set_centering(new_value):
 	# used when loading the scene from disk
-	if not ready:
-		set_centered(false)
-		centering = new_value
-		return
+	# if not ready:
+	# 	set_centered(false)
+	# 	centering = new_value
+	# 	# if centering == Centering.LEFT_CORNER:
+	# 	# 	offset = Vector2.ZERO
+	# 	# elif centering == Centering.CENTERED:
+	# 	# 	offset = -Vector2(frame_width/2, frame_heigth/2)
+	# 	# elif centering == Centering.CENTERED_OFFSET:
+	# 	# 	# tool check 
+	# 	# 	if center_position == null:
+	# 	# 		center_position =get_node(CENTER_POS_NAME)
+	# 	# 	offset = -center_position.position
+		
+	# 	return
 	set_centered(false)
-	offset_child(-offset)
+	if ready:
+		offset_child(-offset)
 	centering = new_value
 	if centering == Centering.LEFT_CORNER:
 		offset = Vector2.ZERO
@@ -158,6 +170,8 @@ func set_animation_name(new_name : String) -> void:
 	if new_name in animation_names:
 		animation_name = new_name
 		load_all()
+		property_list_changed_notify()
+		
 
 
 func get_animation_name() -> String:
@@ -197,6 +211,7 @@ func load_all():
 	load_collisions()
 	on_frame_changed()
 	set_centering(x)
+	property_list_changed_notify()
 
 func load_sprite() -> void:
 	#add_positions()
@@ -226,6 +241,7 @@ func load_sprite() -> void:
 			self.hframes = int(self.texture.get_width() / frame_width)
 			self.vframes = int(self.texture.get_height() / frame_heigth)
 			self.visible = true
+			self.frame = 0
 
 	anim_data_file.close()
 
@@ -234,6 +250,7 @@ func load_error_texture() -> void:
 	texture = load(error_texture_path)
 	hframes = 1
 	vframes = 1
+	frame = 0
 	visible = true
 	texture.flags = 0
 	frame_width = texture.get_width()
@@ -349,7 +366,6 @@ func load_collisions() -> void:
 	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():
-
 	var old_offset : Vector2 = offset
 	if centering == Centering.CENTERED_OFFSET:
 		offset = -center_offsets[frame]

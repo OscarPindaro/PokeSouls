@@ -30,6 +30,8 @@ Blu -> mano sinistra
 3) third flag that for centering the sprite.
 4) risolvere problema che il current_sprite è uguale a null quando ricarico la scens
 5) when reloading, the script does not find the collision node while doing get_node()
+# 9/11/22
+Se ricarico il pokemon il centering risulta sbagliato (resettandosi)
 
 
 
