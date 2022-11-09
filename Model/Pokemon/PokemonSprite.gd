@@ -129,8 +129,13 @@ func set_centering(new_value):
 
 func offset_child(offset_value : Vector2) -> void:
 	for child in get_children():
-		#child.position = Vector2.ZERO
 		child.position += offset_value
+
+func offset_positions(offset_value : Vector2) -> void:
+	right_position.position += offset_value
+	left_position.position += offset_value
+	center_position.position += offset_value
+	shoot_position.position += offset_value
 
 func get_centering():
 	return centering
@@ -353,6 +358,7 @@ func on_frame_changed():
 	left_position.position = left_offsets[frame]
 	center_position.position = center_offsets[frame]
 	shoot_position.position = shoot_offsets[frame]
-	
+	offset_positions(offset)
+
 
 	collision_container.change_frame(frame)
