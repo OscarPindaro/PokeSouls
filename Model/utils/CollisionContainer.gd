@@ -26,6 +26,9 @@ func change_frame(new_frame : int):
 	var old_frame = curr_frame
 	curr_frame = new_frame
 
+	# exit if there are no collisions, otherwise it would crash when reloading
+	if collision_arr.size() <= 0:
+		return
 	var old_collision : CollisionPolygon2D = collision_arr[old_frame]
 	old_collision.disabled = true
 	old_collision.visible = false

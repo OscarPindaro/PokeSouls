@@ -106,6 +106,8 @@ func set_pokemon_name(new_name : String)-> void:
 			poke_sprite.set_visible(false)
 		pokemon_name = real_name
 		set_animation_name(animation_name)
+		set_frame(0)
+		property_list_changed_notify()
 	
 		
 func get_pokemon_name() -> String:
@@ -117,6 +119,8 @@ func set_animation_name(new_name : String):
 		for sprite in get_children():
 			if new_name == sprite.get_animation_name():
 				set_sprite(sprite)
+				set_frame(0)
+				property_list_changed_notify()
 				return
 
 	
@@ -155,7 +159,6 @@ func set_frame(new_value : int) -> void:
 	frame = new_value
 	if curr_sprite != null:
 		curr_sprite.set_frame(frame)
-	#property_list_changed_notify()
 	
 
 func get_frame()->int:

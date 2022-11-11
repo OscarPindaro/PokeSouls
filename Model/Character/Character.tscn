@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=48 format=2]
 
 [ext_resource path="res://addons/StateGraph/StateMachine/StateMachine.gd" type="Script" id=1]
 [ext_resource path="res://Model/Character/Character.gd" type="Script" id=2]
@@ -6,10 +6,6 @@
 [ext_resource path="res://Model/Character/Conditions.gd" type="Script" id=4]
 [ext_resource path="res://Model/Pokemon/Pokemon.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Model/Character/StateMachine/Walk.gd" type="Script" id=6]
-[ext_resource path="res://Images/SpriteCollab/sprite/0094/Shoot-Anim.png" type="Texture" id=7]
-[ext_resource path="res://Images/SpriteCollab/sprite/0094/Walk-Anim.png" type="Texture" id=8]
-[ext_resource path="res://Images/SpriteCollab/sprite/0094/Strike-Anim.png" type="Texture" id=9]
-[ext_resource path="res://Images/SpriteCollab/sprite/0094/Idle-Anim.png" type="Texture" id=10]
 
 [sub_resource type="Animation" id=26]
 loop = true
@@ -777,7 +773,9 @@ script = ExtResource( 4 )
 
 [node name="Pokemon" parent="Pokemons" instance=ExtResource( 5 )]
 pokemon_name = "Gengar"
+sprite_names = [ "Idle", "Walk", "Shoot", "Strike" ]
 animation_direction = 6
+animation_name = "RESET"
 
 [node name="AnimationPlayer" parent="Pokemons/Pokemon" index="0"]
 anims/Idle_DOWN = SubResource( 26 )
@@ -822,57 +820,25 @@ anims/Walk_UP = SubResource( 56 )
 anims/Walk_UP_LEFT = SubResource( 57 )
 anims/Walk_UP_RIGHT = SubResource( 58 )
 
-[node name="Walk" parent="Pokemons/Pokemon/Sprites" index="0"]
-texture = ExtResource( 8 )
-frame = 25
+[node name="Sprites" parent="Pokemons/Pokemon" index="1"]
+animation_name = "Idle"
 
-[node name="RightPosition" parent="Pokemons/Pokemon/Sprites/Walk" index="0"]
-position = Vector2( 3.5, -2.5 )
-
-[node name="LeftPosition" parent="Pokemons/Pokemon/Sprites/Walk" index="1"]
-position = Vector2( -4.5, 1.5 )
-
-[node name="ShootPosition" parent="Pokemons/Pokemon/Sprites/Walk" index="3"]
-position = Vector2( -7.5, -2.5 )
-
-[node name="Idle" parent="Pokemons/Pokemon/Sprites" index="1"]
-texture = ExtResource( 10 )
+[node name="Idle" parent="Pokemons/Pokemon/Sprites" index="0"]
+offset = Vector2( -2, 2 )
 hframes = 8
-frame = 51
+centering = 2
 
-[node name="RightPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="0"]
-position = Vector2( 0, -7 )
-
-[node name="LeftPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="1"]
-position = Vector2( -3, -5 )
-
-[node name="CenterPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="2"]
-position = Vector2( 2, -2 )
-
-[node name="ShootPosition" parent="Pokemons/Pokemon/Sprites/Idle" index="3"]
-position = Vector2( -8, -2 )
+[node name="Walk" parent="Pokemons/Pokemon/Sprites" index="1"]
+centering = 2
 
 [node name="Shoot" parent="Pokemons/Pokemon/Sprites" index="2"]
-texture = ExtResource( 7 )
 hframes = 12
-frame = 28
+centering = 2
 
 [node name="Strike" parent="Pokemons/Pokemon/Sprites" index="3"]
-texture = ExtResource( 9 )
+offset = Vector2( -3, 2 )
 hframes = 10
-frame = 66
-
-[node name="RightPosition" parent="Pokemons/Pokemon/Sprites/Strike" index="0"]
-position = Vector2( -28, -3 )
-
-[node name="LeftPosition" parent="Pokemons/Pokemon/Sprites/Strike" index="1"]
-position = Vector2( -7, -3 )
-
-[node name="CenterPosition" parent="Pokemons/Pokemon/Sprites/Strike" index="2"]
-position = Vector2( 3, -2 )
-
-[node name="ShootPosition" parent="Pokemons/Pokemon/Sprites/Strike" index="3"]
-position = Vector2( -7, 0 )
+centering = 2
 
 [node name="RedCircle" parent="Pokemons/Pokemon/DebugSprites" index="0"]
 position = Vector2( 3.5, -2.5 )

@@ -370,11 +370,15 @@ func on_frame_changed():
 	if centering == Centering.CENTERED_OFFSET:
 		offset = -center_offsets[frame]
 		collision_container.position = collision_container.position - old_offset + offset
-
-	right_position.position = right_offsets[frame]
-	left_position.position = left_offsets[frame]
-	center_position.position = center_offsets[frame]
-	shoot_position.position = shoot_offsets[frame]
+	
+	if right_offsets.size() > 0:
+		right_position.position = right_offsets[frame]
+	if left_offsets.size() > 0:
+		left_position.position = left_offsets[frame]
+	if center_offsets.size() > 0:
+		center_position.position = center_offsets[frame]
+	if shoot_offsets.size() > 0:
+		shoot_position.position = shoot_offsets[frame]
 	offset_positions(offset)
 
 
