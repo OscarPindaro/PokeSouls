@@ -144,9 +144,19 @@ func get_centering():
 
 
 func set_frame(new_value : int) -> void:
+	# if negative value, do nothing
+	if new_value < 0:
+		property_list_changed_notify()
+		return
+	# if exceed frames, do nothing
+	if curr_sprite != null and new_value >= curr_sprite.vframes * curr_sprite.hframes:
+		property_list_changed_notify()
+		return
 	frame = new_value
 	if curr_sprite != null:
 		curr_sprite.set_frame(frame)
+	#property_list_changed_notify()
+	
 
 func get_frame()->int:
 	return frame
