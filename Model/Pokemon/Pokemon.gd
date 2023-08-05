@@ -130,9 +130,9 @@ func load_pokemon():
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
 		# load the texture sprites and information
-		sprite.load_properties(pokemon_name)
+		sprite.set_pokemon_name(pokemon_name)
 		# load the collision shape
-		sprite.load_collisions()
+		sprite.load_all()
 		create_anim_player_track(sprite, anim_name)
 	create_RESET_animation(IDLE_SPRITE)
 	update_animation()

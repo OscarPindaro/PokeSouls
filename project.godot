@@ -147,7 +147,7 @@ _global_script_classes=[ {
 "base": "Node2D",
 "class": "PokemonModel",
 "language": "GDScript",
-"path": "res://Model/Pokemon/PokemonModel.gd"
+"path": "res://Model/Pokemon/PokemonSpriteCollection.gd"
 }, {
 "base": "Sprite",
 "class": "PokemonSprite",
@@ -232,7 +232,7 @@ _global_script_class_icons={
 "Leaf": "res://addons/beehave/icons/action.svg",
 "LimiterDecorator": "res://addons/beehave/icons/limiter.svg",
 "Pokemon": "res://Model/Pokemon/Pokemon.png",
-"PokemonModel": "",
+"PokemonModel": "res://Model/Pokemon/pokemon_collection.png",
 "PokemonSprite": "",
 "PushdownAutomata": "",
 "SelectorComposite": "res://addons/beehave/icons/selector.svg",

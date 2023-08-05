@@ -1,6 +1,6 @@
 tool
 extends Node2D
-class_name PokemonModel
+class_name PokemonModel, "res://Model/Pokemon/pokemon_collection.png"
 
 signal sprite_changed(old_sprite, new_sprite)
 # this position must be global Vector2 positions
@@ -26,7 +26,7 @@ var curr_shoot_pos : Vector2 = Vector2(0,0) setget set_shoot_pos, get_shoot_pos
 
 # child property
 export(String) var pokemon_name : String setget set_pokemon_name, get_pokemon_name
-export(String) var animation_name : String setget set_animation_name, get_animation_name
+export(String) var animation_name : String = "Idle" setget set_animation_name, get_animation_name
 export(bool) var collision_visible : bool setget set_collision_visible, get_collision_visible
 export (PokemonSprite.Centering)  var centering setget set_centering, get_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
