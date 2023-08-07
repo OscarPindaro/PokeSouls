@@ -5,15 +5,31 @@
 
 [node name="PokemonSpriteCollection" type="Node2D"]
 script = ExtResource( 2 )
+pokemon_name = "Squirtle"
+animation_name = "Walk"
 
 [node name="Idle" parent="." instance=ExtResource( 1 )]
-animation_name = "Idle"
+visible = false
+texture = null
+hframes = 8
+pokemon_name = "Squirtle"
 
 [node name="Walk" parent="." instance=ExtResource( 1 )]
+texture = null
+hframes = 4
+pokemon_name = "Squirtle"
 animation_name = "Walk"
 
 [node name="Shoot" parent="." instance=ExtResource( 1 )]
+visible = false
+texture = null
+hframes = 11
+pokemon_name = "Squirtle"
 animation_name = "Shoot"
 
 [node name="Strike" parent="." instance=ExtResource( 1 )]
+visible = false
+texture = null
+hframes = 10
+pokemon_name = "Squirtle"
 animation_name = "Strike"

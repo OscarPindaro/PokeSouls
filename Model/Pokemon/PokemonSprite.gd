@@ -15,6 +15,7 @@ var animation_dict: Dictionary
 
 export(String) onready var pokemon_name setget set_pokemon_name, get_pokemon_name
 export(String) onready var animation_name : String setget set_animation_name, get_animation_name
+export(bool) onready var debug : bool = false setget set_debug, get_debug
 var animation_names : PoolStringArray  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
@@ -177,6 +178,21 @@ func set_animation_name(new_name : String) -> void:
 func get_animation_name() -> String:
 	return animation_name
 
+
+func set_debug(debug_value: bool):
+	debug = debug_value
+	if ready:
+		if $RightPosition/RedCircle != null:
+			$RightPosition/RedCircle.visible = debug_value
+		if $LeftPosition/BlueCircle != null:
+			$LeftPosition/BlueCircle.visible = debug_value
+		if $CenterPosition/GreenCircle != null:
+			$CenterPosition/GreenCircle.visible = debug_value
+		if $ShootPosition/BlackCircle != null:
+			$ShootPosition/BlackCircle.visible = debug_value
+
+func get_debug() -> bool:
+	return debug
 #******************** END SETGET ***********
 func _init() -> void:
 	var file: File = File.new()
