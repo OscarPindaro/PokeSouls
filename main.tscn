@@ -1,9 +1,8 @@
 [gd_scene load_steps=2 format=2]
 
-[ext_resource path="res://Model/Character/Character.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Model/Pokemon/PokemonSpriteCollection.tscn" type="PackedScene" id=1]
 
 [node name="Main" type="Node"]
 
-[node name="Character" parent="." instance=ExtResource( 1 )]
-position = Vector2( 224, 182 )
-scale = Vector2( 10, 10 )
+[node name="PokemonSpriteCollection" parent="." instance=ExtResource( 1 )]
+animation_name = "Idle"

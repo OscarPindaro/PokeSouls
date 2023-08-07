@@ -26,6 +26,7 @@ var curr_shoot_pos : Vector2 = Vector2(0,0) setget set_shoot_pos, get_shoot_pos
 
 # pokemon animation pplayer
 onready var poke_anim_player: PokemonAnimationPlayer = $PokemonAnimationPlayer
+onready var sprites: Node2D = $Sprites
 
 # child property
 export(String) var pokemon_name : String = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
@@ -34,6 +35,7 @@ export(bool) var collision_visible : bool setget set_collision_visible, get_coll
 export (PokemonSprite.Centering)  var centering setget set_centering, get_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 export(int) var frame setget set_frame, get_frame
+export(bool) var play : bool = false setget set_play
 
 # list of animations
 var animation_names : PoolStringArray  = [
@@ -104,12 +106,12 @@ func get_shoot_pos():
 func set_pokemon_name(new_name : String)-> void:
 	var real_name = new_name.to_lower().capitalize()
 	# this tries to solve the reload problem
-	if $Sprites == null:
+	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
 	if real_name in poke_dict:
-		for poke_sprite in $Sprites.get_children():
+		for poke_sprite in sprites.get_children():
 			poke_sprite.set_pokemon_name(real_name)
 			poke_sprite.set_visible(false)
 		pokemon_name = real_name
@@ -117,32 +119,36 @@ func set_pokemon_name(new_name : String)-> void:
 		set_frame(0)
 		property_list_changed_notify()
 		poke_anim_player.build_animations()
-		var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
-		if direction == null:
-			direction = "DOWN"
+		self.set_animation_property()
+
+func set_animation_property() -> void:
+	var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
+	if direction == null:
+		direction = "DOWN"
+	if self.play == true:
 		poke_anim_player.play("%s_%s" %  [animation_name, direction])
-		poke_anim_player.stop()
-		
+	else:
+		poke_anim_player.set_assigned_animation("%s_%s" %  [animation_name, direction])
+
 func get_pokemon_name() -> String:
 	return pokemon_name
 
 func set_animation_name(new_name : String):
-
-	if $Sprites == null:
+	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
+		
 	if new_name in animation_names:
 		animation_name = new_name
-		for sprite in $Sprites.get_children():
+		
+		for sprite in sprites.get_children():
+			print(sprite.get_animation_name())
 			if new_name == sprite.get_animation_name():
 				set_sprite(sprite)
 				set_frame(0)
-				var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
-				if direction == null:
-					direction = "DOWN"
-				poke_anim_player.play("%s_%s" %  [animation_name, direction])
-				poke_anim_player.stop()
+				self.set_animation_property()
+				# poke_anim_player.stop()
 				property_list_changed_notify()
 				return
 
@@ -153,12 +159,12 @@ func get_animation_name() -> String:
 
 # collision visible
 func set_collision_visible(new_value : bool):
-	if $Sprites == null:
+	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
 	collision_visible = new_value
-	for child in $Sprites.get_children():
+	for child in sprites.get_children():
 		child.set_collision_visible(new_value)
 
 func get_collision_visible() -> bool:
@@ -166,12 +172,12 @@ func get_collision_visible() -> bool:
 
 # centering
 func set_centering(new_value):
-	if $Sprites == null:
+	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
 	centering = new_value
-	for child in $Sprites.get_children():
+	for child in sprites.get_children():
 		child.set_centering(new_value)
 
 func get_centering():
@@ -195,6 +201,12 @@ func set_frame(new_value : int) -> void:
 func get_frame()->int:
 	return frame
 
+func set_play(play_value)-> void:
+	if play_value == true:
+		poke_anim_player.play()
+	else:
+		poke_anim_player.stop()
+	play = play_value
 
 func _init() -> void:
 	var file: File = File.new()
@@ -203,11 +215,13 @@ func _init() -> void:
 		push_error("Problem while opening the pokemon-folder association file.")
 	poke_dict = parse_json(file.get_as_text())
 	file.close()
-	
 
 func _ready():
 	# instancing of pokemon sprite instances
-	if $Sprites.get_child_count() == 0:
+	# a lot of garbage code since it's a mess creating tools
+	if sprites == null:
+		sprites = $Sprites
+	if sprites.get_child_count() == 0:
 		for anim_name in animation_names:
 			var poke_sprite = pokemon_sprite_scene.instance()
 			poke_sprite.set_animation_name(anim_name)
@@ -222,12 +236,7 @@ func _ready():
 	set_collision_visible(collision_visible)
 	set_centering(centering)
 	poke_anim_player.build_animations()
-	var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
-	if direction == null:
-		direction = "DOWN"
-	
-	poke_anim_player.play("%s_%s" %  [animation_name, direction])
-	print(poke_anim_player)
+	self.set_animation_property()
 	# poke_anim_player.stop()
 	# curr_sprite = get_node(default_sprite_path)
 	# set_right_pos(curr_sprite.get_right_position().global_position)

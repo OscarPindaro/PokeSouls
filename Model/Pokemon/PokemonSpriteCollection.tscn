@@ -563,17 +563,18 @@ sprites_path = NodePath("../Sprites")
 
 [node name="Idle" parent="Sprites" instance=ExtResource( 1 )]
 visible = false
-frame = 1
 
 [node name="Walk" parent="Sprites" instance=ExtResource( 1 )]
 visible = false
 texture = ExtResource( 4 )
 hframes = 6
+frame = 2
 animation_name = "Walk"
 
 [node name="Shoot" parent="Sprites" instance=ExtResource( 1 )]
 texture = ExtResource( 3 )
 hframes = 6
+frame = 1
 animation_name = "Shoot"
 
 [node name="Strike" parent="Sprites" instance=ExtResource( 1 )]
