@@ -14,3 +14,6 @@ animation_name = "Walk"
 
 [node name="Shoot" parent="." instance=ExtResource( 1 )]
 animation_name = "Shoot"
+
+[node name="Strike" parent="." instance=ExtResource( 1 )]
+animation_name = "Strike"
