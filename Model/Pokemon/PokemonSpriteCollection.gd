@@ -31,11 +31,12 @@ onready var sprites: Node2D = $Sprites
 # child property
 export(String) var pokemon_name : String = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
 export(String) var animation_name : String = "Idle" setget set_animation_name, get_animation_name
-export(bool) var collision_visible : bool setget set_collision_visible, get_collision_visible
 export (PokemonSprite.Centering)  var centering setget set_centering, get_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 export(int) var frame setget set_frame, get_frame
 export(bool) var play : bool = false setget set_play
+export(bool) var collision_visible : bool setget set_collision_visible, get_collision_visible
+export(bool) var visual_debug : bool setget set_visual_debug
 
 # list of animations
 var animation_names : PoolStringArray  = [
@@ -143,7 +144,6 @@ func set_animation_name(new_name : String):
 		animation_name = new_name
 		
 		for sprite in sprites.get_children():
-			print(sprite.get_animation_name())
 			if new_name == sprite.get_animation_name():
 				set_sprite(sprite)
 				set_frame(0)
@@ -169,6 +169,15 @@ func set_collision_visible(new_value : bool):
 
 func get_collision_visible() -> bool:
 	return collision_visible
+
+func set_visual_debug(debug_value : bool) -> void:
+	if sprites == null:
+		return
+	if poke_anim_player == null:
+		return
+	visual_debug = debug_value
+	for child in sprites.get_children():
+		child.set_debug(visual_debug)
 
 # centering
 func set_centering(new_value):
