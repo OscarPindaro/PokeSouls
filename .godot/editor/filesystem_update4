@@ -2,3 +2,6 @@ res://default_env.tres
 res://Model/Pokemon/PokemonSprite.tscn
 res://Model/Pokemon/PokemonSprite.gd
 res://Model/utils/CollisionExctractor.gd
+res://Model/Pokemon/PokemonSpriteCollection.tscn
+res://Model/Pokemon/PokemonSpriteCollection.gd
+res://Model/Pokemon/PokemonAnimationPlayer.gd

@@ -369,6 +369,8 @@ func get_color_position(
 
 func load_collisions() -> void:
 	#collision_container = get_node_or_null(COLLISIONS_NODE_NAME)
+	if collision_container == null:
+		return
 	collision_container.remove_collisions()
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")
@@ -376,6 +378,9 @@ func load_collisions() -> void:
 	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():
+	if right_offsets == null or left_offsets == null \
+		or center_offsets == null or shoot_offsets == null:
+		return
 	var old_offset : Vector2 = offset
 	if centering == Centering.CENTERED_OFFSET:
 		offset = -center_offsets[frame]

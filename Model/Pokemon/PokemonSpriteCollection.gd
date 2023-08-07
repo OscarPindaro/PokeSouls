@@ -1,6 +1,8 @@
 @tool
+@icon("res://Model/Pokemon/pokemon_collection.png")
 extends Node2D
-class_name PokemonSpriteCollection, "res://Model/Pokemon/pokemon_collection.png"
+class_name PokemonSpriteCollection
+
 
 signal sprite_changed(old_sprite, new_sprite)
 # this position must be global Vector2 positions
@@ -31,7 +33,7 @@ var curr_shoot_pos : Vector2 = Vector2(0,0): get = get_shoot_pos, set = set_shoo
 # child property
 @export var pokemon_name: String = "Bulbasaur": get = get_pokemon_name, set = set_pokemon_name
 @export var animation_name: String = "Idle": get = get_animation_name, set = set_animation_name
-@export (PokemonSprite.Centering)  var centering : get = get_centering, set = set_centering
+@export var centering : PokemonSprite.Centering: get = get_centering, set = set_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 @export var frame: int: get = get_frame, set = set_frame
 @export var play: bool = false: set = set_play
@@ -39,7 +41,7 @@ var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 @export var visual_debug: bool: set = set_visual_debug
 
 # list of animations
-var animation_names : PackedStringArray  = [
+var animation_names : Array[String]  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
 	'Rotate', 'Dance', 'Shake', 'EventSleep', 'Wake', 'Eat', 'Tumble',
@@ -218,14 +220,12 @@ func set_play(play_value)-> void:
 	play = play_value
 
 func _init() -> void:
-	var file: File = File.new()
-	var error_value = file.open(poke_num_file_path, File.READ)
+	var file = FileAccess.open(poke_num_file_path, FileAccess.READ)
+	var error_value = FileAccess.get_open_error()
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
-	var test_json_conv = JSON.new()
-	test_json_conv.parse(file.get_as_text())
-	poke_dict = test_json_conv.get_data()
-	file.close()
+	poke_dict = JSON.parse_string(file.get_as_text())
+	file = null
 
 func _ready():
 	# instancing of pokemon sprite instances
