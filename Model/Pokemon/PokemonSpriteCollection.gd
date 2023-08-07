@@ -1,6 +1,6 @@
 tool
 extends Node2D
-class_name PokemonModel, "res://Model/Pokemon/pokemon_collection.png"
+class_name PokemonSpriteCollection, "res://Model/Pokemon/pokemon_collection.png"
 
 signal sprite_changed(old_sprite, new_sprite)
 # this position must be global Vector2 positions
@@ -24,8 +24,11 @@ var curr_left_pos : Vector2 = Vector2(0,0) setget set_left_pos, get_left_pos
 var curr_center_pos : Vector2 = Vector2(0,0) setget set_center_pos, get_center_pos
 var curr_shoot_pos : Vector2 = Vector2(0,0) setget set_shoot_pos, get_shoot_pos
 
+# pokemon animation pplayer
+onready var poke_anim_player: PokemonAnimationPlayer = $PokemonAnimationPlayer
+
 # child property
-export(String) var pokemon_name : String setget set_pokemon_name, get_pokemon_name
+export(String) var pokemon_name : String = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
 export(String) var animation_name : String = "Idle" setget set_animation_name, get_animation_name
 export(bool) var collision_visible : bool setget set_collision_visible, get_collision_visible
 export (PokemonSprite.Centering)  var centering setget set_centering, get_centering
@@ -100,26 +103,46 @@ func get_shoot_pos():
 #pokemon name
 func set_pokemon_name(new_name : String)-> void:
 	var real_name = new_name.to_lower().capitalize()
+	# this tries to solve the reload problem
+	if $Sprites == null:
+		return
+	if poke_anim_player == null:
+		return
 	if real_name in poke_dict:
-		for poke_sprite in get_children():
+		for poke_sprite in $Sprites.get_children():
 			poke_sprite.set_pokemon_name(real_name)
 			poke_sprite.set_visible(false)
 		pokemon_name = real_name
 		set_animation_name(animation_name)
 		set_frame(0)
 		property_list_changed_notify()
-	
+		poke_anim_player.build_animations()
+		var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
+		if direction == null:
+			direction = "DOWN"
+		poke_anim_player.play("%s_%s" %  [animation_name, direction])
+		poke_anim_player.stop()
 		
 func get_pokemon_name() -> String:
 	return pokemon_name
 
 func set_animation_name(new_name : String):
+
+	if $Sprites == null:
+		return
+	if poke_anim_player == null:
+		return
 	if new_name in animation_names:
 		animation_name = new_name
-		for sprite in get_children():
+		for sprite in $Sprites.get_children():
 			if new_name == sprite.get_animation_name():
 				set_sprite(sprite)
 				set_frame(0)
+				var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
+				if direction == null:
+					direction = "DOWN"
+				poke_anim_player.play("%s_%s" %  [animation_name, direction])
+				poke_anim_player.stop()
 				property_list_changed_notify()
 				return
 
@@ -130,8 +153,12 @@ func get_animation_name() -> String:
 
 # collision visible
 func set_collision_visible(new_value : bool):
+	if $Sprites == null:
+		return
+	if poke_anim_player == null:
+		return
 	collision_visible = new_value
-	for child in get_children():
+	for child in $Sprites.get_children():
 		child.set_collision_visible(new_value)
 
 func get_collision_visible() -> bool:
@@ -139,8 +166,12 @@ func get_collision_visible() -> bool:
 
 # centering
 func set_centering(new_value):
+	if $Sprites == null:
+		return
+	if poke_anim_player == null:
+		return
 	centering = new_value
-	for child in get_children():
+	for child in $Sprites.get_children():
 		child.set_centering(new_value)
 
 func get_centering():
@@ -176,7 +207,7 @@ func _init() -> void:
 
 func _ready():
 	# instancing of pokemon sprite instances
-	if get_child_count() == 0:
+	if $Sprites.get_child_count() == 0:
 		for anim_name in animation_names:
 			var poke_sprite = pokemon_sprite_scene.instance()
 			poke_sprite.set_animation_name(anim_name)
@@ -190,6 +221,14 @@ func _ready():
 		set_animation_name(animation_name)
 	set_collision_visible(collision_visible)
 	set_centering(centering)
+	poke_anim_player.build_animations()
+	var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
+	if direction == null:
+		direction = "DOWN"
+	
+	poke_anim_player.play("%s_%s" %  [animation_name, direction])
+	print(poke_anim_player)
+	# poke_anim_player.stop()
 	# curr_sprite = get_node(default_sprite_path)
 	# set_right_pos(curr_sprite.get_right_position().global_position)
 	# set_left_pos(curr_sprite.get_left_position().global_position)
