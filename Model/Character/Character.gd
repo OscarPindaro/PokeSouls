@@ -2,7 +2,7 @@ extends Node2D
 class_name Character
 
 
-onready var pokemons = $Pokemons.get_children()
+@onready var pokemons = $Pokemons.get_children()
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"

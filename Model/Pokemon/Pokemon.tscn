@@ -77,8 +77,8 @@ tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0 ),
-"transitions": PoolRealArray( 1 ),
+"times": PackedFloat32Array( 0 ),
+"transitions": PackedFloat32Array( 1 ),
 "update": 1,
 "values": [ 0 ]
 }
@@ -212,9 +212,9 @@ loop = true
 step = 0.166667
 
 [sub_resource type="RectangleShape2D" id=25]
-extents = Vector2( 0, 0 )
+size = Vector2( 0, 0 )
 
-[node name="Pokemon" type="KinematicBody2D"]
+[node name="Pokemon" type="CharacterBody2D"]
 
 [node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
 anims/Eat_DOWN = SubResource( 26 )

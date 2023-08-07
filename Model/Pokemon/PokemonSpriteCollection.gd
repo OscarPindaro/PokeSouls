@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 class_name PokemonSpriteCollection, "res://Model/Pokemon/pokemon_collection.png"
 
@@ -19,27 +19,27 @@ var DEFAULT_ANIMATION : String = "Idle"
 
 
 var curr_sprite : PokemonSprite  
-var curr_right_pos : Vector2 = Vector2(0,0) setget set_right_pos, get_right_pos
-var curr_left_pos : Vector2 = Vector2(0,0) setget set_left_pos, get_left_pos
-var curr_center_pos : Vector2 = Vector2(0,0) setget set_center_pos, get_center_pos
-var curr_shoot_pos : Vector2 = Vector2(0,0) setget set_shoot_pos, get_shoot_pos
+var curr_right_pos : Vector2 = Vector2(0,0): get = get_right_pos, set = set_right_pos
+var curr_left_pos : Vector2 = Vector2(0,0): get = get_left_pos, set = set_left_pos
+var curr_center_pos : Vector2 = Vector2(0,0): get = get_center_pos, set = set_center_pos
+var curr_shoot_pos : Vector2 = Vector2(0,0): get = get_shoot_pos, set = set_shoot_pos
 
 # pokemon animation pplayer
-onready var poke_anim_player: PokemonAnimationPlayer = $PokemonAnimationPlayer
-onready var sprites: Node2D = $Sprites
+@onready var poke_anim_player: PokemonAnimationPlayer = $PokemonAnimationPlayer
+@onready var sprites: Node2D = $Sprites
 
 # child property
-export(String) var pokemon_name : String = "Bulbasaur" setget set_pokemon_name, get_pokemon_name
-export(String) var animation_name : String = "Idle" setget set_animation_name, get_animation_name
-export (PokemonSprite.Centering)  var centering setget set_centering, get_centering
+@export var pokemon_name: String = "Bulbasaur": get = get_pokemon_name, set = set_pokemon_name
+@export var animation_name: String = "Idle": get = get_animation_name, set = set_animation_name
+@export (PokemonSprite.Centering)  var centering : get = get_centering, set = set_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
-export(int) var frame setget set_frame, get_frame
-export(bool) var play : bool = false setget set_play
-export(bool) var collision_visible : bool setget set_collision_visible, get_collision_visible
-export(bool) var visual_debug : bool setget set_visual_debug
+@export var frame: int: get = get_frame, set = set_frame
+@export var play: bool = false: set = set_play
+@export var collision_visible: bool: get = get_collision_visible, set = set_collision_visible
+@export var visual_debug: bool: set = set_visual_debug
 
 # list of animations
-var animation_names : PoolStringArray  = [
+var animation_names : PackedStringArray  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
 	'Rotate', 'Dance', 'Shake', 'EventSleep', 'Wake', 'Eat', 'Tumble',
@@ -118,7 +118,7 @@ func set_pokemon_name(new_name : String)-> void:
 		pokemon_name = real_name
 		set_animation_name(animation_name)
 		set_frame(0)
-		property_list_changed_notify()
+		notify_property_list_changed()
 		poke_anim_player.build_animations()
 		self.set_animation_property()
 
@@ -149,7 +149,7 @@ func set_animation_name(new_name : String):
 				set_frame(0)
 				self.set_animation_property()
 				# poke_anim_player.stop()
-				property_list_changed_notify()
+				notify_property_list_changed()
 				return
 
 	
@@ -196,11 +196,11 @@ func get_centering():
 func set_frame(new_value : int) -> void:
 	# if negative value, do nothing
 	if new_value < 0:
-		property_list_changed_notify()
+		notify_property_list_changed()
 		return
 	# if exceed frames, do nothing
 	if curr_sprite != null and new_value >= curr_sprite.vframes * curr_sprite.hframes:
-		property_list_changed_notify()
+		notify_property_list_changed()
 		return
 	frame = new_value
 	if curr_sprite != null:
@@ -222,7 +222,9 @@ func _init() -> void:
 	var error_value = file.open(poke_num_file_path, File.READ)
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
-	poke_dict = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	poke_dict = test_json_conv.get_data()
 	file.close()
 
 func _ready():
@@ -232,7 +234,7 @@ func _ready():
 		sprites = $Sprites
 	if sprites.get_child_count() == 0:
 		for anim_name in animation_names:
-			var poke_sprite = pokemon_sprite_scene.instance()
+			var poke_sprite = pokemon_sprite_scene.instantiate()
 			poke_sprite.set_animation_name(anim_name)
 			poke_sprite.set_visible(false)
 			poke_sprite.set_name(anim_name)

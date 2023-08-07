@@ -1,0 +1,4 @@
+res://default_env.tres
+res://Model/Pokemon/PokemonSprite.tscn
+res://Model/Pokemon/PokemonSprite.gd
+res://Model/utils/CollisionExctractor.gd

@@ -1,5 +1,5 @@
-tool
-extends Sprite
+@tool
+extends Sprite2D
 class_name PokemonSprite
 
 # PATHS
@@ -13,10 +13,10 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
-export(String) onready var pokemon_name setget set_pokemon_name, get_pokemon_name
-export(String) onready var animation_name : String setget set_animation_name, get_animation_name
-export(bool) onready var debug : bool = false setget set_debug, get_debug
-var animation_names : PoolStringArray  = [
+@export var pokemon_name : String = "" : set = set_pokemon_name, get = get_pokemon_name
+@export var animation_name : String : set = set_animation_name, get =get_animation_name
+@export var debug : bool = false : set = set_debug, get = get_debug
+var animation_names : Array[String]  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
 	'Rotate', 'Dance', 'Shake', 'EventSleep', 'Wake', 'Eat', 'Tumble',
@@ -53,10 +53,10 @@ var LEFT_POS_NAME : String =  "LeftPosition"
 var CENTER_POS_NAME : String =  "CenterPosition"
 var SHOOT_POS_NAME : String =  "ShootPosition"
 # offsets position
-onready var right_position : Position2D = get_node(RIGHT_POS_NAME)  setget , get_right_position
-onready var left_position : Position2D = get_node(LEFT_POS_NAME) setget , get_left_position
-onready var center_position : Position2D = get_node(CENTER_POS_NAME) setget , get_center_position
-onready var shoot_position : Position2D = get_node(SHOOT_POS_NAME) setget , get_shoot_position
+@onready var right_position : Marker2D = get_node(RIGHT_POS_NAME) :  get = get_right_position
+@onready var left_position : Marker2D = get_node(LEFT_POS_NAME) : get = get_left_position
+@onready var center_position : Marker2D = get_node(CENTER_POS_NAME) :get = get_center_position
+@onready var shoot_position : Marker2D = get_node(SHOOT_POS_NAME) : get = get_shoot_position
 
 var old_center_position : Vector2 = Vector2.ZERO
 
@@ -68,13 +68,11 @@ var BLACK = Color(0, 0, 0)
 
 # Collisions
 var COLLISIONS_NODE_NAME : String = "Collisions"
-onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
-export(bool) onready var collision_visible : bool setget set_collision_visible, get_collision_visible
+@onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
+@export var collision_visible : bool : set = set_collision_visible, get = get_collision_visible
 
 enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
-export (Centering) var centering setget set_centering, get_centering
-
-var ready : bool = false
+@export var centering : Centering : set = set_centering, get = get_centering
 
 
 # SETTERS AND GETTERS
@@ -84,7 +82,7 @@ func set_pokemon_name(new_name : String):
 	if new_name in poke_dict:
 		pokemon_name = new_name
 		load_all()
-	property_list_changed_notify()
+	notify_property_list_changed()
 
 func get_pokemon_name() -> String:
 	return pokemon_name
@@ -99,7 +97,7 @@ func set_collision_visible(new_value : bool):
 	if collision_container == null:
 		collision_container = get_node(COLLISIONS_NODE_NAME)
 	collision_container.set_visible(new_value)
-	property_list_changed_notify()
+	notify_property_list_changed()
 
 
 func get_collision_visible() -> bool:
@@ -137,7 +135,7 @@ func set_centering(new_value):
 			center_position =get_node(CENTER_POS_NAME)
 		offset = -center_position.position
 	offset_child(offset)	
-	property_list_changed_notify()
+	notify_property_list_changed()
 	return
 
 func offset_child(offset_value : Vector2) -> void:
@@ -154,16 +152,16 @@ func get_centering():
 	return centering
 
 # position nodes
-func get_right_position() -> Position2D:
+func get_right_position() -> Marker2D:
 	return right_position
 
-func get_left_position() -> Position2D:
+func get_left_position() -> Marker2D:
 	return left_position
 
-func get_center_position() -> Position2D:
+func get_center_position() -> Marker2D:
 	return center_position
 
-func get_shoot_position() -> Position2D:
+func get_shoot_position() -> Marker2D:
 	return shoot_position
 
 # animation name
@@ -171,7 +169,7 @@ func set_animation_name(new_name : String) -> void:
 	if new_name in animation_names:
 		animation_name = new_name
 		load_all()
-		property_list_changed_notify()
+		notify_property_list_changed()
 		
 
 
@@ -195,20 +193,14 @@ func get_debug() -> bool:
 	return debug
 #******************** END SETGET ***********
 func _init() -> void:
-	var file: File = File.new()
-	var error_value = file.open(poke_num_file_path, File.READ)
-	if error_value != OK:
-		push_error("Problem while opening the pokemon-folder association file.")
-	poke_dict = parse_json(file.get_as_text())
+	var file = FileAccess.open(poke_num_file_path, FileAccess.READ)
+	poke_dict = JSON.parse_string(file.get_as_text())
 	file.close()
 
 func _ready():
-	ready = true
 	self.texture = null
 	load_all()
-	var err = connect("frame_changed", self, "on_frame_changed")
-	if err != OK:
-		push_warning("probelm while connecting the frame_changed signal")
+	frame_changed.connect(on_frame_changed)
 
 func is_ready():
 	var is_empty : bool = pokemon_name == "" or animation_name == ""
@@ -227,7 +219,7 @@ func load_all():
 	load_collisions()
 	on_frame_changed()
 	set_centering(x)
-	property_list_changed_notify()
+	notify_property_list_changed()
 
 func load_sprite() -> void:
 	#add_positions()
@@ -238,20 +230,23 @@ func load_sprite() -> void:
 		load_error_texture()
 		return 
 	var folder_number = poke_dict[pokemon_name]
-	var anim_data_file = File.new()
-	var err = anim_data_file.open(anim_data_path % [folder_number], File.READ)
+	#var file = FileAccess.open(poke_num_file_path, FileAccess.READ)
+	#var json_reader = JSON.new()
+	#poke_dict = json_reader.parse_string(file.get_as_text())
+	var anim_data_file = FileAccess.open(anim_data_path % [folder_number], FileAccess.READ)
+	var err = FileAccess.get_open_error()
 	if err != OK:
 		load_error_texture()
 	else:
 		# load animation texture
-		animation_dict = parse_json(anim_data_file.get_as_text())
+		animation_dict = JSON.parse_string(anim_data_file.get_as_text())
+		anim_data_file = null
 		# "strike" bay be corrected to "hit", for example
 		var anim_name: String = get_anim_property(animation_name, "Name")
 		if anim_name == "":
 			load_error_texture()
 		else:
 			self.texture = load(texture_path % [folder_number, get_anim_filename(anim_name)])
-			self.texture.flags = 0
 			frame_heigth = get_anim_property(animation_name, "FrameHeight").to_int()
 			frame_width = get_anim_property(animation_name, "FrameWidth").to_int()
 			self.hframes = int(self.texture.get_width() / frame_width)
@@ -259,7 +254,7 @@ func load_sprite() -> void:
 			self.visible = true
 			self.frame = 0
 
-	anim_data_file.close()
+	anim_data_file = null
 
 func load_error_texture() -> void:
 	loaded_error = true
@@ -309,10 +304,9 @@ func load_offsets():
 	var anim_name: String = get_anim_property(animation_name, "Name")
 	var file_name = "%s-Offsets.png" % [anim_name]
 	var offset_text_path = texture_path % [folder_number, file_name]
-	var texture = load(offset_text_path)
-	texture.flags = 0
+	var loaded_texture = load(offset_text_path)
 	# convert to image
-	var image: Image = texture.get_data()
+	var image: Image = loaded_texture.get_image()
 	# vframes is the number of vertical frames in the sprite
 	for i in range(vframes):
 		for j in range(hframes):
@@ -363,14 +357,14 @@ func clear_offsets():
 func get_color_position(
 	image: Image, color: Color, start_row: int, end_row: int, start_col: int, end_col: int
 ) -> Vector2:
-	image.lock()
+	#image.lock()
 	for i in range(start_row, end_row):
 		for j in range(start_col, end_col):
 			var pixel_value = image.get_pixel(j, i)
 			if pixel_value.is_equal_approx(color):
-				image.unlock()
+				#image.unlock()
 				return Vector2(j - start_col +PIXEL_OFFEST, i - start_row + PIXEL_OFFEST)
-	image.unlock()
+	#image.unlock()
 	return Vector2(0, 0)
 
 func load_collisions() -> void:
@@ -378,7 +372,7 @@ func load_collisions() -> void:
 	collision_container.remove_collisions()
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")
-	var collisions_arr : Array = CollisionExctractor.new().get_collision_polygons(self)
+	var collisions_arr : Array = CollExtract.get_collision_polygons(self)
 	collision_container.add_collisions(collisions_arr)
 
 func on_frame_changed():

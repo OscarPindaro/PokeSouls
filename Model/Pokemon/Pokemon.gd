@@ -1,4 +1,4 @@
-tool
+@tool
 extends Node2D
 class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
 
@@ -14,7 +14,7 @@ var sprite_collab_path: String = "res://Images/SpriteCollab/"
 var poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
 var anim_data_file_path: String = "res://Images/SpriteCollab/sprite/%s/AnimData.json"
 var anim_file_path: String = "res://Images/SpriteCollab/sprite/%s/%s"
-onready var IDLE_SPRITE: Sprite = $Sprites/Idle
+@onready var IDLE_SPRITE: Sprite2D = $Sprites/Idle
 
 # correnspondences dictionaries
 var poke_num_dict: Dictionary
@@ -22,19 +22,19 @@ var anim_dict: Dictionary
 
 
 
-export var pokemon_name: String = "" setget set_pk_name, get_pk_name
+@export var pokemon_name: String = "": get = get_pk_name, set = set_pk_name
 
 # animation player path
-export(NodePath) var anim_player_path
-onready var anim_player: AnimationPlayer = get_node(anim_player_path)
+@export var anim_player_path: NodePath
+@onready var anim_player: AnimationPlayer = get_node(anim_player_path)
 
 # list of spritesheet of the pokemon
-export(NodePath) var sprites_path
-onready var sprites: Array = get_node(sprites_path).get_children()
-export var sprite_names = PoolStringArray()
+@export var sprites_path: NodePath
+@onready var sprites: Array = get_node(sprites_path).get_children()
+@export var sprite_names = PackedStringArray()
 
 # this child is used to remove the warning about collision shapes
-onready var uselessCollisionShape: CollisionShape2D = $UselessForWarning
+@onready var uselessCollisionShape: CollisionShape2D = $UselessForWarning
 
 # used since setters are called without gaurantee that ready was called
 var is_ready_called = false
@@ -43,23 +43,23 @@ var is_ready_called = false
 # in the animation spritesheet
 enum Direction { DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT, UP, UP_LEFT, LEFT, DOWN_LEFT }
 
-export(Direction) var animation_direction setget set_direction
-onready var old_animation_direction = animation_direction
-export(String) var animation_name = "RESET" setget set_anim_name, get_anim_name
+@export var animation_direction: Direction: set = set_direction
+@onready var old_animation_direction = animation_direction
+@export var animation_name: String = "RESET": get = get_anim_name, set = set_anim_name
 
 
 func set_direction(value) -> void:
 	if value != old_animation_direction:
 		old_animation_direction = animation_direction
 		animation_direction = value
-		property_list_changed_notify()
+		notify_property_list_changed()
 		update_animation()
 
 
 func set_anim_name(value: String):
 	if value in sprite_names or value == "RESET":
 		animation_name = value
-		property_list_changed_notify()
+		notify_property_list_changed()
 		update_animation()
 
 
@@ -101,7 +101,9 @@ func _init():
 	var error_value = file.open(file_name, File.READ)
 	if error_value != OK:
 		push_error("Problem while opening the pokemon-folder association file.")
-	poke_num_dict = parse_json(file.get_as_text())
+	var test_json_conv = JSON.new()
+	test_json_conv.parse(file.get_as_text())
+	poke_num_dict = test_json_conv.get_data()
 	set_anim_name("RESET")
 
 
@@ -109,7 +111,7 @@ func _init():
 func _ready():
 	is_ready_called = true
 	# removes the redundant collision shape during runtime
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		remove_child(uselessCollisionShape)
 	# collects the names of the animation that will be loaded
 	sprite_names = []
@@ -123,9 +125,9 @@ func _ready():
 func load_pokemon():
 	if not is_ready_called:
 		return
-	if Engine.editor_hint:
+	if Engine.is_editor_hint():
 		pass
-	if not Engine.editor_hint:
+	if not Engine.is_editor_hint():
 		pass
 	for sprite in sprites:
 		var anim_name = sprite.get_name()
@@ -138,7 +140,7 @@ func load_pokemon():
 	update_animation()
 
 
-func create_anim_player_track(sprite: Sprite, anim_name: String):
+func create_anim_player_track(sprite: Sprite2D, anim_name: String):
 	# creates an animation from the sprite for each cardinal direction
 	for dir in Direction:
 		var animation: Animation = Animation.new()
@@ -158,12 +160,12 @@ func create_anim_player_track(sprite: Sprite, anim_name: String):
 			#animation.track_insert_key(coll_t_idx, time_key, i)
 		animation.set_loop(true)
 		# adding animation to player
-		var err = anim_player.add_animation(anim_name + "_" + dir, animation)
+		var err = anim_player.add_animation_library(anim_name + "_" + dir, animation)
 		if err != OK:
 			push_error("Problem while adding animation in the animation player.")
 
 
-func create_RESET_animation(sprite: Sprite):
+func create_RESET_animation(sprite: Sprite2D):
 	var animation: Animation = Animation.new()
 	var sprite_track_index = animation.add_track(Animation.TYPE_VALUE)
 	animation.set_length(SECOND)
@@ -173,7 +175,7 @@ func create_RESET_animation(sprite: Sprite):
 	animation.value_track_set_update_mode(sprite_track_index, Animation.UPDATE_DISCRETE)
 	animation.track_insert_key(sprite_track_index,0,0)
 	animation.set_loop(true)
-	var err = anim_player.add_animation("RESET", animation)
+	var err = anim_player.add_animation_library("RESET", animation)
 	if err != OK:
 		push_error("Problem while adding RESET animation in the animation player.")
 

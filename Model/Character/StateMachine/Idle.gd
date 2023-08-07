@@ -1,4 +1,4 @@
-tool
+@tool
 extends CharacterState
 
 # Declare member variables here. Examples:
