@@ -1,0 +1,3 @@
+[submodule "Images/SpriteCollab"]
+	path = Images/SpriteCollab
+	url = git@github.com:OscarPindaro/SpriteCollab.git
