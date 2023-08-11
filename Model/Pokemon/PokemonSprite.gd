@@ -263,7 +263,6 @@ func load_error_texture() -> void:
 	vframes = 1
 	frame = 0
 	visible = true
-	texture.flags = 0
 	frame_width = texture.get_width()
 	frame_heigth = texture.get_height() 
 
@@ -380,6 +379,8 @@ func load_collisions() -> void:
 func on_frame_changed():
 	if right_offsets == null or left_offsets == null \
 		or center_offsets == null or shoot_offsets == null:
+		return
+	if collision_container == null:
 		return
 	var old_offset : Vector2 = offset
 	if centering == Centering.CENTERED_OFFSET:

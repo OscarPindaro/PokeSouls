@@ -32,7 +32,7 @@ var curr_shoot_pos : Vector2 = Vector2(0,0): get = get_shoot_pos, set = set_shoo
 
 # child property
 @export var pokemon_name: String = "Bulbasaur": get = get_pokemon_name, set = set_pokemon_name
-@export var animation_name: String = "Idle": get = get_animation_name, set = set_animation_name
+@export var animation_name: String = "Walk": get = get_animation_name, set = set_animation_name
 @export var centering : PokemonSprite.Centering: get = get_centering, set = set_centering
 var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 @export var frame: int: get = get_frame, set = set_frame
@@ -108,50 +108,54 @@ func get_shoot_pos():
 #pokemon name
 func set_pokemon_name(new_name : String)-> void:
 	var real_name = new_name.to_lower().capitalize()
+
+	pokemon_name = real_name
 	# this tries to solve the reload problem
 	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
 	if real_name in poke_dict:
+		print("pokemon_name", pokemon_name)
 		for poke_sprite in sprites.get_children():
 			poke_sprite.set_pokemon_name(real_name)
 			poke_sprite.set_visible(false)
-		pokemon_name = real_name
-		set_animation_name(animation_name)
-		set_frame(0)
-		notify_property_list_changed()
+		poke_anim_player.delete_all_animations()
+
 		poke_anim_player.build_animations()
+		set_animation_name(animation_name)
 		self.set_animation_property()
+		set_frame(0)
+	# notify_property_list_changed()
+
+
+func get_pokemon_name() -> String:
+	return pokemon_name
 
 func set_animation_property() -> void:
+	if poke_anim_player.get_animation_library_list().size() == 0:
+		return
 	var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
 	if direction == null:
 		direction = "DOWN"
 	if self.play == true:
-		poke_anim_player.play("%s_%s" %  [animation_name, direction])
+		print("a")
+		poke_anim_player.play("%s/%s" %  [animation_name, direction])
 	else:
-		poke_anim_player.set_assigned_animation("%s_%s" %  [animation_name, direction])
+		poke_anim_player.set_assigned_animation("%s/%s" %  [animation_name, direction])
 
-func get_pokemon_name() -> String:
-	return pokemon_name
 
 func set_animation_name(new_name : String):
 	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
-		
+	animation_name = new_name
 	if new_name in animation_names:
-		animation_name = new_name
-		
 		for sprite in sprites.get_children():
 			if new_name == sprite.get_animation_name():
 				set_sprite(sprite)
-				set_frame(0)
 				self.set_animation_property()
-				# poke_anim_player.stop()
-				notify_property_list_changed()
 				return
 
 	
@@ -239,6 +243,7 @@ func _ready():
 			poke_sprite.set_visible(false)
 			poke_sprite.set_name(anim_name)
 			add_child(poke_sprite)
+	poke_anim_player.delete_all_animations()
 	set_pokemon_name(pokemon_name)
 	if get_animation_name() == "":
 		set_animation_name(DEFAULT_ANIMATION)
@@ -246,16 +251,9 @@ func _ready():
 		set_animation_name(animation_name)
 	set_collision_visible(collision_visible)
 	set_centering(centering)
-	poke_anim_player.build_animations()
-	self.set_animation_property()
-	# poke_anim_player.stop()
-	# curr_sprite = get_node(default_sprite_path)
-	# set_right_pos(curr_sprite.get_right_position().global_position)
-	# set_left_pos(curr_sprite.get_left_position().global_position)
-	# set_center_pos(curr_sprite.get_center_position().global_position)
-	# set_shoot_pos(curr_sprite.get_shoot_position().global_position)
-	# if centering != null:
-	# 	set_centering(centering)
+	
+	set_pokemon_name("Charmander")
+
 	
 
 func _physics_process(_delta):

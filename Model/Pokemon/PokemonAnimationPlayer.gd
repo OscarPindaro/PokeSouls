@@ -19,8 +19,9 @@ func _ready():
 
 func build_animations() -> void:
 	delete_all_animations()
-	var anim_library : AnimationLibrary = AnimationLibrary.new()
 	for sprite in sprites.get_children():
+		# created an animation library
+		var anim_library : AnimationLibrary = AnimationLibrary.new()
 		# creates an animation from the sprite for each cardinal direction
 		for dir in Direction:
 			var animation: Animation = Animation.new()
@@ -38,15 +39,16 @@ func build_animations() -> void:
 				var time_key: float = (i - starting_frame) * animation.get_step()
 				animation.track_insert_key(sprite_track_index, time_key, i)
 				#animation.track_insert_key(coll_t_idx, time_key, i)
-			animation.set_loop(true)
+			animation.loop_mode = Animation.LOOP_LINEAR
+			
 			# adding animation to player
-			var anim_name = sprite.name
-			anim_library.add_animation(anim_name + "_" + dir, animation)
-	var err = self.add_animation_library("Animations", anim_library)
-	if err != OK:
-		push_error("Problem while adding animation in the animation player.")
+			anim_library.add_animation(dir, animation)
+		var err = self.add_animation_library(sprite.name, anim_library)
+		if err != OK:
+			push_error("Problem while adding animation in the animation player.")
 
 func delete_all_animations() -> void:
-	var animation_names : Array[String] = self.get_animation_list()
+	var animation_names : PackedStringArray = self.get_animation_library_list()
+	print(self.get_animation_list())
 	for anim_name in animation_names:
 		self.remove_animation_library(anim_name)
