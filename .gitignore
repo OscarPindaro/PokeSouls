@@ -1,10 +1,6 @@
-# my ignores 
-Images/SpriteCollab/sprite/*/*.png
-Images/SpriteCollab/sprite/*/*.png.import
-
-
 # Godot 4+ specific ignores
 .godot/
+Images/SpriteCollab/
 
 # Godot-specific ignores
 .import/

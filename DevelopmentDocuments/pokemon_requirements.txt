@@ -10,8 +10,8 @@ Using pokemon class, it must be possible to:
  must find a solution
 9) utilizzare un collision container che è davvero una collision shape
 10) res://Model/utils/CollisionContainer.gd:45 - Invalid get index '80' (on base: 'Array').
-    when the pokemon is changed or the animation name is changed, the process_physics function has a frame
-    number that does not fit with the changed array. This happen only once, than all is smooth.
+	when the pokemon is changed or the animation name is changed, the process_physics function has a frame
+	number that does not fit with the changed array. This happen only once, than all is smooth.
 
 
 Problems with tool keyword:
