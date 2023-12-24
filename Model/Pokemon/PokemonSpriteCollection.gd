@@ -4,6 +4,8 @@ extends Node2D
 class_name PokemonSpriteCollection
 
 
+enum Direction { DOWN, DOWN_RIGHT, RIGHT, UP_RIGHT, UP, UP_LEFT, LEFT, DOWN_LEFT }
+
 signal sprite_changed(old_sprite, new_sprite)
 # this position must be global Vector2 positions
 signal right_position_changed(old_position, new_position)
@@ -31,15 +33,19 @@ var curr_shoot_pos : Vector2 = Vector2(0,0): get = get_shoot_pos, set = set_shoo
 @onready var sprites: Node2D = $Sprites
 
 # child property
+@export_group("Pokemon Sprite Characteristics")
 @export var pokemon_name: String = "Bulbasaur": get = get_pokemon_name, set = set_pokemon_name
 @export var animation_name: String = "Walk": get = get_animation_name, set = set_animation_name
 @export var centering : PokemonSprite.Centering: get = get_centering, set = set_centering
-var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
+@export var animation_direction: Direction = Direction.DOWN : set = set_animation_direction
 @export var frame: int: get = get_frame, set = set_frame
 @export var play: bool = false: set = set_play
+
+@export_group("Debug")
 @export var collision_visible: bool: get = get_collision_visible, set = set_collision_visible
 @export var visual_debug: bool: set = set_visual_debug
 
+var pokemon_sprite_scene = preload(pokemon_sprite_scene_path)
 # list of animations
 var animation_names : Array[String]  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
@@ -131,16 +137,19 @@ func set_pokemon_name(new_name : String)-> void:
 func get_pokemon_name() -> String:
 	return pokemon_name
 
+func set_animation_direction(new_direction: Direction):
+	animation_direction = new_direction
+	self.set_animation_property()
+
 func set_animation_property() -> void:
 	if poke_anim_player.get_animation_library_list().size() == 0:
 		return
-	var direction = poke_anim_player.Direction.get(poke_anim_player.Direction.DOWN)
-	if direction == null:
-		direction = "DOWN"
+
+	var direction_name: String = Direction.keys()[self.animation_direction]
 	if self.play == true:
-		poke_anim_player.play("%s/%s" %  [animation_name, direction])
+		poke_anim_player.play("%s/%s" %  [animation_name, direction_name])
 	else:
-		poke_anim_player.set_assigned_animation("%s/%s" %  [animation_name, direction])
+		poke_anim_player.set_assigned_animation("%s/%s" %  [animation_name,  direction_name])
 
 
 func set_animation_name(new_name : String):
