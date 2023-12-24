@@ -46,7 +46,7 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser(description="Download and extract zip files for a range of numbers using multiprocessing.")
     parser.add_argument("--start-number", "-s", type=int, required=True, help="Starting number")
     parser.add_argument("--end-number", "-e", type=int, required=True, help="Ending number")
-    parser.add_argument("--num-processes", "-j", type=int, default=-1, help="Number of processes to use (default: 2)")
+    parser.add_argument("--num-processes", "-j", type=int, default=-1, help="Number of processes to use (default: -1)")
     args = parser.parse_args()
 
     

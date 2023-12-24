@@ -6,6 +6,7 @@ usage() {
   exit 1
 }
 
+
 # Check for the required arguments
 if [ $# -lt 4 ] || [ $# -gt 6 ]; then
   usage
@@ -34,7 +35,7 @@ done
 
 
 # Call the download script
-python Scripts/python/download_sprites.py --start-number "$start_number" --end-number "$end_number" --num-processes "$num_processes"
+python scripts/python/download_sprites.py --start-number "$start_number" --end-number "$end_number" --num-processes "$num_processes"
 
 # Call the ConvertAnimData script
-python Scripts/python/ConvertAnimData.py
+python scripts/python/ConvertAnimData.py
