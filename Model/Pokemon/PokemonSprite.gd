@@ -1,4 +1,5 @@
 @tool
+@icon("res://Model/Pokemon/PokeSprite2DImage.png")
 extends Sprite2D
 class_name PokemonSprite
 
@@ -13,9 +14,20 @@ var poke_dict: Dictionary
 # contains information about the animation of the pokemon
 var animation_dict: Dictionary
 
+@export_group("Pokemon Sprite Characteristic")
 @export var pokemon_name : String = "" : set = set_pokemon_name, get = get_pokemon_name
 @export var animation_name : String : set = set_animation_name, get =get_animation_name
+
+
+
+@export_group("Debug Information")
 @export var debug : bool = false : set = set_debug, get = get_debug
+enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
+@export var centering : Centering : set = set_centering, get = get_centering
+var COLLISIONS_NODE_NAME : String = "Collisions"
+@onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
+@export var collision_visible : bool : set = set_collision_visible, get = get_collision_visible
+
 var animation_names : Array[String]  = [
 	'Walk', 'Attack', 'Strike', 'Shoot', 'Twirl', 
 	'Sleep', 'Hurt', 'Idle', 'Swing', 'Double', 'Hop', 'Charge',
@@ -28,6 +40,7 @@ var animation_names : Array[String]  = [
 	'Special1', 'Special2', 'Wiggle', 'Fainted', 'DigIn', 'DigOut', 'MultiStrike', 'Yawn', 
 	'RaiseArms', 'CarefulWalk', 'Special3', 'Chop', 'Punch', 'Lick', 'Uppercut', 'Gas', 'Swell', 
 	'Stomp', 'Slice', 'Slap', 'Injured']
+
 
 
 # the name of the sprite is the animation name
@@ -66,13 +79,7 @@ var BLUE = Color(0, 0, 1)
 var GREEN = Color(0, 1, 0)
 var BLACK = Color(0, 0, 0)
 
-# Collisions
-var COLLISIONS_NODE_NAME : String = "Collisions"
-@onready var collision_container : CollisionContainer = get_node(COLLISIONS_NODE_NAME)
-@export var collision_visible : bool : set = set_collision_visible, get = get_collision_visible
 
-enum Centering {LEFT_CORNER, CENTERED, CENTERED_OFFSET}
-@export var centering : Centering : set = set_centering, get = get_centering
 
 
 # SETTERS AND GETTERS
