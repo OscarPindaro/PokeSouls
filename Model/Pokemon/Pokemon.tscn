@@ -1,5 +1,6 @@
-[gd_scene load_steps=54 format=3 uid="uid://0m227dniwnsx"]
+[gd_scene load_steps=55 format=3 uid="uid://0m227dniwnsx"]
 
+[ext_resource type="Script" path="res://Model/Pokemon/Pokemon.gd" id="1_blar3"]
 [ext_resource type="PackedScene" uid="uid://okfuyoyu18o3" path="res://Model/Pokemon/PokemonSpriteCollection.tscn" id="2"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonAnimationPlayer.gd" id="6"]
 
@@ -268,6 +269,8 @@ _data = {
 size = Vector2(0, 0)
 
 [node name="Pokemon" type="CharacterBody2D"]
+script = ExtResource("1_blar3")
+frame = 0
 
 [node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
