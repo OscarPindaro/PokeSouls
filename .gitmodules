@@ -1,3 +1,6 @@
 [submodule "Images/SpriteCollab"]
 	path = Images/SpriteCollab
 	url = git@github.com:OscarPindaro/SpriteCollab.git
+[submodule "pokemon.json"]
+	path = pokemon.json
+	url = https://github.com/fanzeyi/pokemon.json
