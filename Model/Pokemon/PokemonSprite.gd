@@ -225,7 +225,6 @@ func load_sprite() -> void:
 	#add_positions()
 	# error if pokemon not present
 	if !poke_dict.has(pokemon_name):
-		print(pokemon_name)
 		push_warning("The pokemon " + pokemon_name + " is not present in the dictionary.")
 		load_error_texture()
 		return 

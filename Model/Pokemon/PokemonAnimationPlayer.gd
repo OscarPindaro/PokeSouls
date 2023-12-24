@@ -49,6 +49,5 @@ func build_animations() -> void:
 
 func delete_all_animations() -> void:
 	var animation_names : PackedStringArray = self.get_animation_library_list()
-	print(self.get_animation_list())
 	for anim_name in animation_names:
 		self.remove_animation_library(anim_name)

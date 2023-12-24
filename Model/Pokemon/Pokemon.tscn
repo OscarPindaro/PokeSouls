@@ -1,278 +1,283 @@
-[gd_scene load_steps=53 format=2]
+[gd_scene load_steps=54 format=3 uid="uid://0m227dniwnsx"]
 
-[ext_resource path="res://Model/Pokemon/PokemonSpriteCollection.tscn" type="PackedScene" id=2]
-[ext_resource path="res://Model/Pokemon/PokemonAnimationPlayer.gd" type="Script" id=6]
+[ext_resource type="PackedScene" uid="uid://okfuyoyu18o3" path="res://Model/Pokemon/PokemonSpriteCollection.tscn" id="2"]
+[ext_resource type="Script" path="res://Model/Pokemon/PokemonAnimationPlayer.gd" id="6"]
 
-[sub_resource type="Animation" id=26]
-loop = true
+[sub_resource type="Animation" id="26"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=27]
-loop = true
+[sub_resource type="Animation" id="27"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=28]
-loop = true
+[sub_resource type="Animation" id="28"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=29]
-loop = true
+[sub_resource type="Animation" id="29"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=30]
-loop = true
+[sub_resource type="Animation" id="30"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=31]
-loop = true
+[sub_resource type="Animation" id="31"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=32]
-loop = true
+[sub_resource type="Animation" id="32"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=33]
-loop = true
+[sub_resource type="Animation" id="33"]
+loop_mode = 1
 step = 0.0769231
 
-[sub_resource type="Animation" id=68]
-loop = true
+[sub_resource type="Animation" id="68"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=69]
-loop = true
+[sub_resource type="Animation" id="69"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=70]
-loop = true
+[sub_resource type="Animation" id="70"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=71]
-loop = true
+[sub_resource type="Animation" id="71"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=72]
-loop = true
+[sub_resource type="Animation" id="72"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=73]
-loop = true
+[sub_resource type="Animation" id="73"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=74]
-loop = true
+[sub_resource type="Animation" id="74"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=75]
-loop = true
+[sub_resource type="Animation" id="75"]
+loop_mode = 1
 step = 0.333333
 
-[sub_resource type="Animation" id=67]
-loop = true
+[sub_resource type="Animation" id="67"]
+loop_mode = 1
 step = 1.0
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(":frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ 0 ]
+"values": [0]
 }
 
-[sub_resource type="Animation" id=76]
-loop = true
+[sub_resource type="Animation" id="76"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=77]
-loop = true
+[sub_resource type="Animation" id="77"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=78]
-loop = true
+[sub_resource type="Animation" id="78"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=79]
-loop = true
+[sub_resource type="Animation" id="79"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=80]
-loop = true
+[sub_resource type="Animation" id="80"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=81]
-loop = true
+[sub_resource type="Animation" id="81"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=82]
-loop = true
+[sub_resource type="Animation" id="82"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=83]
-loop = true
+[sub_resource type="Animation" id="83"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=51]
-loop = true
+[sub_resource type="Animation" id="51"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=52]
-loop = true
+[sub_resource type="Animation" id="52"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=53]
-loop = true
+[sub_resource type="Animation" id="53"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=54]
-loop = true
+[sub_resource type="Animation" id="54"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=55]
-loop = true
+[sub_resource type="Animation" id="55"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=56]
-loop = true
+[sub_resource type="Animation" id="56"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=57]
-loop = true
+[sub_resource type="Animation" id="57"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=58]
-loop = true
+[sub_resource type="Animation" id="58"]
+loop_mode = 1
 step = 0.5
 
-[sub_resource type="Animation" id=84]
-loop = true
+[sub_resource type="Animation" id="84"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=85]
-loop = true
+[sub_resource type="Animation" id="85"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=86]
-loop = true
+[sub_resource type="Animation" id="86"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=87]
-loop = true
+[sub_resource type="Animation" id="87"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=88]
-loop = true
+[sub_resource type="Animation" id="88"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=89]
-loop = true
+[sub_resource type="Animation" id="89"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=90]
-loop = true
+[sub_resource type="Animation" id="90"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=91]
-loop = true
+[sub_resource type="Animation" id="91"]
+loop_mode = 1
 step = 0.0909091
 
-[sub_resource type="Animation" id=92]
-loop = true
+[sub_resource type="Animation" id="92"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=93]
-loop = true
+[sub_resource type="Animation" id="93"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=94]
-loop = true
+[sub_resource type="Animation" id="94"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=95]
-loop = true
+[sub_resource type="Animation" id="95"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=96]
-loop = true
+[sub_resource type="Animation" id="96"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=97]
-loop = true
+[sub_resource type="Animation" id="97"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=98]
-loop = true
+[sub_resource type="Animation" id="98"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="Animation" id=99]
-loop = true
+[sub_resource type="Animation" id="99"]
+loop_mode = 1
 step = 0.166667
 
-[sub_resource type="RectangleShape2D" id=25]
-size = Vector2( 0, 0 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_62485"]
+_data = {
+"Eat_DOWN": SubResource("26"),
+"Eat_DOWN_LEFT": SubResource("27"),
+"Eat_DOWN_RIGHT": SubResource("28"),
+"Eat_LEFT": SubResource("29"),
+"Eat_RIGHT": SubResource("30"),
+"Eat_UP": SubResource("31"),
+"Eat_UP_LEFT": SubResource("32"),
+"Eat_UP_RIGHT": SubResource("33"),
+"Idle_DOWN": SubResource("68"),
+"Idle_DOWN_LEFT": SubResource("69"),
+"Idle_DOWN_RIGHT": SubResource("70"),
+"Idle_LEFT": SubResource("71"),
+"Idle_RIGHT": SubResource("72"),
+"Idle_UP": SubResource("73"),
+"Idle_UP_LEFT": SubResource("74"),
+"Idle_UP_RIGHT": SubResource("75"),
+"RESET": SubResource("67"),
+"Shoot_DOWN": SubResource("76"),
+"Shoot_DOWN_LEFT": SubResource("77"),
+"Shoot_DOWN_RIGHT": SubResource("78"),
+"Shoot_LEFT": SubResource("79"),
+"Shoot_RIGHT": SubResource("80"),
+"Shoot_UP": SubResource("81"),
+"Shoot_UP_LEFT": SubResource("82"),
+"Shoot_UP_RIGHT": SubResource("83"),
+"Sleep_DOWN": SubResource("51"),
+"Sleep_DOWN_LEFT": SubResource("52"),
+"Sleep_DOWN_RIGHT": SubResource("53"),
+"Sleep_LEFT": SubResource("54"),
+"Sleep_RIGHT": SubResource("55"),
+"Sleep_UP": SubResource("56"),
+"Sleep_UP_LEFT": SubResource("57"),
+"Sleep_UP_RIGHT": SubResource("58"),
+"Strike_DOWN": SubResource("84"),
+"Strike_DOWN_LEFT": SubResource("85"),
+"Strike_DOWN_RIGHT": SubResource("86"),
+"Strike_LEFT": SubResource("87"),
+"Strike_RIGHT": SubResource("88"),
+"Strike_UP": SubResource("89"),
+"Strike_UP_LEFT": SubResource("90"),
+"Strike_UP_RIGHT": SubResource("91"),
+"Walk_DOWN": SubResource("92"),
+"Walk_DOWN_LEFT": SubResource("93"),
+"Walk_DOWN_RIGHT": SubResource("94"),
+"Walk_LEFT": SubResource("95"),
+"Walk_RIGHT": SubResource("96"),
+"Walk_UP": SubResource("97"),
+"Walk_UP_LEFT": SubResource("98"),
+"Walk_UP_RIGHT": SubResource("99")
+}
+
+[sub_resource type="RectangleShape2D" id="25"]
+size = Vector2(0, 0)
 
 [node name="Pokemon" type="CharacterBody2D"]
 
 [node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
-anims/Eat_DOWN = SubResource( 26 )
-anims/Eat_DOWN_LEFT = SubResource( 27 )
-anims/Eat_DOWN_RIGHT = SubResource( 28 )
-anims/Eat_LEFT = SubResource( 29 )
-anims/Eat_RIGHT = SubResource( 30 )
-anims/Eat_UP = SubResource( 31 )
-anims/Eat_UP_LEFT = SubResource( 32 )
-anims/Eat_UP_RIGHT = SubResource( 33 )
-anims/Idle_DOWN = SubResource( 68 )
-anims/Idle_DOWN_LEFT = SubResource( 69 )
-anims/Idle_DOWN_RIGHT = SubResource( 70 )
-anims/Idle_LEFT = SubResource( 71 )
-anims/Idle_RIGHT = SubResource( 72 )
-anims/Idle_UP = SubResource( 73 )
-anims/Idle_UP_LEFT = SubResource( 74 )
-anims/Idle_UP_RIGHT = SubResource( 75 )
-anims/RESET = SubResource( 67 )
-anims/Shoot_DOWN = SubResource( 76 )
-anims/Shoot_DOWN_LEFT = SubResource( 77 )
-anims/Shoot_DOWN_RIGHT = SubResource( 78 )
-anims/Shoot_LEFT = SubResource( 79 )
-anims/Shoot_RIGHT = SubResource( 80 )
-anims/Shoot_UP = SubResource( 81 )
-anims/Shoot_UP_LEFT = SubResource( 82 )
-anims/Shoot_UP_RIGHT = SubResource( 83 )
-anims/Sleep_DOWN = SubResource( 51 )
-anims/Sleep_DOWN_LEFT = SubResource( 52 )
-anims/Sleep_DOWN_RIGHT = SubResource( 53 )
-anims/Sleep_LEFT = SubResource( 54 )
-anims/Sleep_RIGHT = SubResource( 55 )
-anims/Sleep_UP = SubResource( 56 )
-anims/Sleep_UP_LEFT = SubResource( 57 )
-anims/Sleep_UP_RIGHT = SubResource( 58 )
-anims/Strike_DOWN = SubResource( 84 )
-anims/Strike_DOWN_LEFT = SubResource( 85 )
-anims/Strike_DOWN_RIGHT = SubResource( 86 )
-anims/Strike_LEFT = SubResource( 87 )
-anims/Strike_RIGHT = SubResource( 88 )
-anims/Strike_UP = SubResource( 89 )
-anims/Strike_UP_LEFT = SubResource( 90 )
-anims/Strike_UP_RIGHT = SubResource( 91 )
-anims/Walk_DOWN = SubResource( 92 )
-anims/Walk_DOWN_LEFT = SubResource( 93 )
-anims/Walk_DOWN_RIGHT = SubResource( 94 )
-anims/Walk_LEFT = SubResource( 95 )
-anims/Walk_RIGHT = SubResource( 96 )
-anims/Walk_UP = SubResource( 97 )
-anims/Walk_UP_LEFT = SubResource( 98 )
-anims/Walk_UP_RIGHT = SubResource( 99 )
-script = ExtResource( 6 )
-sprite_collection_path = NodePath("../PokemonSpriteCollection")
+libraries = {
+"": SubResource("AnimationLibrary_62485")
+}
+script = ExtResource("6")
 
 [node name="UselessForWarning" type="CollisionShape2D" parent="."]
 visible = false
-shape = SubResource( 25 )
+shape = SubResource("25")
 disabled = true
 
-[node name="PokemonSpriteCollection" parent="." instance=ExtResource( 2 )]
-pokemon_name = "Charmander"
+[node name="PokemonSpriteCollection" parent="." instance=ExtResource("2")]

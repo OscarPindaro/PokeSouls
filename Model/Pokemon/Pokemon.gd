@@ -1,6 +1,7 @@
 @tool
+@icon("res://Model/Pokemon/Pokemon.png")
 extends Node2D
-class_name Pokemon, "res://Model/Pokemon/Pokemon.png"
+class_name Pokemon
 
 # SIGNALS
 signal change_animation(sprite_name, direction, animation_name)

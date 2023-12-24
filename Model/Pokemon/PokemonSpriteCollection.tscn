@@ -2,13 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://dk0pck5afsj5t" path="res://Model/Pokemon/PokemonSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonSpriteCollection.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://o2kfvcxbdp28" path="res://Images/SpriteCollab/sprite/0004/Idle-Anim.png" id="4_bfeor"]
-[ext_resource type="Texture2D" uid="uid://dvqosbxtlhnpq" path="res://Images/SpriteCollab/sprite/0004/Walk-Anim.png" id="5_0jokg"]
+[ext_resource type="Texture2D" uid="uid://cypabvaafvwu2" path="res://Images/SpriteCollab/sprite/0004/Idle-Anim.png" id="4_bfeor"]
+[ext_resource type="Texture2D" uid="uid://dvaes4s7exsb6" path="res://Images/SpriteCollab/sprite/0004/Walk-Anim.png" id="5_0jokg"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonAnimationPlayer.gd" id="6"]
-[ext_resource type="Texture2D" uid="uid://ctwbg6bcmgmd4" path="res://Images/SpriteCollab/sprite/0004/Charge-Anim.png" id="6_rhd71"]
-[ext_resource type="Texture2D" uid="uid://c74lfj5r3k4xg" path="res://Images/SpriteCollab/sprite/0004/Strike-Anim.png" id="7_inxmw"]
+[ext_resource type="Texture2D" uid="uid://b5g8xvjuangas" path="res://Images/SpriteCollab/sprite/0004/Charge-Anim.png" id="6_rhd71"]
+[ext_resource type="Texture2D" uid="uid://x3agqsxxsbov" path="res://Images/SpriteCollab/sprite/0004/Strike-Anim.png" id="7_inxmw"]
 
-[sub_resource type="Animation" id="Animation_bf4dl"]
+[sub_resource type="Animation" id="Animation_qi5fq"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -24,7 +24,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_5qhvu"]
+[sub_resource type="Animation" id="Animation_cjbuw"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -40,7 +40,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_lvoih"]
+[sub_resource type="Animation" id="Animation_yegmk"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -56,7 +56,7 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_tvyyf"]
+[sub_resource type="Animation" id="Animation_g4c3b"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -72,7 +72,7 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_2m7vb"]
+[sub_resource type="Animation" id="Animation_ddb7w"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -88,7 +88,7 @@ tracks/0/keys = {
 "values": [16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_4eti5"]
+[sub_resource type="Animation" id="Animation_lu4py"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -104,7 +104,7 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23]
 }
 
-[sub_resource type="Animation" id="Animation_o62me"]
+[sub_resource type="Animation" id="Animation_akdwk"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -120,7 +120,7 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27]
 }
 
-[sub_resource type="Animation" id="Animation_dd5m5"]
+[sub_resource type="Animation" id="Animation_nd2pw"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -136,19 +136,19 @@ tracks/0/keys = {
 "values": [28, 29, 30, 31]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yj1mk"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_iu82h"]
 _data = {
-"DOWN": SubResource("Animation_bf4dl"),
-"DOWN_LEFT": SubResource("Animation_dd5m5"),
-"DOWN_RIGHT": SubResource("Animation_5qhvu"),
-"LEFT": SubResource("Animation_o62me"),
-"RIGHT": SubResource("Animation_lvoih"),
-"UP": SubResource("Animation_2m7vb"),
-"UP_LEFT": SubResource("Animation_4eti5"),
-"UP_RIGHT": SubResource("Animation_tvyyf")
+"DOWN": SubResource("Animation_qi5fq"),
+"DOWN_LEFT": SubResource("Animation_nd2pw"),
+"DOWN_RIGHT": SubResource("Animation_cjbuw"),
+"LEFT": SubResource("Animation_akdwk"),
+"RIGHT": SubResource("Animation_yegmk"),
+"UP": SubResource("Animation_ddb7w"),
+"UP_LEFT": SubResource("Animation_lu4py"),
+"UP_RIGHT": SubResource("Animation_g4c3b")
 }
 
-[sub_resource type="Animation" id="Animation_opxjg"]
+[sub_resource type="Animation" id="Animation_ufij5"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -163,7 +163,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_xm3sk"]
+[sub_resource type="Animation" id="Animation_yobup"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -178,7 +178,7 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_s3c1c"]
+[sub_resource type="Animation" id="Animation_17bjt"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -193,7 +193,7 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 }
 
-[sub_resource type="Animation" id="Animation_rh4fw"]
+[sub_resource type="Animation" id="Animation_sjn2g"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -208,7 +208,7 @@ tracks/0/keys = {
 "values": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
 }
 
-[sub_resource type="Animation" id="Animation_vblsq"]
+[sub_resource type="Animation" id="Animation_67upw"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -223,7 +223,7 @@ tracks/0/keys = {
 "values": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
 }
 
-[sub_resource type="Animation" id="Animation_l7xd7"]
+[sub_resource type="Animation" id="Animation_77hxy"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -238,7 +238,7 @@ tracks/0/keys = {
 "values": [50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
 }
 
-[sub_resource type="Animation" id="Animation_q0q3v"]
+[sub_resource type="Animation" id="Animation_op2ri"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -253,7 +253,7 @@ tracks/0/keys = {
 "values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 }
 
-[sub_resource type="Animation" id="Animation_mbjh4"]
+[sub_resource type="Animation" id="Animation_6cxqd"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -268,19 +268,19 @@ tracks/0/keys = {
 "values": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_of5je"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_7k4mf"]
 _data = {
-"DOWN": SubResource("Animation_opxjg"),
-"DOWN_LEFT": SubResource("Animation_mbjh4"),
-"DOWN_RIGHT": SubResource("Animation_xm3sk"),
-"LEFT": SubResource("Animation_q0q3v"),
-"RIGHT": SubResource("Animation_s3c1c"),
-"UP": SubResource("Animation_vblsq"),
-"UP_LEFT": SubResource("Animation_l7xd7"),
-"UP_RIGHT": SubResource("Animation_rh4fw")
+"DOWN": SubResource("Animation_ufij5"),
+"DOWN_LEFT": SubResource("Animation_6cxqd"),
+"DOWN_RIGHT": SubResource("Animation_yobup"),
+"LEFT": SubResource("Animation_op2ri"),
+"RIGHT": SubResource("Animation_17bjt"),
+"UP": SubResource("Animation_67upw"),
+"UP_LEFT": SubResource("Animation_77hxy"),
+"UP_RIGHT": SubResource("Animation_sjn2g")
 }
 
-[sub_resource type="Animation" id="Animation_dt5e1"]
+[sub_resource type="Animation" id="Animation_phh2w"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -296,7 +296,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
 }
 
-[sub_resource type="Animation" id="Animation_fgsan"]
+[sub_resource type="Animation" id="Animation_cghpr"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -312,7 +312,7 @@ tracks/0/keys = {
 "values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
 }
 
-[sub_resource type="Animation" id="Animation_8p77x"]
+[sub_resource type="Animation" id="Animation_3txrn"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -328,7 +328,7 @@ tracks/0/keys = {
 "values": [18, 19, 20, 21, 22, 23, 24, 25, 26]
 }
 
-[sub_resource type="Animation" id="Animation_bxcbk"]
+[sub_resource type="Animation" id="Animation_jkbgk"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -344,7 +344,7 @@ tracks/0/keys = {
 "values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
 }
 
-[sub_resource type="Animation" id="Animation_hjh30"]
+[sub_resource type="Animation" id="Animation_uni0a"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -360,7 +360,7 @@ tracks/0/keys = {
 "values": [36, 37, 38, 39, 40, 41, 42, 43, 44]
 }
 
-[sub_resource type="Animation" id="Animation_g52k6"]
+[sub_resource type="Animation" id="Animation_upw1t"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -376,7 +376,7 @@ tracks/0/keys = {
 "values": [45, 46, 47, 48, 49, 50, 51, 52, 53]
 }
 
-[sub_resource type="Animation" id="Animation_u8k3p"]
+[sub_resource type="Animation" id="Animation_8fk1l"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -392,7 +392,7 @@ tracks/0/keys = {
 "values": [54, 55, 56, 57, 58, 59, 60, 61, 62]
 }
 
-[sub_resource type="Animation" id="Animation_vuwuf"]
+[sub_resource type="Animation" id="Animation_61hru"]
 loop_mode = 1
 step = 0.111111
 tracks/0/type = "value"
@@ -408,19 +408,19 @@ tracks/0/keys = {
 "values": [63, 64, 65, 66, 67, 68, 69, 70, 71]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qf8to"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vh7kr"]
 _data = {
-"DOWN": SubResource("Animation_dt5e1"),
-"DOWN_LEFT": SubResource("Animation_vuwuf"),
-"DOWN_RIGHT": SubResource("Animation_fgsan"),
-"LEFT": SubResource("Animation_u8k3p"),
-"RIGHT": SubResource("Animation_8p77x"),
-"UP": SubResource("Animation_hjh30"),
-"UP_LEFT": SubResource("Animation_g52k6"),
-"UP_RIGHT": SubResource("Animation_bxcbk")
+"DOWN": SubResource("Animation_phh2w"),
+"DOWN_LEFT": SubResource("Animation_61hru"),
+"DOWN_RIGHT": SubResource("Animation_cghpr"),
+"LEFT": SubResource("Animation_8fk1l"),
+"RIGHT": SubResource("Animation_3txrn"),
+"UP": SubResource("Animation_uni0a"),
+"UP_LEFT": SubResource("Animation_upw1t"),
+"UP_RIGHT": SubResource("Animation_jkbgk")
 }
 
-[sub_resource type="Animation" id="Animation_n7at6"]
+[sub_resource type="Animation" id="Animation_x0ovr"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -436,7 +436,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_hoh5v"]
+[sub_resource type="Animation" id="Animation_1i4rx"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -452,7 +452,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_myclu"]
+[sub_resource type="Animation" id="Animation_nksao"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -468,7 +468,7 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_e8dux"]
+[sub_resource type="Animation" id="Animation_pkd7a"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -484,7 +484,7 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_n3wet"]
+[sub_resource type="Animation" id="Animation_qyp3y"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -500,7 +500,7 @@ tracks/0/keys = {
 "values": [16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_j2jnl"]
+[sub_resource type="Animation" id="Animation_kavvx"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -516,7 +516,7 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23]
 }
 
-[sub_resource type="Animation" id="Animation_jol7k"]
+[sub_resource type="Animation" id="Animation_yyrd8"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -532,7 +532,7 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27]
 }
 
-[sub_resource type="Animation" id="Animation_6w6qw"]
+[sub_resource type="Animation" id="Animation_wassg"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -548,29 +548,30 @@ tracks/0/keys = {
 "values": [28, 29, 30, 31]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_fa7wq"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_owh6q"]
 _data = {
-"DOWN": SubResource("Animation_n7at6"),
-"DOWN_LEFT": SubResource("Animation_6w6qw"),
-"DOWN_RIGHT": SubResource("Animation_hoh5v"),
-"LEFT": SubResource("Animation_jol7k"),
-"RIGHT": SubResource("Animation_myclu"),
-"UP": SubResource("Animation_n3wet"),
-"UP_LEFT": SubResource("Animation_j2jnl"),
-"UP_RIGHT": SubResource("Animation_e8dux")
+"DOWN": SubResource("Animation_x0ovr"),
+"DOWN_LEFT": SubResource("Animation_wassg"),
+"DOWN_RIGHT": SubResource("Animation_1i4rx"),
+"LEFT": SubResource("Animation_yyrd8"),
+"RIGHT": SubResource("Animation_nksao"),
+"UP": SubResource("Animation_qyp3y"),
+"UP_LEFT": SubResource("Animation_kavvx"),
+"UP_RIGHT": SubResource("Animation_pkd7a")
 }
 
 [node name="PokemonSpriteCollection" type="Node2D"]
 script = ExtResource("2")
 pokemon_name = "Charmander"
+collision_visible = true
 
 [node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle_DOWN"
 libraries = {
-"Idle": SubResource("AnimationLibrary_yj1mk"),
-"Shoot": SubResource("AnimationLibrary_of5je"),
-"Strike": SubResource("AnimationLibrary_qf8to"),
-"Walk": SubResource("AnimationLibrary_fa7wq")
+"Idle": SubResource("AnimationLibrary_iu82h"),
+"Shoot": SubResource("AnimationLibrary_7k4mf"),
+"Strike": SubResource("AnimationLibrary_vh7kr"),
+"Walk": SubResource("AnimationLibrary_owh6q")
 }
 script = ExtResource("6")
 sprites_path = NodePath("../Sprites")
@@ -582,12 +583,14 @@ visible = false
 texture = ExtResource("4_bfeor")
 hframes = 4
 pokemon_name = "Charmander"
+collision_visible = true
 
 [node name="Walk" parent="Sprites" instance=ExtResource("1")]
 texture = ExtResource("5_0jokg")
 hframes = 4
 pokemon_name = "Charmander"
 animation_name = "Walk"
+collision_visible = true
 
 [node name="Shoot" parent="Sprites" instance=ExtResource("1")]
 visible = false
@@ -595,6 +598,7 @@ texture = ExtResource("6_rhd71")
 hframes = 10
 pokemon_name = "Charmander"
 animation_name = "Shoot"
+collision_visible = true
 
 [node name="Strike" parent="Sprites" instance=ExtResource("1")]
 visible = false
@@ -602,3 +606,4 @@ texture = ExtResource("7_inxmw")
 hframes = 9
 pokemon_name = "Charmander"
 animation_name = "Strike"
+collision_visible = true

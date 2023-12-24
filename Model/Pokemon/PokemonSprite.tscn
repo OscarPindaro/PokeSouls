@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://dk0pck5afsj5t"]
 
-[ext_resource type="Texture2D" uid="uid://dogha0cnggcm" path="res://Images/PokemonDebug/white_circle.png" id="1"]
+[ext_resource type="Texture2D" uid="uid://d27eqrj4l0ktf" path="res://Images/PokemonDebug/white_circle.png" id="1"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonSprite.gd" id="2"]
 [ext_resource type="Script" path="res://Model/utils/CollisionContainer.gd" id="3"]
-[ext_resource type="Texture2D" uid="uid://b0tb0d4omo4gu" path="res://Images/SpriteCollab/sprite/0001/Idle-Anim.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://c4qbk1pk8sese" path="res://Images/SpriteCollab/sprite/0001/Idle-Anim.png" id="4"]
 
 [node name="PokemonSprite" type="Sprite2D"]
 texture = ExtResource("4")

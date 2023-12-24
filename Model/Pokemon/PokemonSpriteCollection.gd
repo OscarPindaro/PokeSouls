@@ -116,7 +116,6 @@ func set_pokemon_name(new_name : String)-> void:
 	if poke_anim_player == null:
 		return
 	if real_name in poke_dict:
-		print("pokemon_name", pokemon_name)
 		for poke_sprite in sprites.get_children():
 			poke_sprite.set_pokemon_name(real_name)
 			poke_sprite.set_visible(false)
@@ -139,7 +138,6 @@ func set_animation_property() -> void:
 	if direction == null:
 		direction = "DOWN"
 	if self.play == true:
-		print("a")
 		poke_anim_player.play("%s/%s" %  [animation_name, direction])
 	else:
 		poke_anim_player.set_assigned_animation("%s/%s" %  [animation_name, direction])
