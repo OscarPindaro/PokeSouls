@@ -1,286 +1,48 @@
-[gd_scene load_steps=55 format=3 uid="uid://0m227dniwnsx"]
+[gd_scene load_steps=8 format=3 uid="uid://dd1b3aad6dfcb"]
 
 [ext_resource type="Script" path="res://Model/Pokemon/Pokemon.gd" id="1_blar3"]
 [ext_resource type="PackedScene" uid="uid://okfuyoyu18o3" path="res://Model/Pokemon/PokemonSpriteCollection.tscn" id="2"]
-[ext_resource type="Script" path="res://Model/Pokemon/PokemonAnimationPlayer.gd" id="6"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="3_q3u1s"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="4_gkt1g"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_eph57"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_3eqoe"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="7_7vi48"]
 
-[sub_resource type="Animation" id="26"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="27"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="28"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="29"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="30"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="31"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="32"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="33"]
-loop_mode = 1
-step = 0.0769231
-
-[sub_resource type="Animation" id="68"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="69"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="70"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="71"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="72"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="73"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="74"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="75"]
-loop_mode = 1
-step = 0.333333
-
-[sub_resource type="Animation" id="67"]
-loop_mode = 1
-step = 1.0
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(":frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [0]
-}
-
-[sub_resource type="Animation" id="76"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="77"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="78"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="79"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="80"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="81"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="82"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="83"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="51"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="52"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="53"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="54"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="55"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="56"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="57"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="58"]
-loop_mode = 1
-step = 0.5
-
-[sub_resource type="Animation" id="84"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="85"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="86"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="87"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="88"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="89"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="90"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="91"]
-loop_mode = 1
-step = 0.0909091
-
-[sub_resource type="Animation" id="92"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="93"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="94"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="95"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="96"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="97"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="98"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="Animation" id="99"]
-loop_mode = 1
-step = 0.166667
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_62485"]
-_data = {
-"Eat_DOWN": SubResource("26"),
-"Eat_DOWN_LEFT": SubResource("27"),
-"Eat_DOWN_RIGHT": SubResource("28"),
-"Eat_LEFT": SubResource("29"),
-"Eat_RIGHT": SubResource("30"),
-"Eat_UP": SubResource("31"),
-"Eat_UP_LEFT": SubResource("32"),
-"Eat_UP_RIGHT": SubResource("33"),
-"Idle_DOWN": SubResource("68"),
-"Idle_DOWN_LEFT": SubResource("69"),
-"Idle_DOWN_RIGHT": SubResource("70"),
-"Idle_LEFT": SubResource("71"),
-"Idle_RIGHT": SubResource("72"),
-"Idle_UP": SubResource("73"),
-"Idle_UP_LEFT": SubResource("74"),
-"Idle_UP_RIGHT": SubResource("75"),
-"RESET": SubResource("67"),
-"Shoot_DOWN": SubResource("76"),
-"Shoot_DOWN_LEFT": SubResource("77"),
-"Shoot_DOWN_RIGHT": SubResource("78"),
-"Shoot_LEFT": SubResource("79"),
-"Shoot_RIGHT": SubResource("80"),
-"Shoot_UP": SubResource("81"),
-"Shoot_UP_LEFT": SubResource("82"),
-"Shoot_UP_RIGHT": SubResource("83"),
-"Sleep_DOWN": SubResource("51"),
-"Sleep_DOWN_LEFT": SubResource("52"),
-"Sleep_DOWN_RIGHT": SubResource("53"),
-"Sleep_LEFT": SubResource("54"),
-"Sleep_RIGHT": SubResource("55"),
-"Sleep_UP": SubResource("56"),
-"Sleep_UP_LEFT": SubResource("57"),
-"Sleep_UP_RIGHT": SubResource("58"),
-"Strike_DOWN": SubResource("84"),
-"Strike_DOWN_LEFT": SubResource("85"),
-"Strike_DOWN_RIGHT": SubResource("86"),
-"Strike_LEFT": SubResource("87"),
-"Strike_RIGHT": SubResource("88"),
-"Strike_UP": SubResource("89"),
-"Strike_UP_LEFT": SubResource("90"),
-"Strike_UP_RIGHT": SubResource("91"),
-"Walk_DOWN": SubResource("92"),
-"Walk_DOWN_LEFT": SubResource("93"),
-"Walk_DOWN_RIGHT": SubResource("94"),
-"Walk_LEFT": SubResource("95"),
-"Walk_RIGHT": SubResource("96"),
-"Walk_UP": SubResource("97"),
-"Walk_UP_LEFT": SubResource("98"),
-"Walk_UP_RIGHT": SubResource("99")
-}
-
-[sub_resource type="RectangleShape2D" id="25"]
-size = Vector2(0, 0)
-
-[node name="Pokemon" type="CharacterBody2D"]
+[node name="Pokemon" type="Node2D"]
 script = ExtResource("1_blar3")
-frame = 0
 
-[node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
-libraries = {
-"": SubResource("AnimationLibrary_62485")
-}
-script = ExtResource("6")
-
-[node name="UselessForWarning" type="CollisionShape2D" parent="."]
-visible = false
-shape = SubResource("25")
-disabled = true
+[node name="StateChartDebugger" parent="." instance=ExtResource("7_7vi48")]
+offset_left = 570.0
+offset_right = 1150.0
+offset_bottom = 404.0
+initial_node_to_watch = NodePath("../StateChart")
 
 [node name="PokemonSpriteCollection" parent="." instance=ExtResource("2")]
+position = Vector2(248, 165)
+scale = Vector2(5, 5)
+
+[node name="StateChart" type="Node" parent="."]
+script = ExtResource("3_q3u1s")
+
+[node name="Root" type="Node" parent="StateChart"]
+script = ExtResource("4_gkt1g")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_eph57")
+
+[node name="ToWalk" type="Node" parent="StateChart/Root/Idle"]
+script = ExtResource("7_3eqoe")
+to = NodePath("../../Walk")
+event = &"pressing_movement"
+
+[node name="Walk" type="Node" parent="StateChart/Root"]
+script = ExtResource("5_eph57")
+
+[node name="Transition" type="Node" parent="StateChart/Root/Walk"]
+script = ExtResource("7_3eqoe")
+to = NodePath("../../Idle")
+event = &"not_pressing_movement"
+
+[connection signal="state_entered" from="StateChart/Root/Idle" to="." method="_on_idle_state_entered"]
+[connection signal="state_entered" from="StateChart/Root/Walk" to="." method="_on_walk_state_entered"]

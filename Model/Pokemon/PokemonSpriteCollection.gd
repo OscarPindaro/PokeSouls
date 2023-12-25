@@ -261,6 +261,27 @@ func _ready():
 	
 	set_pokemon_name("Charmander")
 
+
+static func vector_to_direction(direction_vector: Vector2)-> Direction:
+	direction_vector = direction_vector.normalized()
+	
+	# convert to degrees
+	var angle = direction_vector.angle()*180 / PI
+
+	# work only with positive angles
+	if angle < 0:
+		angle += 360
+	
+	# need to rotate of 90 degrees otherwise direction doesnt match
+	angle = angle - 90
+	# for some reason without negative left and right are mirrored
+	# maybe because y positive go down and not up
+	angle = -angle
+
+	var number_of_directions : int= len(PokemonSpriteCollection.Direction.keys())
+	var degrees: float = 360. / number_of_directions
+	var index = int(round(angle / degrees)) % number_of_directions
+	return Direction.values()[index]
 	
 
 func _physics_process(_delta):
