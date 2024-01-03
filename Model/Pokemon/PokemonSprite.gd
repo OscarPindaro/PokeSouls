@@ -101,6 +101,8 @@ func lower_and_capitalize(string : String)-> String:
 
 # collision_visible
 func set_collision_visible(new_value : bool):
+	if not is_inside_tree():
+		await ready
 	collision_visible = new_value
 	# tool check
 	if collision_container == null:
@@ -130,6 +132,8 @@ func set_centering(new_value):
 	# 	# 	offset = -center_position.position
 		
 	# 	return
+	if not is_inside_tree():
+		await ready
 	set_centered(false)
 	if ready:
 		offset_child(-offset)
@@ -175,11 +179,14 @@ func get_shoot_position() -> Marker2D:
 
 # animation name
 func set_animation_name(new_name : String) -> void:
+	animation_name = new_name
+
+	if not is_inside_tree():
+		await ready
 	if new_name in animation_names:
-		animation_name = new_name
 		load_all()
 		notify_property_list_changed()
-		
+			
 
 
 func get_animation_name() -> String:
@@ -188,15 +195,16 @@ func get_animation_name() -> String:
 
 func set_debug(debug_value: bool):
 	debug = debug_value
-	if ready:
-		if $RightPosition/RedCircle != null:
-			$RightPosition/RedCircle.visible = debug_value
-		if $LeftPosition/BlueCircle != null:
-			$LeftPosition/BlueCircle.visible = debug_value
-		if $CenterPosition/GreenCircle != null:
-			$CenterPosition/GreenCircle.visible = debug_value
-		if $ShootPosition/BlackCircle != null:
-			$ShootPosition/BlackCircle.visible = debug_value
+	if not is_inside_tree():
+		await ready
+	if $RightPosition/RedCircle != null:
+		$RightPosition/RedCircle.visible = debug_value
+	if $LeftPosition/BlueCircle != null:
+		$LeftPosition/BlueCircle.visible = debug_value
+	if $CenterPosition/GreenCircle != null:
+		$CenterPosition/GreenCircle.visible = debug_value
+	if $ShootPosition/BlackCircle != null:
+		$ShootPosition/BlackCircle.visible = debug_value
 
 func get_debug() -> bool:
 	return debug
@@ -211,15 +219,8 @@ func _ready():
 	load_all()
 	frame_changed.connect(on_frame_changed)
 
-func is_ready():
-	var is_empty : bool = pokemon_name == "" or animation_name == ""
-	var is_null : bool = pokemon_name == null or animation_name == null
-	var n_children : int = get_child_count()
-	return 	not is_empty and not is_null and n_children > 0 and ready
 
 func load_all():
-	if not is_ready():
-		return
 	loaded_error = false
 	var x = centering
 	set_centering(Centering.LEFT_CORNER)
@@ -376,8 +377,7 @@ func get_color_position(
 
 func load_collisions() -> void:
 	#collision_container = get_node_or_null(COLLISIONS_NODE_NAME)
-	if collision_container == null:
-		return
+	assert (collision_container != null)
 	collision_container.remove_collisions()
 	if self.texture == null:
 		push_error("Error while loading collisions. Try to call load_properties before this method")

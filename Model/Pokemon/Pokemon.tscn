@@ -25,7 +25,10 @@ initial_node_to_watch = NodePath("../StateChart")
 unique_name_in_owner = true
 position = Vector2(248, 165)
 scale = Vector2(5, 5)
-pokemon_name = "Ivysaur"
+pokemon_name = "Charmander"
+animation_name = "Walk"
+centering = 1
+collision_visible = true
 
 [node name="StateChart" type="Node" parent="."]
 script = ExtResource("3_q3u1s")

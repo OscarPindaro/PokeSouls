@@ -2,14 +2,14 @@
 
 [ext_resource type="PackedScene" uid="uid://dk0pck5afsj5t" path="res://Model/Pokemon/PokemonSprite.tscn" id="1"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonSpriteCollection.gd" id="2"]
-[ext_resource type="Texture2D" uid="uid://baftfts3kpgj2" path="res://Images/PokemonSprites/0004/Walk-Anim.png" id="5_qrtgy"]
+[ext_resource type="Texture2D" uid="uid://25pq7ufb0ydt" path="res://Images/PokemonSprites/0007/Shoot-Anim.png" id="4_yfvol"]
+[ext_resource type="Texture2D" uid="uid://brf1r7acqin13" path="res://Images/PokemonSprites/0007/Attack-Anim.png" id="5_eikwg"]
 [ext_resource type="Script" path="res://Model/Pokemon/PokemonAnimationPlayer.gd" id="6"]
-[ext_resource type="Texture2D" uid="uid://iix85h6xog8t" path="res://Images/PokemonSprites/0004/Charge-Anim.png" id="6_fud58"]
-[ext_resource type="Texture2D" uid="uid://b8y41swgte3u0" path="res://Images/PokemonSprites/0004/Strike-Anim.png" id="7_uplns"]
+[ext_resource type="Texture2D" uid="uid://d2yiq68lttl5m" path="res://Images/PokemonSprites/0007/Walk-Anim.png" id="6_ihvf7"]
 
-[sub_resource type="Animation" id="Animation_ttn3d"]
+[sub_resource type="Animation" id="Animation_xbukq"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -17,15 +17,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_rkyun"]
+[sub_resource type="Animation" id="Animation_emmlp"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -33,15 +33,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7]
+"values": [8, 9, 10, 11, 12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_um5b4"]
+[sub_resource type="Animation" id="Animation_4w14l"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -49,15 +49,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11]
+"values": [16, 17, 18, 19, 20, 21, 22, 23]
 }
 
-[sub_resource type="Animation" id="Animation_5gw6g"]
+[sub_resource type="Animation" id="Animation_kq80i"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -65,15 +65,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [12, 13, 14, 15]
+"values": [24, 25, 26, 27, 28, 29, 30, 31]
 }
 
-[sub_resource type="Animation" id="Animation_c1bmn"]
+[sub_resource type="Animation" id="Animation_0boao"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -81,15 +81,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [16, 17, 18, 19]
+"values": [32, 33, 34, 35, 36, 37, 38, 39]
 }
 
-[sub_resource type="Animation" id="Animation_rivhq"]
+[sub_resource type="Animation" id="Animation_m1x31"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -97,15 +97,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [20, 21, 22, 23]
+"values": [40, 41, 42, 43, 44, 45, 46, 47]
 }
 
-[sub_resource type="Animation" id="Animation_jsfbt"]
+[sub_resource type="Animation" id="Animation_ebgx3"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -113,15 +113,15 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [24, 25, 26, 27]
+"values": [48, 49, 50, 51, 52, 53, 54, 55]
 }
 
-[sub_resource type="Animation" id="Animation_k45d1"]
+[sub_resource type="Animation" id="Animation_1eydt"]
 loop_mode = 1
-step = 0.25
+step = 0.125
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -129,30 +129,170 @@ tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxC
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [28, 29, 30, 31]
+"values": [56, 57, 58, 59, 60, 61, 62, 63]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_6k561"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ou58k"]
 _data = {
-"DOWN": SubResource("Animation_ttn3d"),
-"DOWN_LEFT": SubResource("Animation_k45d1"),
-"DOWN_RIGHT": SubResource("Animation_rkyun"),
-"LEFT": SubResource("Animation_jsfbt"),
-"RIGHT": SubResource("Animation_um5b4"),
-"UP": SubResource("Animation_c1bmn"),
-"UP_LEFT": SubResource("Animation_rivhq"),
-"UP_RIGHT": SubResource("Animation_5gw6g")
+"DOWN": SubResource("Animation_xbukq"),
+"DOWN_LEFT": SubResource("Animation_1eydt"),
+"DOWN_RIGHT": SubResource("Animation_emmlp"),
+"LEFT": SubResource("Animation_ebgx3"),
+"RIGHT": SubResource("Animation_4w14l"),
+"UP": SubResource("Animation_0boao"),
+"UP_LEFT": SubResource("Animation_m1x31"),
+"UP_RIGHT": SubResource("Animation_kq80i")
 }
 
-[sub_resource type="Animation" id="Animation_t8kwk"]
+[sub_resource type="Animation" id="Animation_w13ki"]
 loop_mode = 1
+step = 0.0909091
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+}
+
+[sub_resource type="Animation" id="Animation_d4nsx"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21]
+}
+
+[sub_resource type="Animation" id="Animation_3t5ym"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32]
+}
+
+[sub_resource type="Animation" id="Animation_5iqy4"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43]
+}
+
+[sub_resource type="Animation" id="Animation_qd34x"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54]
+}
+
+[sub_resource type="Animation" id="Animation_sfo5s"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65]
+}
+
+[sub_resource type="Animation" id="Animation_wi7wu"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76]
+}
+
+[sub_resource type="Animation" id="Animation_2hodf"]
+loop_mode = 1
+step = 0.0909091
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0909091, 0.181818, 0.272727, 0.363636, 0.454545, 0.545455, 0.636364, 0.727273, 0.818182, 0.909091),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_p5whe"]
+_data = {
+"DOWN": SubResource("Animation_w13ki"),
+"DOWN_LEFT": SubResource("Animation_2hodf"),
+"DOWN_RIGHT": SubResource("Animation_d4nsx"),
+"LEFT": SubResource("Animation_wi7wu"),
+"RIGHT": SubResource("Animation_3t5ym"),
+"UP": SubResource("Animation_qd34x"),
+"UP_LEFT": SubResource("Animation_sfo5s"),
+"UP_RIGHT": SubResource("Animation_5iqy4")
+}
+
+[sub_resource type="Animation" id="Animation_5jmsj"]
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -162,12 +302,12 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_4ov8p"]
+[sub_resource type="Animation" id="Animation_6dx3r"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -177,12 +317,12 @@ tracks/0/keys = {
 "values": [10, 11, 12, 13, 14, 15, 16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_1f8ji"]
+[sub_resource type="Animation" id="Animation_0ej16"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -192,12 +332,12 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23, 24, 25, 26, 27, 28, 29]
 }
 
-[sub_resource type="Animation" id="Animation_sge12"]
+[sub_resource type="Animation" id="Animation_gp71u"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -207,12 +347,12 @@ tracks/0/keys = {
 "values": [30, 31, 32, 33, 34, 35, 36, 37, 38, 39]
 }
 
-[sub_resource type="Animation" id="Animation_seokf"]
+[sub_resource type="Animation" id="Animation_xllnt"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -222,12 +362,12 @@ tracks/0/keys = {
 "values": [40, 41, 42, 43, 44, 45, 46, 47, 48, 49]
 }
 
-[sub_resource type="Animation" id="Animation_bd2kh"]
+[sub_resource type="Animation" id="Animation_cu60b"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -237,12 +377,12 @@ tracks/0/keys = {
 "values": [50, 51, 52, 53, 54, 55, 56, 57, 58, 59]
 }
 
-[sub_resource type="Animation" id="Animation_px1lp"]
+[sub_resource type="Animation" id="Animation_r40uw"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -252,12 +392,12 @@ tracks/0/keys = {
 "values": [60, 61, 62, 63, 64, 65, 66, 67, 68, 69]
 }
 
-[sub_resource type="Animation" id="Animation_w478o"]
+[sub_resource type="Animation" id="Animation_3c5fp"]
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Shoot:frame")
+tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -267,159 +407,19 @@ tracks/0/keys = {
 "values": [70, 71, 72, 73, 74, 75, 76, 77, 78, 79]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_oy8c5"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_d8eee"]
 _data = {
-"DOWN": SubResource("Animation_t8kwk"),
-"DOWN_LEFT": SubResource("Animation_w478o"),
-"DOWN_RIGHT": SubResource("Animation_4ov8p"),
-"LEFT": SubResource("Animation_px1lp"),
-"RIGHT": SubResource("Animation_1f8ji"),
-"UP": SubResource("Animation_seokf"),
-"UP_LEFT": SubResource("Animation_bd2kh"),
-"UP_RIGHT": SubResource("Animation_sge12")
+"DOWN": SubResource("Animation_5jmsj"),
+"DOWN_LEFT": SubResource("Animation_3c5fp"),
+"DOWN_RIGHT": SubResource("Animation_6dx3r"),
+"LEFT": SubResource("Animation_r40uw"),
+"RIGHT": SubResource("Animation_0ej16"),
+"UP": SubResource("Animation_xllnt"),
+"UP_LEFT": SubResource("Animation_cu60b"),
+"UP_RIGHT": SubResource("Animation_gp71u")
 }
 
-[sub_resource type="Animation" id="Animation_vufbb"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8]
-}
-
-[sub_resource type="Animation" id="Animation_461ke"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [9, 10, 11, 12, 13, 14, 15, 16, 17]
-}
-
-[sub_resource type="Animation" id="Animation_8gr5w"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [18, 19, 20, 21, 22, 23, 24, 25, 26]
-}
-
-[sub_resource type="Animation" id="Animation_i3mc6"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [27, 28, 29, 30, 31, 32, 33, 34, 35]
-}
-
-[sub_resource type="Animation" id="Animation_rnxv1"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [36, 37, 38, 39, 40, 41, 42, 43, 44]
-}
-
-[sub_resource type="Animation" id="Animation_spyk1"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [45, 46, 47, 48, 49, 50, 51, 52, 53]
-}
-
-[sub_resource type="Animation" id="Animation_dstqy"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [54, 55, 56, 57, 58, 59, 60, 61, 62]
-}
-
-[sub_resource type="Animation" id="Animation_0f662"]
-loop_mode = 1
-step = 0.111111
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("/root/@EditorNode@17637/@Control@697/@Panel@698/@VBoxContainer@706/@HSplitContainer@709/@HSplitContainer@717/@HSplitContainer@725/@VBoxContainer@726/@VSplitContainer@728/@VSplitContainer@754/@VBoxContainer@755/@PanelContainer@800/MainScreen/@CanvasItemEditor@10090/@VSplitContainer@9915/@HSplitContainer@9917/@HSplitContainer@9919/@Control@9920/@SubViewportContainer@9921/@SubViewport@9922/PokemonSpriteCollection/Sprites/Strike:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.111111, 0.222222, 0.333333, 0.444444, 0.555556, 0.666667, 0.777778, 0.888889),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [63, 64, 65, 66, 67, 68, 69, 70, 71]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_7w5cu"]
-_data = {
-"DOWN": SubResource("Animation_vufbb"),
-"DOWN_LEFT": SubResource("Animation_0f662"),
-"DOWN_RIGHT": SubResource("Animation_461ke"),
-"LEFT": SubResource("Animation_dstqy"),
-"RIGHT": SubResource("Animation_8gr5w"),
-"UP": SubResource("Animation_rnxv1"),
-"UP_LEFT": SubResource("Animation_spyk1"),
-"UP_RIGHT": SubResource("Animation_i3mc6")
-}
-
-[sub_resource type="Animation" id="Animation_degdl"]
+[sub_resource type="Animation" id="Animation_pc81n"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -435,7 +435,7 @@ tracks/0/keys = {
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_6aefb"]
+[sub_resource type="Animation" id="Animation_0whhe"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -451,7 +451,7 @@ tracks/0/keys = {
 "values": [4, 5, 6, 7]
 }
 
-[sub_resource type="Animation" id="Animation_yorr2"]
+[sub_resource type="Animation" id="Animation_h4cb1"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -467,7 +467,7 @@ tracks/0/keys = {
 "values": [8, 9, 10, 11]
 }
 
-[sub_resource type="Animation" id="Animation_x4w4u"]
+[sub_resource type="Animation" id="Animation_xtblb"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -483,7 +483,7 @@ tracks/0/keys = {
 "values": [12, 13, 14, 15]
 }
 
-[sub_resource type="Animation" id="Animation_l2m1j"]
+[sub_resource type="Animation" id="Animation_0lh0s"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -499,7 +499,7 @@ tracks/0/keys = {
 "values": [16, 17, 18, 19]
 }
 
-[sub_resource type="Animation" id="Animation_ffgfi"]
+[sub_resource type="Animation" id="Animation_8pspm"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -515,7 +515,7 @@ tracks/0/keys = {
 "values": [20, 21, 22, 23]
 }
 
-[sub_resource type="Animation" id="Animation_o0w5m"]
+[sub_resource type="Animation" id="Animation_l2fug"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -531,7 +531,7 @@ tracks/0/keys = {
 "values": [24, 25, 26, 27]
 }
 
-[sub_resource type="Animation" id="Animation_l1ab6"]
+[sub_resource type="Animation" id="Animation_kmn7t"]
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -547,29 +547,33 @@ tracks/0/keys = {
 "values": [28, 29, 30, 31]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_qrt4i"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4ityh"]
 _data = {
-"DOWN": SubResource("Animation_degdl"),
-"DOWN_LEFT": SubResource("Animation_l1ab6"),
-"DOWN_RIGHT": SubResource("Animation_6aefb"),
-"LEFT": SubResource("Animation_o0w5m"),
-"RIGHT": SubResource("Animation_yorr2"),
-"UP": SubResource("Animation_l2m1j"),
-"UP_LEFT": SubResource("Animation_ffgfi"),
-"UP_RIGHT": SubResource("Animation_x4w4u")
+"DOWN": SubResource("Animation_pc81n"),
+"DOWN_LEFT": SubResource("Animation_kmn7t"),
+"DOWN_RIGHT": SubResource("Animation_0whhe"),
+"LEFT": SubResource("Animation_l2fug"),
+"RIGHT": SubResource("Animation_h4cb1"),
+"UP": SubResource("Animation_0lh0s"),
+"UP_LEFT": SubResource("Animation_8pspm"),
+"UP_RIGHT": SubResource("Animation_xtblb")
 }
 
 [node name="PokemonSpriteCollection" type="Node2D"]
+scale = Vector2(0.998235, 0.979766)
 script = ExtResource("2")
-pokemon_name = "Charmander"
+pokemon_name = "Squirtle"
+animation_name = "Shoot"
+centering = 2
+play = true
 
 [node name="PokemonAnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Idle_DOWN"
 libraries = {
-"Idle": SubResource("AnimationLibrary_6k561"),
-"Shoot": SubResource("AnimationLibrary_oy8c5"),
-"Strike": SubResource("AnimationLibrary_7w5cu"),
-"Walk": SubResource("AnimationLibrary_qrt4i")
+"Idle": SubResource("AnimationLibrary_ou58k"),
+"Shoot": SubResource("AnimationLibrary_p5whe"),
+"Strike": SubResource("AnimationLibrary_d8eee"),
+"Walk": SubResource("AnimationLibrary_4ityh")
 }
 script = ExtResource("6")
 sprites_path = NodePath("../Sprites")
@@ -578,19 +582,37 @@ sprites_path = NodePath("../Sprites")
 
 [node name="Idle" parent="Sprites" instance=ExtResource("1")]
 visible = false
-
-[node name="Walk" parent="Sprites" instance=ExtResource("1")]
-texture = ExtResource("5_qrtgy")
-animation_name = "Walk"
+offset = Vector2(-15.5, -13.5)
+debug = false
+centering = 2
+collision_visible = false
 
 [node name="Shoot" parent="Sprites" instance=ExtResource("1")]
-visible = false
-texture = ExtResource("6_fud58")
-hframes = 10
+texture = ExtResource("4_yfvol")
+offset = Vector2(-19.5, -14.5)
+hframes = 11
+frame = 3
 animation_name = "Shoot"
+debug = false
+centering = 2
+collision_visible = false
 
 [node name="Strike" parent="Sprites" instance=ExtResource("1")]
 visible = false
-texture = ExtResource("7_uplns")
-hframes = 9
+texture = ExtResource("5_eikwg")
+offset = Vector2(-31.5, -32.5)
+hframes = 10
 animation_name = "Strike"
+debug = false
+centering = 2
+collision_visible = false
+
+[node name="Walk" parent="Sprites" instance=ExtResource("1")]
+visible = false
+texture = ExtResource("6_ihvf7")
+offset = Vector2(-15.5, -13.5)
+hframes = 4
+animation_name = "Walk"
+debug = false
+centering = 2
+collision_visible = false

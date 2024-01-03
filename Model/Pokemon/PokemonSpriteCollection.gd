@@ -155,11 +155,9 @@ func set_animation_property() -> void:
 
 
 func set_animation_name(new_name : String):
-	if sprites == null:
-		return
-	if poke_anim_player == null:
-		return
 	animation_name = new_name
+	if not is_inside_tree():
+		await ready
 	if new_name in animation_names:
 		for sprite in sprites.get_children():
 			if new_name == sprite.get_animation_name():
@@ -226,11 +224,14 @@ func get_frame()->int:
 	return frame
 
 func set_play(play_value)-> void:
+	play = play_value
+	if not is_inside_tree():
+		await ready
 	if play_value == true:
 		poke_anim_player.play()
 	else:
 		poke_anim_player.stop()
-	play = play_value
+	
 
 func _init() -> void:
 	var file = FileAccess.open(poke_num_file_path, FileAccess.READ)
@@ -263,7 +264,6 @@ func _ready():
 
 	set_centering(centering)
 	if not Engine.is_editor_hint():
-		print(centering)
 		print(PokemonSprite.Centering.keys()[centering])
 	
 	# set_pokemon_name(pokemon_name)
