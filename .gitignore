@@ -10,10 +10,11 @@ export_presets.cfg
 # Imported translations (automatically generated from CSV files)
 *.translation
 .import/
-*.import
+# *.import
 .gut_editor_shortcuts.cfg
 *.translation
 export_presets.cfg
 .mono/
 
 .vscode/
+pokemon.json_old

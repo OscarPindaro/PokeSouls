@@ -7,7 +7,7 @@ import argparse
 def parse_arguments():
     # Default values
     default_pokedex_path = "pokemon.json/pokedex.json"
-    default_result = "Images/SpriteCollab/poke-numbers.json"
+    default_result = "Images/PokemonSprites/poke-numbers.json"
 
     parser = argparse.ArgumentParser(description="Command line arguments parser")
 

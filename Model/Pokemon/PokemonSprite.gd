@@ -4,9 +4,9 @@ extends Sprite2D
 class_name PokemonSprite
 
 # PATHS
-var poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
-var anim_data_path: String = "res://Images/SpriteCollab/sprite/%s/AnimData.json"
-var texture_path: String = "res://Images/SpriteCollab/sprite/%s/%s"
+var poke_num_file_path: String = "res://Images/PokemonSprites/poke-numbers.json"
+var anim_data_path: String = "res://Images/PokemonSprites/%s/AnimData.json"
+var texture_path: String = "res://Images/PokemonSprites/%s/%s"
 var error_texture_path: String = "res://Images/PokemonDebug/error_texture.png"
 var loaded_error : bool = false
 # key : pokemon name, value : string folder (es: "Bulbasaur" : "0001")
@@ -85,11 +85,13 @@ var BLACK = Color(0, 0, 0)
 # SETTERS AND GETTERS
 # pokemon name
 func set_pokemon_name(new_name : String):
-	new_name = lower_and_capitalize(new_name)
-	if new_name in poke_dict:
+	var real_name = new_name.to_lower().capitalize()
+	pokemon_name = real_name
+	if not is_inside_tree():
+		await ready
+	if pokemon_name in poke_dict:
 		pokemon_name = new_name
 		load_all()
-	notify_property_list_changed()
 
 func get_pokemon_name() -> String:
 	return pokemon_name

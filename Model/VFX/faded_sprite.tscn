@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://38xsxauo0ea3"]
+
+[ext_resource type="Texture2D" uid="uid://d26lu3l85ky5q" path="res://Images/PokemonDebug/error_texture.png" id="1_qnjrd"]
+
+[node name="FadedSprite" type="Sprite2D"]
+modulate = Color(0.141176, 0.427451, 1, 1)
+self_modulate = Color(1, 1, 1, 0.501961)
+texture = ExtResource("1_qnjrd")

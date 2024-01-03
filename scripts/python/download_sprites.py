@@ -4,10 +4,10 @@ import zipfile
 import argparse
 import multiprocessing
 
-def download_and_extract(start_number, end_number, queue):
+def download_and_extract(start_number, end_number, queue, base_url, destination_folder):
     # Define the base URL and destination folder
-    base_url = "https://spriteserver.pmdcollab.org/assets/{:04d}/sprites.zip"
-    destination_folder = "Images/SpriteCollab/sprite"
+    # base_url = "https://spriteserver.pmdcollab.org/assets/{:04d}/sprites.zip"
+    # destination_folder = "Images/SpriteCollab/sprite"
 
     for number in range(start_number, end_number + 1):
         # Create the destination folder if it doesn't exist
@@ -47,6 +47,9 @@ if __name__ == "__main__":
     parser.add_argument("--start-number", "-s", type=int, required=True, help="Starting number")
     parser.add_argument("--end-number", "-e", type=int, required=True, help="Ending number")
     parser.add_argument("--num-processes", "-j", type=int, default=-1, help="Number of processes to use (default: -1)")
+    parser.add_argument("--base-url", "-b", default="https://spriteserver.pmdcollab.org/assets/{:04d}/sprites.zip", type=str, help="Base URL for downloading")
+    parser.add_argument("--destination-folder", "-d", default="Images/PokemonSprites", type=str, help="Destination folder for the downloaded files")
+    
     args = parser.parse_args()
 
     
@@ -57,6 +60,8 @@ if __name__ == "__main__":
     # Calculate the range of numbers to distribute among processes
     num_processes = args.num_processes
      # Determine the number of CPU cores if num-processes is -1
+    base_url = args.base_url
+    destination_folder = args.destination_folder
     if args.num_processes == -1:
         num_processes = multiprocessing.cpu_count()
     else:
@@ -69,7 +74,7 @@ if __name__ == "__main__":
     for i in range(num_processes):
         start = args.start_number + i * numbers_per_process
         end = start + numbers_per_process - 1 if i < num_processes - 1 else args.end_number
-        process = multiprocessing.Process(target=download_and_extract, args=(start, end, queue))
+        process = multiprocessing.Process(target=download_and_extract, args=(start, end, queue, base_url, destination_folder))
         processes.append(process)
         process.start()
 

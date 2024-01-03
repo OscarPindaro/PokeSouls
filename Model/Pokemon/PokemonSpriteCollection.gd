@@ -15,7 +15,7 @@ signal shoot_position_changed(old_position, new_position)
 
 
 # PATHS
-const poke_num_file_path: String = "res://Images/SpriteCollab/poke-numbers.json"
+const poke_num_file_path: String = "res://Images/PokemonSprites/poke-numbers.json"
 const pokemon_sprite_scene_path : String = "res://Model/Pokemon/PokemonSprite.tscn"
 
 # DEFAULT VALUES
@@ -116,6 +116,8 @@ func set_pokemon_name(new_name : String)-> void:
 	var real_name = new_name.to_lower().capitalize()
 
 	pokemon_name = real_name
+	if not is_inside_tree():
+		await ready
 	# this tries to solve the reload problem
 	if sprites == null:
 		return
@@ -194,11 +196,11 @@ func set_visual_debug(debug_value : bool) -> void:
 
 # centering
 func set_centering(new_value):
+	centering = new_value
 	if sprites == null:
 		return
 	if poke_anim_player == null:
 		return
-	centering = new_value
 	for child in sprites.get_children():
 		child.set_centering(new_value)
 
@@ -257,9 +259,14 @@ func _ready():
 	else:
 		set_animation_name(animation_name)
 	set_collision_visible(collision_visible)
+
+
 	set_centering(centering)
+	if not Engine.is_editor_hint():
+		print(centering)
+		print(PokemonSprite.Centering.keys()[centering])
 	
-	set_pokemon_name("Charmander")
+	# set_pokemon_name(pokemon_name)
 
 
 static func vector_to_direction(direction_vector: Vector2)-> Direction:
